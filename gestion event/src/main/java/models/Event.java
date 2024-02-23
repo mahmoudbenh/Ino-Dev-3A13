@@ -1,7 +1,7 @@
 package models;
 import java.time.LocalDate;
 public class Event {
-    private static int id_event;
+    private  int id_event;
     private LocalDate date_event;
     private String name,description,statut,lieu;
 

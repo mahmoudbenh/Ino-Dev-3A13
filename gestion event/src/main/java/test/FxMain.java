@@ -14,7 +14,7 @@ public class FxMain extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterEvent.fxml")); //emplacement f
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUser.fxml")); //emplacement f
         Parent parent = loader.load();
         Scene scene = new Scene(parent);
         stage.setTitle("Ajouter un evenement");

@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
 
-
-<AnchorPane prefHeight="537.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherEvent">
-   <children>
-      <TableView layoutX="46.0" layoutY="118.0" prefHeight="384.0" prefWidth="658.0">
-        <columns>
-          <TableColumn fx:id="fxid_event" prefWidth="75.0" text="ID event " />
-          <TableColumn fx:id="fx_name" prefWidth="75.0" text="Name" />
-            <TableColumn fx:id="fx_description" prefWidth="94.40003967285156" text="Description" />
-            <TableColumn fx:id="fx_date" prefWidth="75.0" text="Date event" />
-            <TableColumn fx:id="fx_statut" prefWidth="75.0" text="Statut " />
-            <TableColumn fx:id="fx_lieu" prefWidth="75.0" text="Lieu" />
-        </columns>
-      </TableView>
-   </children>
-</AnchorPane>
+<ScrollPane prefHeight="436.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherEvent">
+    <FlowPane fx:id="eventContainer"  />
+</ScrollPane>

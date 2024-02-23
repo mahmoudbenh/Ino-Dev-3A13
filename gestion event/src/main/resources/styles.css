@@ -1,0 +1,27 @@
+/* styles.css */
+
+.event-box {
+    -fx-background-color: #f0f0f0; /* Background color */
+    -fx-border-color: #ccc; /* Border color */
+    -fx-border-width: 1px; /* Border width */
+    -fx-border-radius: 10px; /* Border radius */
+    -fx-padding: 20px; /* Padding */
+    -fx-spacing: 10px; /* Spacing between elements */
+}
+
+.event-box:hover {
+    -fx-background-color: #e0e0e0; /* Background color on hover */
+}
+.event-box {
+    -fx-padding: 20px;
+    -fx-spacing: 10px;
+    -fx-border-radius: 10px;
+    -fx-background-color: #f7f8fa;
+    -fx-border-color: #5dade2;
+}
+
+.event-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}

@@ -3,17 +3,43 @@ package services;
 import models.Event;
 import utils.DBConnection;
 import java.sql.*;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class ServiceEvent implements CRUD<Event> {
-    private Connection cnx;
-    public ServiceEvent(){cnx = DBConnection.getInstance().getCnx();}
+    private static Connection cnx;
+
+    public ServiceEvent() {
+        cnx = DBConnection.getInstance().getCnx();
+    }
+
+    public List<Event> selectAll() throws SQLException {
+        List<Event> eventList = new ArrayList<>();
+        String req = "SELECT * FROM `event`";
+        Statement st = cnx.createStatement();
+        ResultSet rs = st.executeQuery(req);
+        while (rs.next()) {
+            Event event = new Event();
+            event.setId_event(rs.getInt(1));
+            System.out.println("Retrieved ID from database: " + event.getId_event()); // Debug message
+            event.setName(rs.getString(2));
+            event.setDescription(rs.getString(3));
+            event.setDate_event(rs.getDate(4).toLocalDate());
+            event.setStatut(rs.getString(5));
+            event.setLieu(rs.getString(6));
+            eventList.add(event);
+        }
+        return eventList;
+    }
+
+    public static void updateStatusToNotDone(int eventId) throws SQLException {
+        String req = "UPDATE event SET statut='not done' WHERE id_event=?";
+        PreparedStatement pst = cnx.prepareStatement(req);
+        pst.setInt(1, eventId);
+        pst.executeUpdate();
+        System.out.println("Status updated to 'not done' successfully");
+    }
 
     public void insertOne(Event event) throws SQLException {
         String req = "INSERT INTO `event` (`name`, `description`, `date_event`, `statut`, `lieu`) VALUES (?, ?, ?, ?, ?)";
@@ -27,97 +53,59 @@ public class ServiceEvent implements CRUD<Event> {
         preparedStatement.executeUpdate();
     }
 
-    public void updateOne(Event event) throws SQLException{
+    public void updateOne(Event event) throws SQLException {
         if (eventExists(event.getId_event())) {
-            try {
-                String req = "UPDATE event SET id_event=?, name=?,description=?, date_event=?, statut=?, lieu=? WHERE id_event=?";
-                PreparedStatement pst = cnx.prepareStatement(req);
-                LocalDate localDate = event.getDate_event();
-                java.sql.Date sqlDate = java.sql.Date.valueOf(localDate);
-                pst.setInt(1, event.getId_event());
-                pst.setString(2, event.getName());
-                pst.setString(3, event.getDescription());
-                pst.setDate(4, sqlDate);
-                pst.setString(5, event.getStatut());
-                pst.setString(6, event.getLieu());
-                pst.setInt(7, event.getId_event());
-                pst.executeUpdate();
-                System.out.println("event modifiée avec succés");
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
+            String req = "UPDATE event SET name=?, description=?, date_event=?, statut=?, lieu=? WHERE id_event=?";
+            PreparedStatement pst = cnx.prepareStatement(req);
+            pst.setString(1, event.getName());
+            pst.setString(2, event.getDescription());
+            pst.setDate(3, java.sql.Date.valueOf(event.getDate_event()));
+            pst.setString(4, event.getStatut());
+            pst.setString(5, event.getLieu());
+            pst.setInt(6, event.getId_event());
+            pst.executeUpdate();
+            System.out.println("Event updated successfully");
         } else {
-            System.out.println("L'événement avec l'identifiant " + event.getId_event() + " n'existe pas dans la base de données.");
+            System.out.println("The event with ID " + event.getId_event() + " does not exist in the database.");
         }
     }
-    public void deleteOne(Event event) throws SQLException {
-        // Vérifier si l'événement existe avant de le supprimer
+    public static void updateEvent(Event event) throws SQLException {
         if (eventExists(event.getId_event())) {
-            try {
-                String requete = "DELETE FROM event WHERE id_event=?";
-                PreparedStatement pst = cnx.prepareStatement(requete);
-                pst.setInt(1, event.getId_event());
-                pst.executeUpdate();
-                System.out.println("Événement supprimé avec succès");
-            } catch (SQLException ex) {
-                System.out.println("Erreur lors de la suppression de l'événement : " + ex.getMessage());
-            }
+            String req = "UPDATE event SET name=?, description=?, date_event=?, statut=?, lieu=? WHERE id_event=?";
+            PreparedStatement pst = cnx.prepareStatement(req);
+            pst.setString(1, event.getName());
+            pst.setString(2, event.getDescription());
+            pst.setDate(3, java.sql.Date.valueOf(event.getDate_event()));
+            pst.setString(4, event.getStatut());
+            pst.setString(5, event.getLieu());
+            pst.setInt(6, event.getId_event());
+            pst.executeUpdate();
+            System.out.println("Event updated successfully");
         } else {
-            System.out.println("L'événement avec l'identifiant " + event.getId_event() + " n'existe pas dans la base de données.");
+            System.out.println("The event with ID " + event.getId_event() + " does not exist in the database.");
         }
     }
 
-    // Méthode pour vérifier si l'événement existe
-    private boolean eventExists(int eventId) throws SQLException {
-        String requete = "SELECT COUNT(*) FROM event WHERE id_event=?";
-        PreparedStatement pst = cnx.prepareStatement(requete);
+
+    public void deleteOne(Event event) throws SQLException {
+        if (eventExists(event.getId_event())) {
+            String req = "DELETE FROM event WHERE id_event=?";
+            PreparedStatement pst = cnx.prepareStatement(req);
+            pst.setInt(1, event.getId_event());
+            pst.executeUpdate();
+            System.out.println("Event deleted successfully");
+        } else {
+            System.out.println("The event with ID " + event.getId_event() + " does not exist in the database.");
+        }
+    }
+
+    private static boolean eventExists(int eventId) throws SQLException {
+        String req = "SELECT COUNT(*) FROM event WHERE id_event=?";
+        PreparedStatement pst = cnx.prepareStatement(req);
         pst.setInt(1, eventId);
         ResultSet rs = pst.executeQuery();
         rs.next();
         int count = rs.getInt(1);
         return count > 0;
     }
-
-
-  /* @Override
-    public List<Event> selectAll() throws SQLException {
-        List<Event> EventList=new ArrayList<>();
-        String req="SELECT * FROM `event`";
-        Statement st = cnx.createStatement();
-       LocalDate date2 = LocalDate.of(2022, 2, 7);
-        ResultSet rs= st.executeQuery(req);
-        while (rs.next()){
-            Event c=new Event();
-            c.setId_event(rs.getInt(1));
-            c.setName(rs.getString(2));
-            c.setDescription(rs.getString(3));
-            c.setDate_event(rs.getDate(4).toLocalDate());
-            c.setStatut(rs.getString(5));
-            c.setLieu(rs.getString(6));
-            System.out.println("done");
-        }
-        return EventList;
-    }*/
-  @Override
-  public List<Event> selectAll() throws SQLException {
-      List<Event> EventList = new ArrayList<>();
-      String req = "SELECT * FROM `event`";
-      Statement st = cnx.createStatement();
-      LocalDate date2 = LocalDate.of(2022, 2, 7);
-      ResultSet rs = st.executeQuery(req);
-      while (rs.next()) {
-          Event c = new Event();
-          c.setId_event(rs.getInt(1));
-          c.setName(rs.getString(2));
-          c.setDescription(rs.getString(3));
-          c.setDate_event(rs.getDate(4).toLocalDate());
-          c.setStatut(rs.getString(5));
-          c.setLieu(rs.getString(6));
-          EventList.add(c); // Ajout de l'événement à la liste
-      }
-      return EventList;
-  }
-
-
-
 }

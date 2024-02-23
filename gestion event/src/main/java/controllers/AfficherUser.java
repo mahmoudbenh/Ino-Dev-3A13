@@ -3,18 +3,22 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.Event;
 import services.ServiceEvent;
-
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import java.sql.SQLException;
 import java.util.List;
 
-public class AfficherEvent {
+public class AfficherUser {
 
     @FXML
     private FlowPane eventContainer;
@@ -28,6 +32,8 @@ public class AfficherEvent {
 
         // Populate the container with event boxes
         createEventBoxes(events);
+        eventContainer.setPadding(new Insets(10)); // Set padding between rows
+
     }
 
     private void createEventBoxes(List<Event> events) {
@@ -41,18 +47,19 @@ public class AfficherEvent {
                 // Create a new VBox for each event
                 VBox eventBox = new VBox();
 
-                // Set a unique ID for the event box using the event's ID
-                eventBox.setId("event-box-" + event.getId_event());
-
                 // Apply styles to the event box
                 eventBox.setStyle("-fx-padding: 20px; -fx-border-radius: 10px; -fx-background-color: #f7f8fa; -fx-border-color: #5dade2; ");
+                String imagePath = "file:///C:/Users/Linda/OneDrive/Desktop/3A/projet%20PI%20DEV/gestion%20event/src/main/resources/assets/event.png";
+                // Create an ImageView for the image (assuming imagePath is the path to the image)
+                ImageView imageView = new ImageView(new Image(imagePath));
+                imageView.setFitWidth(100); // Set the width of the image
+                imageView.setPreserveRatio(true); // Preserve the aspect ratio of the image
 
                 // Create a VBox to hold the text information
                 VBox textInfoBox = new VBox();
                 textInfoBox.setSpacing(5); // Adjust spacing between labels
 
                 // Add text information for the event
-                Label idLabel = new Label("ID: " + event.getId_event()); // Display ID
                 Label nameLabel = new Label("Name: " + event.getName());
                 Label descriptionLabel = new Label("Description: " + event.getDescription());
                 Label dateLabel = new Label("Date: " + event.getDate_event());
@@ -60,41 +67,17 @@ public class AfficherEvent {
                 Label lieuLabel = new Label("Location: " + event.getLieu());
 
                 // Add text labels to the text information VBox
-                textInfoBox.getChildren().addAll(idLabel, nameLabel, descriptionLabel, dateLabel, statusLabel, lieuLabel);
+                textInfoBox.getChildren().addAll(nameLabel, descriptionLabel, dateLabel, statusLabel, lieuLabel);
 
                 // Apply CSS styles to text labels
-                idLabel.getStyleClass().add("event-label");
                 nameLabel.getStyleClass().add("event-label");
                 descriptionLabel.getStyleClass().add("event-label");
                 dateLabel.getStyleClass().add("event-label");
                 statusLabel.getStyleClass().add("event-label");
                 lieuLabel.getStyleClass().add("event-label");
 
-                // Create buttons for the event
-                Button updateButton = new Button("Update");
-                updateButton.setOnAction(e -> {
-                    openUpdateWindow(event, eventContainer); // Pass the eventContainer
-                });
-
-                Button postponeButton = new Button("Postpone");
-                postponeButton.setOnAction(e -> {
-                    try {
-                        // Get the event ID
-                        int eventId = event.getId_event();
-
-                        // Update status to 'not done'
-                        ServiceEvent.updateStatusToNotDone(eventId);
-                    } catch (SQLException ex) {
-                        System.out.println("Error updating status: " + ex.getMessage());
-                    }
-                });
-
-                // Create an HBox to hold the buttons
-                HBox buttonBox = new HBox(updateButton, postponeButton);
-                buttonBox.setSpacing(10);
-
-                // Add text information VBox and button HBox to the event VBox
-                eventBox.getChildren().addAll(textInfoBox, buttonBox);
+                // Add the image and text information to the event box
+                eventBox.getChildren().addAll(imageView, textInfoBox);
 
                 // Add the event VBox to the current row
                 currentRow.getChildren().add(eventBox);
@@ -121,44 +104,8 @@ public class AfficherEvent {
     }
 
 
-    public void openUpdateWindow(Event event, FlowPane eventContainer) {
-        Stage updateStage = new Stage();
-        updateStage.setTitle("Update Event");
 
-        VBox updateLayout = new VBox();
-        updateLayout.setSpacing(10);
-        updateLayout.setPadding(new Insets(10));
 
-        TextField nameField = new TextField(event.getName());
-        TextField descriptionField = new TextField(event.getDescription());
-        DatePicker dateField = new DatePicker(event.getDate_event());
-        TextField statusField = new TextField(event.getStatut());
-        TextField lieuField = new TextField(event.getLieu());
 
-        Button updateButton = new Button("Update");
-        updateButton.setOnAction(e -> {
-            event.setName(nameField.getText());
-            event.setDescription(descriptionField.getText());
-            event.setDate_event(dateField.getValue());
-            event.setStatut(statusField.getText());
-            event.setLieu(lieuField.getText());
-
-            try {
-                ServiceEvent.updateEvent(event);
-                updateStage.close();
-                eventContainer.getChildren().clear(); // Clear the container
-                initialize(); // Re-populate the container
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-                // Handle exception...
-            }
-        });
-
-        updateLayout.getChildren().addAll(nameField, descriptionField, dateField, statusField, lieuField, updateButton);
-
-        Scene updateScene = new Scene(updateLayout, 300, 200);
-        updateStage.setScene(updateScene);
-        updateStage.show();
-    }
 }
 
