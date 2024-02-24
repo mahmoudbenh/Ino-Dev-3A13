@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModifierRembourssementFXML">
+   <children>
+      <Button layoutX="414.0" layoutY="264.0" mnemonicParsing="false" onAction="#modifierdy" text="modifier" />
+      <TextField fx:id="id_recp" layoutX="214.0" layoutY="89.0" />
+      <TextField fx:id="prix_pp" layoutX="212.0" layoutY="156.0" />
+      <DatePicker fx:id="date_p" layoutX="212.0" layoutY="192.0" />
+      <ComboBox fx:id="statp" layoutX="212.0" layoutY="227.0" prefWidth="150.0" visibleRowCount="3" />
+      <ComboBox fx:id="modep" layoutX="212.0" layoutY="264.0" prefWidth="150.0" visibleRowCount="3" />
+      <TextField fx:id="id_pp" layoutX="212.0" layoutY="124.0" />
+      <TextField fx:id="id_rembp" layoutX="215.0" layoutY="56.0" />
+      <Button fx:id="annuler" layoutX="504.0" layoutY="264.0" mnemonicParsing="false" onAction="#annuler" text="annuler" />
+      <Button layoutX="266.0" layoutY="314.0" mnemonicParsing="false" onAction="#retour" text="page precedente" />
+      <Text layoutX="63.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id_reclamation" />
+      <Text layoutX="63.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id_produit" />
+      <Text layoutX="64.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prix_produit" />
+      <Text layoutX="64.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="date_rembourssement" />
+      <Label layoutX="62.0" layoutY="26.0" text="modifier rembourssement" />
+      <Text layoutX="64.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="statut_remboussement" />
+      <Text layoutX="64.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="mode_paiement" />
+      <Text layoutX="63.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id_rembourssement" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterReclamationFXML">
+<children>
+    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+    <Button layoutX="461.0" layoutY="286.0" mnemonicParsing="false" onAction="#ajouterreclamation" text="ajouter" />
+    <Text layoutX="114.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id_client" />
+    <Text layoutX="112.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="date_reclamation" />
+    <Text layoutX="117.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type_reclamation" />
+    <Text layoutX="117.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="description" />
+    <TextField fx:id="id_client1" layoutX="294.0" layoutY="97.0" />
+    <TextField fx:id="description1" layoutX="294.0" layoutY="287.0" />
+    <DatePicker fx:id="date_reclamation1" layoutX="293.0" layoutY="172.0" />
+    <Label layoutX="116.0" layoutY="58.0" text="ajouter reclamation" />
+    <Button layoutX="331.0" layoutY="342.0" mnemonicParsing="false" onAction="#changeScreenButtonPushed" text="afficher" />
+    <Button layoutX="531.0" layoutY="286.0" mnemonicParsing="false" onAction="#annuler" text="annuler" />
+    <ComboBox fx:id="type" layoutX="293.0" layoutY="213.0" prefWidth="150.0" visibleRowCount="3" />
+      <VBox layoutY="1.0" prefHeight="400.0" prefWidth="100.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#reclamation" prefHeight="311.0" prefWidth="100.0" text="Reclamation" />
+            <Button mnemonicParsing="false" onAction="#rembourssement" prefHeight="314.0" prefWidth="100.0" text="Rembourssement" />
+         </children>
+      </VBox>
+      <Text layoutX="114.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre reclamation" />
+      <Text layoutX="125.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statut reclamation" />
+      <ComboBox fx:id="stat" layoutX="293.0" layoutY="249.0" prefWidth="150.0" />
+      <TextField fx:id="titre1" layoutX="294.0" layoutY="132.0" />
+</children>
+</AnchorPane>
