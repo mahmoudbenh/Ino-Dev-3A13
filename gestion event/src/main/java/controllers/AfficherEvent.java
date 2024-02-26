@@ -32,7 +32,7 @@ public class AfficherEvent {
 
     private void createEventBoxes(List<Event> events) {
         if (events != null) {
-            int eventsPerRow = 4; // Maximum number of events per row
+            int eventsPerRow = 5;// Maximum number of events per row
             int count = 0; // Counter for events in the current row
             HBox currentRow = new HBox(); // Initialize a new row
             currentRow.setSpacing(10); // Set spacing between event boxes
@@ -40,6 +40,7 @@ public class AfficherEvent {
             for (Event event : events) {
                 // Create a new VBox for each event
                 VBox eventBox = new VBox();
+                eventBox.setSpacing(10);
 
                 // Set a unique ID for the event box using the event's ID
                 eventBox.setId("event-box-" + event.getId_event());
@@ -71,12 +72,19 @@ public class AfficherEvent {
                 lieuLabel.getStyleClass().add("event-label");
 
                 // Create buttons for the event
+               /* Button updateButton = new Button("Update");
+                updateButton.setOnAction(e -> {
+                    openUpdateWindow(event, eventContainer); // Pass the eventContainer
+                });*/
+                // Create buttons for the event
                 Button updateButton = new Button("Update");
+                updateButton.getStyleClass().add("button-style"); // Add style class to update button
                 updateButton.setOnAction(e -> {
                     openUpdateWindow(event, eventContainer); // Pass the eventContainer
                 });
 
                 Button postponeButton = new Button("Postpone");
+                postponeButton.getStyleClass().add("button-style"); // Add style class to postpone button
                 postponeButton.setOnAction(e -> {
                     try {
                         // Get the event ID
@@ -88,6 +96,20 @@ public class AfficherEvent {
                         System.out.println("Error updating status: " + ex.getMessage());
                     }
                 });
+
+
+               /* Button postponeButton = new Button("Postpone");
+                postponeButton.setOnAction(e -> {
+                    try {
+                        // Get the event ID
+                        int eventId = event.getId_event();
+
+                        // Update status to 'not done'
+                        ServiceEvent.updateStatusToNotDone(eventId);
+                    } catch (SQLException ex) {
+                        System.out.println("Error updating status: " + ex.getMessage());
+                    }
+                });*/
 
                 // Create an HBox to hold the buttons
                 HBox buttonBox = new HBox(updateButton, postponeButton);
@@ -156,7 +178,7 @@ public class AfficherEvent {
 
         updateLayout.getChildren().addAll(nameField, descriptionField, dateField, statusField, lieuField, updateButton);
 
-        Scene updateScene = new Scene(updateLayout, 300, 200);
+        Scene updateScene = new Scene(updateLayout, 600,300);
         updateStage.setScene(updateScene);
         updateStage.show();
     }

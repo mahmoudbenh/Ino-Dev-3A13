@@ -1,15 +1,24 @@
 package controllers;
 
         import javafx.event.ActionEvent;
+
+        import java.io.IOException;
         import java.net.URL;
         import java.sql.SQLException;
         import java.time.LocalDate;
         import java.util.ResourceBundle;
         import javafx.event.ActionEvent;
         import javafx.fxml.FXML;
+        import javafx.fxml.FXMLLoader;
+        import javafx.scene.Parent;
         import javafx.scene.control.*;
         import services.ServiceEvent;
         import models.Event;
+        import java.net.URL;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
+
 
 
 
@@ -88,6 +97,26 @@ public class AjouterEvent {
         alert.setContentText(message);
         alert.showAndWait();
     }
+    @FXML
+    void Afficher(ActionEvent event) {
+        try {
+            URL fxmlUrl = getClass().getResource("/AfficherEvent.fxml");
+
+            if (fxmlUrl != null) {
+                FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
+                Parent root = fxmlLoader.load();
+                fx_description.getScene().setRoot(root);
+            } else {
+                System.err.println("FXML file not found.");
+            }
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+
+    }
+
+
+
 
 
     @FXML
@@ -101,6 +130,7 @@ public class AjouterEvent {
         // Remise du focus sur le premier champ de texte (fxid_event)
         fxname.requestFocus();
     }
+
 
 
     @FXML

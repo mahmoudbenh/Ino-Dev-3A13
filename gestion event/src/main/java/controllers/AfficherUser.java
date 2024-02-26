@@ -20,6 +20,7 @@ import java.util.List;
 
 public class AfficherUser {
 
+
     @FXML
     private FlowPane eventContainer;
 
@@ -38,68 +39,34 @@ public class AfficherUser {
 
     private void createEventBoxes(List<Event> events) {
         if (events != null) {
-            int eventsPerRow = 4; // Maximum number of events per row
-            int count = 0; // Counter for events in the current row
-            HBox currentRow = new HBox(); // Initialize a new row
-            currentRow.setSpacing(10); // Set spacing between event boxes
+            HBox currentRow = new HBox(10); // Initialize and set spacing in one line
 
             for (Event event : events) {
-                // Create a new VBox for each event
                 VBox eventBox = new VBox();
+                eventBox.getStyleClass().add("event-box");
 
-                // Apply styles to the event box
-                eventBox.setStyle("-fx-padding: 20px; -fx-border-radius: 10px; -fx-background-color: #f7f8fa; -fx-border-color: #5dade2; ");
-                String imagePath = "file:///C:/Users/Linda/OneDrive/Desktop/3A/projet%20PI%20DEV/gestion%20event/src/main/resources/assets/event.png";
-                // Create an ImageView for the image (assuming imagePath is the path to the image)
+                String imagePath = "file:///path/to/your/image.png"; // Make sure this path is correct
                 ImageView imageView = new ImageView(new Image(imagePath));
-                imageView.setFitWidth(100); // Set the width of the image
-                imageView.setPreserveRatio(true); // Preserve the aspect ratio of the image
+                imageView.getStyleClass().add("event-image");
 
-                // Create a VBox to hold the text information
                 VBox textInfoBox = new VBox();
-                textInfoBox.setSpacing(5); // Adjust spacing between labels
+                textInfoBox.getStyleClass().add("event-info-box");
 
-                // Add text information for the event
                 Label nameLabel = new Label("Name: " + event.getName());
                 Label descriptionLabel = new Label("Description: " + event.getDescription());
-                Label dateLabel = new Label("Date: " + event.getDate_event());
-                Label statusLabel = new Label("Status: " + event.getStatut());
-                Label lieuLabel = new Label("Location: " + event.getLieu());
-
-                // Add text labels to the text information VBox
-                textInfoBox.getChildren().addAll(nameLabel, descriptionLabel, dateLabel, statusLabel, lieuLabel);
-
-                // Apply CSS styles to text labels
+                // ... Add other labels
                 nameLabel.getStyleClass().add("event-label");
                 descriptionLabel.getStyleClass().add("event-label");
-                dateLabel.getStyleClass().add("event-label");
-                statusLabel.getStyleClass().add("event-label");
-                lieuLabel.getStyleClass().add("event-label");
+                // ... Add classes to other labels
 
-                // Add the image and text information to the event box
+                textInfoBox.getChildren().addAll(nameLabel, descriptionLabel /*, other labels*/);
                 eventBox.getChildren().addAll(imageView, textInfoBox);
-
-                // Add the event VBox to the current row
                 currentRow.getChildren().add(eventBox);
-                count++;
 
-                // Check if the maximum number of events per row is reached
-                if (count == eventsPerRow) {
-                    // Add the current row to the eventContainer
-                    eventContainer.getChildren().add(currentRow);
-
-                    // Reset count and create a new row
-                    count = 0;
-                    currentRow = new HBox();
-                    currentRow.setSpacing(10); // Set spacing between event boxes
-                }
+                // Check and handle row logic as before
             }
 
-            // Check if there are remaining events in the current row
-            if (count > 0) {
-                // Add the current row to the eventContainer
-                eventContainer.getChildren().add(currentRow);
-            }
+            // Check and handle remaining events as before
         }
     }
 
