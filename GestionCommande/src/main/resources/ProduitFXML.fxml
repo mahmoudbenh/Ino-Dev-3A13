@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="390.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProduitFXML">
+    <children>
+      <ImageView fitHeight="446.0" fitWidth="730.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/bg2.jpg" />
+         </image>
+      </ImageView>
+        <Label layoutX="384.0" layoutY="41.0" prefHeight="37.0" prefWidth="174.0" styleClass="shadow" stylesheets="@style.css" text="Liste des Produits" textFill="#2758b9">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Label>
+        <Button fx:id="add" layoutX="162.0" layoutY="51.0" mnemonicParsing="false" onAction="#Add" styleClass="button-style" stylesheets="@style.css" text="Ajouter +">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <Button fx:id="modf" layoutX="252.0" layoutY="51.0" mnemonicParsing="false" onAction="#modifier" prefHeight="30.0" prefWidth="91.0" styleClass="button-style" stylesheets="@style.css" text="Modifier ✏">
+            <font>
+                <Font name="Arial" size="13.0" />
+            </font>
+        </Button>
+        <ListView fx:id="ListProduit" layoutX="139.0" layoutY="93.0" prefHeight="301.0" prefWidth="515.0" stylesheets="@style.css">
+         <styleClass>
+            <String fx:value="selected" />
+            <String fx:value="shadow" />
+         </styleClass></ListView>
+        <Button fx:id="panier" layoutX="622.0" layoutY="60.0" mnemonicParsing="false" onAction="#gotopanier" prefHeight="30.0" prefWidth="31.0" styleClass="button-style" stylesheets="@style.css" text="🛒">
+            <font>
+                <Font name="Arial" size="13.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>

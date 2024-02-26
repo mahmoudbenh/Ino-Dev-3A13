@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="box" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="185.0" prefWidth="400.0" style="-fx-background-radius: 15;" styleClass="shadow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DetailCommandeFXML">
+   <children>
+      <ImageView fx:id="imageproduit" fitHeight="185.0" fitWidth="185.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/p2.jpg" />
+         </image>
+      </ImageView>
+      <VBox alignment="CENTER" prefHeight="186.0" prefWidth="210.0">
+         <children>
+            <Label fx:id="nom" contentDisplay="CENTER" prefHeight="85.0" prefWidth="194.0" text="LOGICIEL&#10;IA APPLE" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="description" contentDisplay="CENTER" prefHeight="50.0" prefWidth="200.0" text="LOGICIEL IA APPLE" textFill="WHITE">
+               <font>
+                  <Font name="Cambria" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/etoile.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </children>
+</HBox>
