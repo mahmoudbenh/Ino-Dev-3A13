@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+
+<AnchorPane prefHeight="549.0" prefWidth="761.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AjouterImageFxml">
+   <children>
+      <AnchorPane fx:id="ProduitForm" layoutX="13.0" layoutY="13.0" prefHeight="525.0" prefWidth="405.0">
+         <children>
+            <ScrollPane fx:id="ftProduitScrollPane" prefHeight="525.0" prefWidth="406.0">
+               <content>
+                  <GridPane fx:id="ProduitGrid" hgap="10.0" prefHeight="16.0" prefWidth="63.0" vgap="10.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="433.0" layoutY="14.0" prefHeight="517.0" prefWidth="314.0">
+         <children>
+            <TableView fx:id="ftProduitTable" layoutX="5.0" layoutY="14.0" prefHeight="357.0" prefWidth="305.0">
+              <columns>
+                <TableColumn fx:id="ftProdCol" prefWidth="75.0" text="Produit" />
+                <TableColumn fx:id="ftQuantView" prefWidth="75.0" text="Quantité" />
+                  <TableColumn fx:id="ftPrixView" prefWidth="75.0" text="Prix" />
+              </columns>
+            </TableView>
+            <Label layoutX="63.0" layoutY="411.0" text="totale" />
+            <TextField fx:id="ftTotale" layoutX="102.0" layoutY="407.0" />
+            <Button fx:id="ftConfButt" layoutX="159.0" layoutY="453.0" mnemonicParsing="false" text="Confirmer" />
+            <Button fx:id="ftAnnulerBut" layoutX="82.0" layoutY="454.0" mnemonicParsing="false" text="Annuler" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

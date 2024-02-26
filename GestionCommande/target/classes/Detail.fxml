@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.Detail"
+      stylesheets="styles.css"> <!-- Lien vers votre fichier CSS -->
+
+    <ScrollPane prefHeight="436.0" prefWidth="685.0">
+        <FlowPane fx:id="eventContainer" />
+    </ScrollPane>
+
+    <Label styleClass="event-label" text="Name: Event Name" />
+
+</VBox>

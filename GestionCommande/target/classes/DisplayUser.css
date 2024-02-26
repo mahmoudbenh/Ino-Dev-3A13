@@ -1,0 +1,33 @@
+.root {
+    -fx-background-color: #f3e5f5; /* Light purple background */
+}
+
+.event-box {
+    -fx-padding: 20px;
+    -fx-border-radius: 10px;
+    -fx-background-color: #f7f8fa;
+    -fx-border-color: #5dade2;
+    -fx-effect: dropshadow(three-pass-box, pink, 10, 0, 0, 0);
+}
+
+.event-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+
+.event-image {
+    -fx-fit-width: 100;
+    -fx-preserve-ratio: true;
+}
+
+.event-info-box {
+    -fx-spacing: 5px;
+}
+
+/* Hover effect for event boxes */
+.event-box:hover {
+    -fx-translate-y: -4px;
+    -fx-cursor: hand;
+}

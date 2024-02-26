@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="816.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AjouterComandeFXML">
+    <children>
+        <ImageView fitHeight="662.0" fitWidth="1008.0" layoutX="-1.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@img/bg1.jpg" />
+            </image>
+        </ImageView>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a3aeff" height="170.0" layoutX="-10.0" layoutY="-11.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" width="940.0" />
+        <Button layoutX="252.0" layoutY="73.0" mnemonicParsing="false" style="-fx-background-color: #5CE1E6; -fx-border-image-width: 0;" text="Accueil" />
+        <Button layoutX="350.0" layoutY="73.0" mnemonicParsing="false" style="-fx-border-width: 0px;" text="Produit" />
+        <Button layoutX="462.0" layoutY="73.0" mnemonicParsing="false" text="Commande" />
+        <Button layoutX="601.0" layoutY="73.0" mnemonicParsing="false" text="Livraison" />
+        <Button layoutX="709.0" layoutY="73.0" mnemonicParsing="false" text="Reclammation" />
+        <Button layoutX="826.0" layoutY="73.0" mnemonicParsing="false" text="Evenement" />
+        <ImageView fitHeight="170.0" fitWidth="165.0" layoutX="21.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@img/ooo.png" />
+            </image>
+        </ImageView>
+        <Rectangle arcHeight="70.0" arcWidth="70.0" height="465.0" layoutX="332.0" layoutY="270.0" opacity="0.21" stroke="TRANSPARENT" strokeType="INSIDE" width="299.0" />
+        <Button layoutX="486.0" layoutY="673.0" mnemonicParsing="false" onAction="#AfficherCommande" prefHeight="43.0" prefWidth="107.0" style="-fx-background-color: #6dceff;" text="Afficher">
+            <font>
+                <Font name="System Bold Italic" size="20.0" />
+            </font>
+        </Button>
+        <Text layoutX="355.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter une nouvelle&#10;commande" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold Italic" size="26.0" />
+            </font>
+        </Text>
+        <Button layoutX="351.0" layoutY="673.0" mnemonicParsing="false" onAction="#AjouterCommande" prefHeight="28.0" prefWidth="107.0" style="-fx-background-color: #6dceff;" text="Ajouter">
+            <font>
+                <Font name="System Bold Italic" size="20.0" />
+            </font>
+        </Button>
+        <TextField fx:id="tfIdCommande" layoutX="353.0" layoutY="380.0" prefHeight="38.0" prefWidth="262.0" promptText="id Commande">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="tfIdLc" layoutX="354.0" layoutY="430.0" prefHeight="35.0" prefWidth="262.0" promptText="id Ligne De Commande">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </TextField>
+        <DatePicker fx:id="tdDate" layoutX="354.0" layoutY="492.0" prefHeight="39.0" prefWidth="262.0" promptText="AAA-MM-JJ" style="-fx-background-color: #555555;" />
+        <TextField fx:id="tfPrixT" layoutX="352.0" layoutY="609.0" prefHeight="43.0" prefWidth="262.0" promptText="Prix Total" />
+        <ComboBox fx:id="LStatutC2" layoutX="354.0" layoutY="555.0" prefHeight="43.0" prefWidth="262.0" promptText="Statut Commande" visibleRowCount="3">
+            <effect>
+                <ColorAdjust brightness="-0.15" contrast="-0.06" hue="-0.7" saturation="0.32" />
+            </effect>
+        </ComboBox>
+      <Separator layoutX="203.0" layoutY="-46.0" orientation="VERTICAL" prefHeight="206.0" prefWidth="0.0" />
+      <VBox layoutY="157.0" prefHeight="662.0" prefWidth="206.0" styleClass="white-background" stylesheets="@style.css">
+         <children>
+            <VBox prefHeight="138.0" prefWidth="250.0">
+               <children>
+                  <Label contentDisplay="CENTER" prefHeight="38.0" prefWidth="171.0" text="Brows">
+                     <font>
+                        <Font name="Cambria Math" size="22.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <HBox prefHeight="32.0" prefWidth="250.0" styleClass="mouse-moved" stylesheets="@style.css">
+                     <children>
+                        <ImageView fitHeight="45.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/stat.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label contentDisplay="CENTER" prefHeight="38.0" prefWidth="115.0" text="Statistique">
+                           <font>
+                              <Font name="Cambria Math" size="16.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets left="10.0" />
+                           </opaqueInsets>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="32.0" prefWidth="250.0" styleClass="mouse-moved" stylesheets="@style.css">
+                     <children>
+                        <ImageView fitHeight="39.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/brows.png" />
+                           </image>
+                        </ImageView>
+                        <Label contentDisplay="CENTER" prefHeight="38.0" prefWidth="115.0" text="Brows">
+                           <font>
+                              <Font name="Cambria Math" size="16.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets left="10.0" />
+                           </opaqueInsets>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="32.0" prefWidth="250.0" styleClass="mouse-moved" stylesheets="@style.css">
+                     <children>
+                        <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/cat.png" />
+                           </image>
+                        </ImageView>
+                        <Label contentDisplay="CENTER" prefHeight="38.0" prefWidth="115.0" text="Categories">
+                           <font>
+                              <Font name="Cambria Math" size="16.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets left="10.0" />
+                           </opaqueInsets>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <HBox prefHeight="32.0" prefWidth="250.0" styleClass="mouse-moved" stylesheets="@style.css" />
+            <HBox prefHeight="32.0" prefWidth="250.0" styleClass="mouse-moved" stylesheets="@style.css" />
+            <HBox prefHeight="32.0" prefWidth="250.0" styleClass="mouse-moved" stylesheets="@style.css" />
+            <Separator prefWidth="200.0" />
+            <Label contentDisplay="CENTER" prefHeight="38.0" prefWidth="172.0" text="Vos Commandes">
+               <font>
+                  <Font name="Cambria Math" size="22.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets left="10.0" />
+               </opaqueInsets>
+            </Label>
+            <HBox prefHeight="32.0" prefWidth="250.0" styleClass="mouse-moved" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="45.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/stat.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label contentDisplay="CENTER" prefHeight="38.0" prefWidth="115.0" text="Statistique">
+                     <font>
+                        <Font name="Cambria Math" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="32.0" prefWidth="250.0" styleClass="mouse-moved" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="39.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/brows.png" />
+                     </image>
+                  </ImageView>
+                  <Label contentDisplay="CENTER" prefHeight="38.0" prefWidth="115.0" text="Brows">
+                     <font>
+                        <Font name="Cambria Math" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="32.0" prefWidth="250.0" styleClass="mouse-moved" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/cat.png" />
+                     </image>
+                  </ImageView>
+                  <Label contentDisplay="CENTER" prefHeight="38.0" prefWidth="115.0" text="Categories">
+                     <font>
+                        <Font name="Cambria Math" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+            </HBox>
+            <Separator prefHeight="36.0" prefWidth="232.0" />
+            <Separator prefWidth="200.0" />
+            <HBox alignment="TOP_CENTER" prefHeight="42.0" prefWidth="232.0" styleClass="mouse-moved" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="78.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/fact.png" />
+                     </image>
+                  </ImageView>
+                  <Label contentDisplay="CENTER" prefHeight="38.0" prefWidth="115.0" text="Votre Facture">
+                     <font>
+                        <Font name="Cambria Math" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #77B5FE;" text="Acceder a votre facture" textFill="WHITE">
+                     <font>
+                        <Font name="Cambria Math" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <HBox alignment="TOP_CENTER" prefHeight="42.0" prefWidth="232.0" styleClass="mouse-moved" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="78.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/ajout.png" />
+                     </image>
+                  </ImageView>
+                  <Label contentDisplay="CENTER" prefHeight="38.0" prefWidth="107.0" text="Ajouter ">
+                     <font>
+                        <Font name="Cambria Math" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #77B5FE;" text="Ajouter nouvelle commande" textFill="WHITE">
+                     <font>
+                        <Font name="Cambria Math" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <HBox alignment="TOP_CENTER" prefHeight="42.0" prefWidth="232.0" styleClass="mouse-moved" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="78.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/event.png" />
+                     </image>
+                  </ImageView>
+                  <Label contentDisplay="CENTER" prefHeight="38.0" prefWidth="115.0" text="Evenement">
+                     <font>
+                        <Font name="Cambria Math" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #77B5FE;" text="Participer" textFill="WHITE">
+                     <font>
+                        <Font name="Cambria Math" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+    </children>
+</AnchorPane>
