@@ -50,14 +50,14 @@
                                         <String fx:value="tranparent" />
                                     </styleClass>
                                 </TextField>
-                                <Button layoutX="226.0" layoutY="359.0" mnemonicParsing="false" onAction="#AjouterParticipant" prefHeight="40.0" prefWidth="100.0" styleClass="button-style" stylesheets="@test.css" text="Ajouter" />
+                                <Button layoutX="226.0" layoutY="359.0" mnemonicParsing="false" onAction="#AjouterParticipant" prefHeight="40.0" prefWidth="100.0" styleClass="button-style-blue" stylesheets="@test.css" text="Ajouter" />
                                 <Label layoutX="42.0" layoutY="14.0" prefHeight="54.0" prefWidth="247.0" styleClass="labelstyle" stylesheets="@test.css" text="BIENVENUE ADMIN ">
                                     <font>
                                         <Font name="Arial Rounded MT Bold" size="25.0" />
                                     </font>
                                 </Label>
-                                <Button layoutX="114.0" layoutY="359.0" mnemonicParsing="false" onAction="#Annuler" prefHeight="40.0" prefWidth="106.0" styleClass="button-style" stylesheets="@test.css" text="Annuler" />
-                                <Button layoutX="9.0" layoutY="359.0" mnemonicParsing="false" onAction="#AfficherParticipant" prefHeight="40.0" prefWidth="100.0" styleClass="button-style" stylesheets="@test.css" text="Afficher" />
+                                <Button layoutX="114.0" layoutY="359.0" mnemonicParsing="false" onAction="#Annuler" prefHeight="40.0" prefWidth="106.0" styleClass="button-style-blue" stylesheets="@test.css" text="Annuler" />
+                                <Button layoutX="9.0" layoutY="359.0" mnemonicParsing="false" onAction="#AfficherParticipant" prefHeight="40.0" prefWidth="100.0" styleClass="button-style-blue" stylesheets="@test.css" text="Afficher" />
                         <TextField fx:id="fx_Nom" layoutX="122.0" layoutY="189.0" prefHeight="40.0" prefWidth="185.0" promptText="Nom du participant" style="-fx-border-color: #0598ff;" stylesheets="@test.css">
                            <styleClass>
                               <String fx:value="round-layout" />
@@ -142,6 +142,7 @@
                                 <Font name="Eras Bold ITC" size="12.0" />
                             </font>
                         </Label>
+                  <Button layoutX="204.0" layoutY="513.0" mnemonicParsing="false" onAction="#retour" prefHeight="33.0" prefWidth="70.0" styleClass="button-style-white" stylesheets="@test.css" text="Retour" />
                     </children>
                 </AnchorPane>
             </items>

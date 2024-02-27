@@ -57,8 +57,21 @@ public class WelcomeAdmin {
 
     @FXML
     void AjouterParticipant(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterParticipant.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow(); // Récupérer le stage actuel
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
+
+
 
     @FXML
     void Exit(ActionEvent event) {

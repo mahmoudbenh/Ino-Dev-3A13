@@ -43,8 +43,6 @@ public class AjouterEvent {
         @FXML
         private ComboBox<String> fx_statut;
 
-
-
         @FXML
         private TextField fxname;
 
@@ -130,6 +128,24 @@ public class AjouterEvent {
         // Remise du focus sur le premier champ de texte (fxid_event)
         fxname.requestFocus();
     }
+    @FXML
+    void retour(ActionEvent event) {
+        try {
+            URL fxmlUrl = getClass().getResource("/WelcomeAdmin.fxml");
+
+            if (fxmlUrl != null) {
+                FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
+                Parent root = fxmlLoader.load();
+                fxname.getScene().setRoot(root);
+            } else {
+                System.err.println("FXML file not found.");
+            }
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+
+    }
+
 
 
 

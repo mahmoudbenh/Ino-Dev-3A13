@@ -1,8 +1,10 @@
 package controllers;
 
-
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
@@ -12,56 +14,59 @@ import javafx.stage.Stage;
 import models.Participant;
 import services.ServiceParticipant;
 
+import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 
 public class AfficherParticipant {
 
     @FXML
-    private FlowPane ParticipantContainer;
+    private FlowPane participantContainer;
+
 
     public void initialize() throws SQLException {
         // Create an instance of ServiceParticipant
         ServiceParticipant serviceParticipant = new ServiceParticipant();
 
         // Fetch Participants from the database
-        List<Participant> Participants = serviceParticipant.selectAll();
+        List<Participant> participants = serviceParticipant.selectAll();
 
         // Populate the container with Participant boxes
-        createParticipantBoxes(Participants);
+        createParticipantBoxes(participants);
     }
 
-    private void createParticipantBoxes(List<Participant> Participants) {
-        if (Participants != null) {
-            int ParticipantsPerRow = 5;// Maximum number of Participants per row
+    private void createParticipantBoxes(List<Participant> participants) {
+        if (participants != null) {
+            int participantsPerRow = 5; // Maximum number of Participants per row
             int count = 0; // Counter for Participants in the current row
             HBox currentRow = new HBox(); // Initialize a new row
             currentRow.setSpacing(10); // Set spacing between Participant boxes
 
-            for (Participant Participant : Participants) {
+            for (Participant participant : participants) {
                 // Create a new VBox for each Participant
-                VBox ParticipantBox = new VBox();
-                ParticipantBox.setSpacing(10);
+                VBox participantBox = new VBox();
+                participantBox.setSpacing(10);
 
                 // Set a unique ID for the Participant box using the Participant's ID
-                ParticipantBox.setId("Participant-box-" + Participant.getUserID());
+                participantBox.setId("Participant-box-" + participant.getUserID());
 
                 // Apply styles to the Participant box
-                ParticipantBox.setStyle("-fx-padding: 20px; -fx-border-radius: 10px; -fx-background-color: #f7f8fa; -fx-border-color: #5dade2; ");
+                participantBox.setStyle("-fx-padding: 20px; -fx-border-radius: 10px; -fx-background-color: #f7f8fa; -fx-border-color: #5dade2; ");
 
                 // Create a VBox to hold the text information
                 VBox textInfoBox = new VBox();
                 textInfoBox.setSpacing(5); // Adjust spacing between labels
 
                 // Add text information for the Participant
-                Label idULabel = new Label("User ID: " + Participant.getUserID()); // Display ID
-                Label idELabele = new Label("ID evenement: " + Participant.getId_event());
-                Label nomLabel = new Label("Nom du participant: " + Participant.getNom());
-                Label emailLabel = new Label("Email du participant: " + Participant.getEmail());
-                Label telLabel = new Label("Tel du participant: " + Participant.getTel());
+                Label idULabel = new Label("User ID: " + participant.getUserID()); // Display ID
+                Label idELabele = new Label("ID evenement: " + participant.getId_event());
+                Label nomLabel = new Label("Nom du participant: " + participant.getNom());
+                Label emailLabel = new Label("Email du participant: " + participant.getEmail());
+                Label telLabel = new Label("Tel du participant: " + participant.getTel());
 
                 // Add text labels to the text information VBox
-                textInfoBox.getChildren().addAll(idULabel, idELabele,  nomLabel,  emailLabel, telLabel);
+                textInfoBox.getChildren().addAll(idULabel, idELabele, nomLabel, emailLabel, telLabel);
 
                 // Apply CSS styles to text labels
                 idULabel.getStyleClass().add("Participant-label");
@@ -70,61 +75,27 @@ public class AfficherParticipant {
                 emailLabel.getStyleClass().add("Participant-label");
                 telLabel.getStyleClass().add("Participant-label");
 
-                // Create buttons for the Participant
-               /* Button updateButton = new Button("Update");
-                updateButton.setOnAction(e -> {
-                    openUpdateWindow(Participant, ParticipantContainer); // Pass the ParticipantContainer
-                });*/
-                // Create buttons for the Participant
                 Button updateButton = new Button("Update");
                 updateButton.getStyleClass().add("button-style"); // Add style class to update button
                 updateButton.setOnAction(e -> {
-                    openUpdateWindow(Participant, ParticipantContainer); // Pass the ParticipantContainer
+                    openUpdateWindow(participant); // Pass the participant
                 });
 
-                Button postponeButton = new Button("Postpone");
-                postponeButton.getStyleClass().add("button-style"); // Add style class to postpone button
-                postponeButton.setOnAction(e -> {
-                    try {
-                        // Get the Participant ID
-                        int ParticipantId = Participant.getId_Participant();
-
-                        // Update status to 'not done'
-                        ServiceParticipant.updateStatusToNotDone(ParticipantId);
-                    } catch (SQLException ex) {
-                        System.out.println("Error updating status: " + ex.getMessage());
-                    }
-                });
-
-
-               /* Button postponeButton = new Button("Postpone");
-                postponeButton.setOnAction(e -> {
-                    try {
-                        // Get the Participant ID
-                        int ParticipantId = Participant.getId_Participant();
-
-                        // Update status to 'not done'
-                        ServiceParticipant.updateStatusToNotDone(ParticipantId);
-                    } catch (SQLException ex) {
-                        System.out.println("Error updating status: " + ex.getMessage());
-                    }
-                });*/
-
-                // Create an HBox to hold the buttons
-                HBox buttonBox = new HBox(updateButton, postponeButton);
+                // Create an HBox to hold the button
+                HBox buttonBox = new HBox(updateButton);
                 buttonBox.setSpacing(10);
 
                 // Add text information VBox and button HBox to the Participant VBox
-                ParticipantBox.getChildren().addAll(textInfoBox, buttonBox);
+                participantBox.getChildren().addAll(textInfoBox, buttonBox);
 
                 // Add the Participant VBox to the current row
-                currentRow.getChildren().add(ParticipantBox);
+                currentRow.getChildren().add(participantBox);
                 count++;
 
                 // Check if the maximum number of Participants per row is reached
-                if (count == ParticipantsPerRow) {
+                if (count == participantsPerRow) {
                     // Add the current row to the ParticipantContainer
-                    ParticipantContainer.getChildren().add(currentRow);
+                    participantContainer.getChildren().add(currentRow);
 
                     // Reset count and create a new row
                     count = 0;
@@ -136,13 +107,12 @@ public class AfficherParticipant {
             // Check if there are remaining Participants in the current row
             if (count > 0) {
                 // Add the current row to the ParticipantContainer
-                ParticipantContainer.getChildren().add(currentRow);
+                participantContainer.getChildren().add(currentRow);
             }
         }
     }
 
-
-    public void openUpdateWindow(Participant Participant, FlowPane ParticipantContainer) {
+    public void openUpdateWindow(Participant participant) {
         Stage updateStage = new Stage();
         updateStage.setTitle("Update Participant");
 
@@ -150,24 +120,25 @@ public class AfficherParticipant {
         updateLayout.setSpacing(10);
         updateLayout.setPadding(new Insets(10));
 
-        TextField nameField = new TextField(Participant.getName());
-        TextField descriptionField = new TextField(Participant.getDescription());
-        DatePicker dateField = new DatePicker(Participant.getDate_Participant());
-        TextField statusField = new TextField(Participant.getStatut());
-        TextField lieuField = new TextField(Participant.getLieu());
+        TextField userIdField = new TextField(String.valueOf(participant.getUserID()));
+        TextField eventIdField = new TextField(String.valueOf(participant.getId_event()));
+        TextField nomField = new TextField(participant.getNom());
+        TextField emailField = new TextField(participant.getEmail());
+        TextField telField = new TextField(String.valueOf(participant.getTel()));
 
         Button updateButton = new Button("Update");
         updateButton.setOnAction(e -> {
-            Participant.setName(nameField.getText());
-            Participant.setDescription(descriptionField.getText());
-            Participant.setDate_Participant(dateField.getValue());
-            Participant.setStatut(statusField.getText());
-            Participant.setLieu(lieuField.getText());
-
             try {
-                ServiceParticipant.updateParticipant(Participant);
+                ServiceParticipant serviceParticipant = new ServiceParticipant();
+                participant.setUserID(Integer.parseInt(userIdField.getText()));
+                participant.setId_event(Integer.parseInt(eventIdField.getText()));
+                participant.setNom(nomField.getText());
+                participant.setEmail(emailField.getText());
+                participant.setTel(Integer.parseInt(telField.getText()));
+
+                serviceParticipant.updateOne(participant);
                 updateStage.close();
-                ParticipantContainer.getChildren().clear(); // Clear the container
+                participantContainer.getChildren().clear(); // Clear the container
                 initialize(); // Re-populate the container
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -175,12 +146,11 @@ public class AfficherParticipant {
             }
         });
 
-        updateLayout.getChildren().addAll(nameField, descriptionField, dateField, statusField, lieuField, updateButton);
+        updateLayout.getChildren().addAll(userIdField, eventIdField, nomField, emailField, telField, updateButton);
 
-        Scene updateScene = new Scene(updateLayout, 600,300);
+        Scene updateScene = new Scene(updateLayout, 600, 300);
         updateStage.setScene(updateScene);
         updateStage.show();
     }
 }
-
 

@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controllers.AfficherUser"
-      stylesheets="styles.css"> <!-- Lien vers votre fichier CSS -->
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-    <ScrollPane prefHeight="436.0" prefWidth="685.0">
-        <FlowPane fx:id="eventContainer" />
-    </ScrollPane>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.DisplayUser"
+            prefHeight="400.0" prefWidth="600.0">
 
-    <Label styleClass="event-label" text="Name: Event Name" />
-
-</VBox>
+</AnchorPane>

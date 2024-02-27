@@ -10,7 +10,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.Event;
 import services.ServiceEvent;
-
+import javafx.event.ActionEvent;
+import java.net.URL;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -18,6 +22,30 @@ public class AfficherEvent {
 
     @FXML
     private FlowPane eventContainer;
+    @FXML
+    private Button retourButton;
+
+
+    @FXML
+    void retour(ActionEvent event) {
+        try {
+            // Load the AjouterEvent view from FXML
+            URL fxmlUrl = getClass().getResource("/AjouterEvent.fxml");
+
+            if (fxmlUrl != null) {
+                FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
+                Parent root = fxmlLoader.load();
+
+                // Get the stage from the current scene and set the root to AjouterEvent view
+                Stage stage = (Stage) retourButton.getScene().getWindow();
+                stage.getScene().setRoot(root);
+            } else {
+                System.err.println("FXML file not found.");
+            }
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
 
     public void initialize() throws SQLException {
         // Create an instance of ServiceEvent
@@ -50,7 +78,7 @@ public class AfficherEvent {
 
                 // Create a VBox to hold the text information
                 VBox textInfoBox = new VBox();
-                textInfoBox.setSpacing(5); // Adjust spacing between labels
+                textInfoBox.setSpacing(10); // Adjust spacing between labels
 
                 // Add text information for the event
                 Label idLabel = new Label("ID: " + event.getId_event()); // Display ID

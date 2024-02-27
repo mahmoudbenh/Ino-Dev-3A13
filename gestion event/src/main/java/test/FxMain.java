@@ -15,7 +15,7 @@ public class FxMain extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterParticipant.fxml")); // Ensure this is the correct path
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/WelcomeAdmin.fxml")); // Ensure this is the correct path
         Parent parent = loader.load();
         Scene scene = new Scene(parent);
         scene.getStylesheets().add(getClass().getResource("/test.css").toExternalForm()); // Add this line
