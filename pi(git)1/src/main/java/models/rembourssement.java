@@ -1,31 +1,32 @@
 package models;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class rembourssement {
     private int id_rembourssement;
     private int id_reclamation;
-    private int id_produit;
-    private float prix_produit;
+    private LocalTime heure;
+    private float prix;
     private LocalDate date_rembourssement;
     private String statut_rembourssement;
     private String mode_paiement;
-    public rembourssement(int id_reclamation,int id_produit,float prix_produit,LocalDate date_rembourssement,String statut_rembourssement,String mode_paiement)
+    public rembourssement(float prix,LocalDate date_rembourssement,LocalTime heure,String statut_rembourssement,String mode_paiement)
     {
-      this.id_reclamation=id_reclamation;
-      this.id_produit=id_produit;
-      this.prix_produit=prix_produit;
+
+      this.prix=prix;
       this.date_rembourssement=date_rembourssement;
+        this.heure = heure;
       this.statut_rembourssement=statut_rembourssement;
       this.mode_paiement=mode_paiement;
     }
     public rembourssement(){}
-    public rembourssement(int id_rembourssement,int id_reclamation,int id_produit,float prix_produit,LocalDate date_rembourssement,String statut_rembourssement,String mode_paiement)
+    public rembourssement(int id_rembourssement,int id_reclamation,float prix,LocalDate date_rembourssement,LocalTime heure,String statut_rembourssement,String mode_paiement)
     {
         this.id_rembourssement=id_rembourssement;
         this.id_reclamation=id_reclamation;
-        this.id_produit=id_produit;
-        this.prix_produit=prix_produit;
+        this.heure=heure;
+        this.prix=prix;
         this.date_rembourssement=date_rembourssement;
         this.statut_rembourssement=statut_rembourssement;
         this.mode_paiement=mode_paiement;
@@ -41,12 +42,13 @@ public class rembourssement {
         return id_reclamation;
     }
 
-    public int getId_produit() {
-        return id_produit;
+
+    public LocalTime getHeure() {
+        return heure;
     }
 
-    public float getPrix_produit() {
-        return prix_produit;
+    public float getPrix() {
+        return prix;
     }
 
     public String getStatut_rembourssement() {
@@ -69,16 +71,18 @@ public class rembourssement {
         this.id_reclamation = id_reclamation;
     }
 
-    public void setId_produit(int id_produit) {
-        this.id_produit = id_produit;
-    }
 
-    public void setPrix_produit(float prix_produit) {
-        this.prix_produit = prix_produit;
+
+    public void setPrix(float prix) {
+        this.prix = prix;
     }
 
     public void setDate_rembourssement(LocalDate date_rembourssement) {
         this.date_rembourssement = date_rembourssement;
+    }
+
+    public void setHeure(LocalTime heure) {
+        this.heure = heure;
     }
 
     public void setStatut_rembourssement(String statut_rembourssement) {
@@ -93,9 +97,10 @@ public class rembourssement {
         return "rembourssement{" +
                 "id_rembourssement" + id_rembourssement +
                 "id_reclamation" + id_reclamation +'\''+
-                ",id_produit" +id_produit +'\'' +
-                ",prix_produit" +prix_produit +'\'' +
+
+                ",prix" +prix +'\'' +
                 ",date_rembourssement" +date_rembourssement +'\'' +
+                ",heure" +heure +'\'' +
                 ",statut_rembourssement" + statut_rembourssement +'\'' +
                 ",mode_paiement" + mode_paiement +
 

@@ -37,20 +37,21 @@ public class AfficherRembourssementFXML implements Initializable {
     @FXML
     private Button button_charger;
 
-    @FXML
-    private TableColumn<?, ?> id_prodColumn;
+
 
     @FXML
     private TableColumn<?, ?> dateremColumn;
 
+
+    @FXML
+    private TableColumn<?, ?> heurecol;
+    @FXML
+    private TableColumn<?, ?> modecol;
     @FXML
     private TableColumn<?, ?> id_recColumn;
 
     @FXML
     private TableColumn<?, ?> id_rembColumn;
-
-    @FXML
-    private TableColumn<?, ?> modecol;
 
     @FXML
     private TableColumn<?, ?> prix_prodColumn;
@@ -85,11 +86,10 @@ public class AfficherRembourssementFXML implements Initializable {
 
         // Assigner la liste observable à la TableView
         table_rembourssement.setItems(rembourssementsObservable);
-
-        id_rembColumn.setCellValueFactory(new PropertyValueFactory<>("id_rembourssement"));
+        heurecol.setCellValueFactory(new PropertyValueFactory<>("heure"));
         id_recColumn.setCellValueFactory(new PropertyValueFactory<>("id_reclamation"));
-        id_prodColumn.setCellValueFactory(new PropertyValueFactory<>("id_produit"));
-        prix_prodColumn.setCellValueFactory(new PropertyValueFactory<>("prix_produit"));
+        id_rembColumn.setCellValueFactory(new PropertyValueFactory<>("id_rembourssement"));
+        prix_prodColumn.setCellValueFactory(new PropertyValueFactory<>("prix"));
         dateremColumn.setCellValueFactory(new PropertyValueFactory<>("date_rembourssement"));
         statcol.setCellValueFactory(new PropertyValueFactory<>("statut_rembourssement"));
         modecol.setCellValueFactory(new PropertyValueFactory<>("mode_paiement"));
@@ -195,10 +195,9 @@ void supprimer(ActionEvent event) {
     //////////////////
     @FXML
     void initialize() {
-
+        assert heurecol != null : "fx:id=\"heurecol\" was not injected: check your FXML file 'AfficherRembourssementFXML.fxml'.";
         assert button_charger != null : "fx:id=\"button_charger\" was not injected: check your FXML file 'AfficherRembourssementFXML.fxml'.";
         assert dateremColumn != null : "fx:id=\"dateremColumn\" was not injected: check your FXML file 'AfficherRembourssementFXML.fxml'.";
-        assert id_prodColumn != null : "fx:id=\"id_prodColumn\" was not injected: check your FXML file 'AfficherRembourssementFXML.fxml'.";
         assert id_recColumn != null : "fx:id=\"id_recColumn\" was not injected: check your FXML file 'AfficherRembourssementFXML.fxml'.";
         assert id_rembColumn != null : "fx:id=\"id_rembColumn\" was not injected: check your FXML file 'AfficherRembourssementFXML.fxml'.";
         assert modecol != null : "fx:id=\"modecol\" was not injected: check your FXML file 'AfficherRembourssementFXML.fxml'.";

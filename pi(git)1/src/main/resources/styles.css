@@ -1,0 +1,4 @@
+.image{
+    border: 3px solid #000; /* Vous pouvez ajuster la largeur et la couleur de la bordure selon vos préférences */
+    padding: 5px; /* Cela ajoute de l'espace entre l'image et la bordure, facultatif */
+}

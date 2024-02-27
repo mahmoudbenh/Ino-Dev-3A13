@@ -19,6 +19,7 @@ package controllers;
         import java.net.URL;
         import java.sql.SQLException;
         import java.time.LocalDate;
+        import java.time.LocalTime;
         import java.util.ResourceBundle;
 
 public class ModifierRembourssementFXML implements Initializable {
@@ -32,13 +33,7 @@ public class ModifierRembourssementFXML implements Initializable {
     private DatePicker date_p;
 
     @FXML
-    private TextField id_pp;
-
-    @FXML
-    private TextField id_recp;
-
-    @FXML
-    private TextField id_rembp;
+    private Spinner<LocalTime> heure_p;
 
     @FXML
     private ComboBox<String> modep;
@@ -46,7 +41,11 @@ public class ModifierRembourssementFXML implements Initializable {
     @FXML
     private TextField prix_pp;
 
+    @FXML
+    private TextField id_recp;
 
+    @FXML
+    private TextField id_rembp;
 
     @FXML
     private ComboBox<String> statp;
@@ -59,10 +58,9 @@ public class ModifierRembourssementFXML implements Initializable {
 
             int id_rembp2=Integer.parseInt(id_rembp.getText());
             int id_recp2=Integer.parseInt(id_recp.getText());
-            int id_pp2=Integer.parseInt(id_pp.getText());
             float prix_pp2=Float.parseFloat(prix_pp.getText());
 
-            sr.updateOne(new rembourssement(id_rembp2,id_recp2,id_pp2,prix_pp2,date_p.getValue(),statp.getValue(),modep.getValue()));
+            sr.updateOne(new rembourssement(id_rembp2,id_recp2,prix_pp2,date_p.getValue(),heure_p.getValue(),statp.getValue(),modep.getValue()));
 
             showSuccessNotification("Modif réussie");
 
@@ -81,11 +79,11 @@ public class ModifierRembourssementFXML implements Initializable {
         // Ensure that the recommendation is not null before initializing the fields
         if(rem!= null)
         {
-            id_rembp.setText(String.valueOf(rem.getId_rembourssement()));
             id_recp.setText(String.valueOf(rem.getId_reclamation()));
-            id_pp.setText(String.valueOf(rem.getId_produit()));
-            prix_pp.setText(String.valueOf(rem.getPrix_produit()));
+            id_rembp.setText(String.valueOf(rem.getId_rembourssement()));
+            prix_pp.setText(String.valueOf(rem.getPrix()));
             date_p.setValue(LocalDate.parse(String.valueOf(rem.getDate_rembourssement())));
+            heure_p.getValueFactory().setValue(rem.getHeure());
             statp.setValue(String.valueOf(rem.getStatut_rembourssement()));
             modep.setValue(String.valueOf(rem.getMode_paiement()));
         }
@@ -108,11 +106,11 @@ public class ModifierRembourssementFXML implements Initializable {
     void annuler(ActionEvent event) {
         id_rembp.setText(null);
         id_recp.setText(null);
-        id_pp.setText(null);
         prix_pp.setText(null);
         date_p.setValue(null);
         statp.setValue(null);
         modep.setValue(null);
+        heure_p.getValueFactory().setValue(null);
     }
     @FXML
     void retour(ActionEvent event) {
@@ -134,9 +132,70 @@ public class ModifierRembourssementFXML implements Initializable {
             e.printStackTrace(); // Gérer les erreurs de chargement du FXML
         }
     }
+    @FXML
+    void raffraichir(ActionEvent event) {
+
+        date_p.setValue(LocalDate.now());
+        // Mettre à jour l'heure avec l'heure actuelle
+        SpinnerValueFactory<LocalTime> timeValueFactory = new SpinnerValueFactory<>() {
+            {
+                setValue(LocalTime.now());
+            }
+
+            @Override
+            public void decrement(int steps) {
+                setValue(getValue().minusMinutes(steps));
+            }
+
+            @Override
+            public void increment(int steps) {
+                setValue(getValue().plusMinutes(steps));
+            }
+        };
+
+        heure_p.setValueFactory(timeValueFactory);
+    }
     public void initialize(URL url, ResourceBundle resourceBundle){
         //  ObservableList<String>
         statp.setItems(FXCollections.observableArrayList("Non Rembourse", "Rembourse"));
         modep.setItems(FXCollections.observableArrayList("par carte", "cache", "coupon"));
+        SpinnerValueFactory<LocalTime> timeValueFactory = new SpinnerValueFactory<>() {
+            {
+                setConverter(new javafx.util.StringConverter<>() {
+                    @Override
+                    public String toString(LocalTime object) {
+                        return object != null ? object.toString() : "";
+                    }
+
+                    @Override
+                    public LocalTime fromString(String string) {
+                        return string.isEmpty() ? null : LocalTime.parse(string);
+                    }
+                });
+                // setValue(LocalTime.now());
+                //System.out.println(rec.getHeure());
+               /* if (reclamationToModify != null && reclamationToModify.getHeure() != null) {
+                    try {
+                        setValue(reclamationToModify.getHeure());
+                    } catch (DateTimeParseException e) {
+                        // Gérer l'exception en cas de format incorrect
+                        e.printStackTrace();
+                    }
+                }*/
+
+            }
+
+            @Override
+            public void decrement(int steps) {
+                setValue(getValue().minusMinutes(steps));
+            }
+
+            @Override
+            public void increment(int steps) {
+                setValue(getValue().plusMinutes(steps));
+            }
+        };
+
+        heure_p.setValueFactory(timeValueFactory);
     }
 }

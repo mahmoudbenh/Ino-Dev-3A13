@@ -6,19 +6,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import models.reclamation;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
 import services.ServiceReclamation;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.ResourceBundle;
 
 public class ModifierReclamationFXML implements Initializable {
@@ -36,11 +35,14 @@ public class ModifierReclamationFXML implements Initializable {
     private TextField idreclamationm;
     @FXML
     private ComboBox<String> statm2;
-
+    @FXML
+    private Spinner<LocalTime> heurem;
     @FXML
     private TextField titrem2;
+
     private final ServiceReclamation sr=new ServiceReclamation();
     private reclamation reclamationToModify;
+
     @FXML
     void modifierdy(ActionEvent event){
         try{
@@ -48,7 +50,7 @@ public class ModifierReclamationFXML implements Initializable {
             int idreclamationm2=Integer.parseInt(idreclamationm.getText());
             int id_clientm2=Integer.parseInt(id_clientm.getText());
 
-            sr.updateOne(new reclamation(idreclamationm2,id_clientm2,titrem2.getText(),date_reclamationm.getValue(),type_reclamationm.getValue(),statm2.getValue(),descriptionm.getText()));
+            sr.updateOne(new reclamation(idreclamationm2,id_clientm2,titrem2.getText(),date_reclamationm.getValue(),heurem.getValue(),type_reclamationm.getValue(),statm2.getValue(),descriptionm.getText()));
 
             showSuccessNotification("Modif réussie");
 
@@ -68,9 +70,13 @@ public class ModifierReclamationFXML implements Initializable {
         if(rec!= null)
         {
             idreclamationm.setText(String.valueOf(rec.getId_reclamation()));
-            id_clientm.setText(String.valueOf(rec.getId_client()));
+            id_clientm.setText(String.valueOf(rec.getUserID()));
             titrem2.setText(String.valueOf(rec.getTitre_reclamation()));
             date_reclamationm.setValue(LocalDate.parse(String.valueOf(rec.getDate_reclamation())));
+            //heurem.setValueFactory(LocalTime.parse(String.valueOf(rec.getHeure())));
+            heurem.getValueFactory().setValue(rec.getHeure());
+
+            LocalTime heurem = LocalTime.parse(String.valueOf(rec.getHeure()));
             type_reclamationm.setValue(String.valueOf(rec.getType_reclamation()));
             statm2.setValue(String.valueOf(rec.getStatut_reclamation()));
             descriptionm.setText(String.valueOf(rec.getDescription()));
@@ -96,10 +102,36 @@ public class ModifierReclamationFXML implements Initializable {
         id_clientm.setText(null);
         titrem2.setText(null);
         date_reclamationm.setValue(null);
+        heurem.getValueFactory().setValue(null);
+
+        //heurem.setValue(null);
         type_reclamationm.setValue(null);
         statm2.setValue(null);
         descriptionm.setText(null);
 
+    }
+    @FXML
+    void raffraichir(ActionEvent event) {
+
+        date_reclamationm.setValue(LocalDate.now());
+        // Mettre à jour l'heure avec l'heure actuelle
+        SpinnerValueFactory<LocalTime> timeValueFactory = new SpinnerValueFactory<>() {
+            {
+                setValue(LocalTime.now());
+            }
+
+            @Override
+            public void decrement(int steps) {
+                setValue(getValue().minusMinutes(steps));
+            }
+
+            @Override
+            public void increment(int steps) {
+                setValue(getValue().plusMinutes(steps));
+            }
+        };
+
+        heurem.setValueFactory(timeValueFactory);
     }
     @FXML
     void retour(ActionEvent event) {
@@ -124,7 +156,52 @@ public class ModifierReclamationFXML implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle){
         //  ObservableList<String>
+
         type_reclamationm.setItems(FXCollections.observableArrayList("Service","Livraison","Produit"));
         statm2.setItems(FXCollections.observableArrayList("Non traitée","En cours de traitement","traitee"));
+        int maxLength = 100;
+        descriptionm.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() > maxLength) {
+                descriptionm.setText(oldValue);
+            }
+        });
+        SpinnerValueFactory<LocalTime> timeValueFactory = new SpinnerValueFactory<>() {
+            {
+                setConverter(new javafx.util.StringConverter<>() {
+                    @Override
+                    public String toString(LocalTime object) {
+                        return object != null ? object.toString() : "";
+                    }
+
+                    @Override
+                    public LocalTime fromString(String string) {
+                        return string.isEmpty() ? null : LocalTime.parse(string);
+                    }
+                });
+               // setValue(LocalTime.now());
+               //System.out.println(rec.getHeure());
+               /* if (reclamationToModify != null && reclamationToModify.getHeure() != null) {
+                    try {
+                        setValue(reclamationToModify.getHeure());
+                    } catch (DateTimeParseException e) {
+                        // Gérer l'exception en cas de format incorrect
+                        e.printStackTrace();
+                    }
+                }*/
+
+            }
+
+            @Override
+            public void decrement(int steps) {
+                setValue(getValue().minusMinutes(steps));
+            }
+
+            @Override
+            public void increment(int steps) {
+                setValue(getValue().plusMinutes(steps));
+            }
+        };
+
+        heurem.setValueFactory(timeValueFactory);
     }
 }

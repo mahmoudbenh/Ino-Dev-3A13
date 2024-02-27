@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherReclamationFXML">
+<AnchorPane prefHeight="675.0" prefWidth="623.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherReclamationFXML">
 
 
 
@@ -15,24 +15,24 @@
 
    <children>
      
-      <TableView fx:id="table_reclamation" layoutX="54.0" layoutY="108.0" prefHeight="197.0" prefWidth="490.0">
+      <TableView fx:id="table_reclamation" layoutX="12.0" layoutY="108.0" prefHeight="198.0" prefWidth="577.0">
         <columns>
           <TableColumn fx:id="id_reclamationColumn" prefWidth="25.60003662109375" text="id_reclamation" />
           <TableColumn fx:id="id_clientColumn" prefWidth="55.20001220703125" text="id_client" />
-            <TableColumn fx:id="titre_reclamationColumn" prefWidth="113.5999755859375" text="Titre reclamation" />
-            <TableColumn fx:id="date_reclamationColumn" prefWidth="102.4000244140625" text="Date reclamation" />
-            <TableColumn fx:id="type_reclamationColumn" prefWidth="82.39996337890625" text="Type reclamation" />
-            <TableColumn fx:id="statut_reclamationcolumn" prefWidth="75.0" text="Statut reclamation" />
-            <TableColumn fx:id="descriptionColumn" prefWidth="75.0" text="description" />
+            <TableColumn fx:id="titre_reclamationColumn" prefWidth="58.39996337890625" text="Titre reclamation" />
+            <TableColumn fx:id="date_reclamationColumn" prefWidth="86.4000244140625" text="Date reclamation" />
+            <TableColumn fx:id="heure_reclamationColumn" prefWidth="88.0" text="Heure reclamation" />
+            <TableColumn fx:id="type_reclamationColumn" prefWidth="83.199951171875" text="Type reclamation" />
+            <TableColumn fx:id="statut_reclamationcolumn" minWidth="0.0" prefWidth="52.800048828125" text="Statut reclamation" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="50.39996337890625" text="Description" />
+            <TableColumn fx:id="edit" prefWidth="75.0" />
         </columns>
       </TableView>
-      <Label layoutX="54.0" layoutY="36.0" text="liste des reclamation">
+      <Label layoutX="54.0" layoutY="36.0" text="liste des reclamations">
          <font>
             <Font name="System Italic" size="25.0" />
          </font>
       </Label>
-      <Button fx:id="button_charger" layoutX="448.0" layoutY="316.0" mnemonicParsing="false" onAction="#retour" text="page de retour" />
-      <Button fx:id="modif" layoutX="196.0" layoutY="329.0" mnemonicParsing="false" onAction="#modifierrec" text="modifier" />
-      <Button layoutX="54.0" layoutY="329.0" mnemonicParsing="false" onAction="#supprimer" text="supprimer" />
+      <Button fx:id="button_charger" layoutX="287.0" layoutY="355.0" mnemonicParsing="false" onAction="#retour" text="&lt;" />
    </children>
 </AnchorPane>

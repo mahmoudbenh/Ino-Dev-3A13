@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.affichageUserreclamationFXML">
+    <VBox fx:id="reclamationsContainer" prefWidth="600" prefHeight="400"/>
+
+    <children>
+        <!-- Vos éléments FXML ici -->
+        <Label text="la liste des reclamations" />
+    </children>
+</VBox>

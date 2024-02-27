@@ -7,17 +7,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherRembourssementFXML">
+<AnchorPane prefHeight="675.0" prefWidth="623.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherRembourssementFXML">
    <children>
       <TableView fx:id="table_rembourssement" layoutX="64.0" layoutY="118.0" prefHeight="197.0" prefWidth="490.0">
          <columns>
             <TableColumn fx:id="id_rembColumn" prefWidth="83.20001220703125" text="id_rembourssement" />
             <TableColumn fx:id="id_recColumn" prefWidth="58.4000244140625" text="id_reclamation" />
-            <TableColumn fx:id="id_prodColumn" prefWidth="77.60003662109375" text="id_produit" />
             <TableColumn fx:id="prix_prodColumn" prefWidth="51.99993896484375" text="prix_produit" />
             <TableColumn fx:id="dateremColumn" prefWidth="86.40008544921875" text="date_rembourssement" />
-            <TableColumn fx:id="statcol" prefWidth="82.39996337890625" text="statut_reclamation" />
-            <TableColumn fx:id="modecol" prefWidth="86.4000244140625" text="mode_paiement" />
+            <TableColumn fx:id="heurecol" prefWidth="82.39996337890625" text="heure rembourssement" />
+            <TableColumn fx:id="statcol" prefWidth="86.4000244140625" text="statut rembourssement" />
+            <TableColumn fx:id="modecol" prefWidth="75.0" text="mode paiement" />
          </columns>
       </TableView>
       <Label layoutX="64.0" layoutY="46.0" text="liste des rembourssements">
@@ -25,8 +25,8 @@
             <Font name="System Italic" size="25.0" />
          </font>
       </Label>
-      <Button fx:id="button_charger" layoutX="458.0" layoutY="326.0" mnemonicParsing="false" onAction="#retour2" text="page de retour" />
+      <Button fx:id="button_charger" layoutX="287.0" layoutY="360.0" mnemonicParsing="false" onAction="#retour2" text="&lt;" />
       <Button layoutX="274.0" layoutY="326.0" mnemonicParsing="false" onAction="#modifierremb" text="modifier" />
-      <Button layoutX="84.0" layoutY="326.0" mnemonicParsing="false" onAction="#supprimer" text="supprimer" />
+      <Button layoutX="483.0" layoutY="326.0" mnemonicParsing="false" onAction="#supprimer" text="supprimer" />
    </children>
 </AnchorPane>

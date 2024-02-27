@@ -58,5 +58,14 @@ public class FxMain extends Application{
         stage.setTitle("ajouter un remboussement ");
         stage.setScene(scene5);
         stage.show();
+
+
+
+       /* FXMLLoader loaderu = new FXMLLoader(getClass().getResource("/affichageUserreclamationFXML.fxml"));
+        Parent parentu = loaderu.load();
+        Scene sceneu = new Scene(parentu);
+        stage.setTitle("afficher les reclamations ");
+        stage.setScene(sceneu);
+        stage.show();*/
     }
 }

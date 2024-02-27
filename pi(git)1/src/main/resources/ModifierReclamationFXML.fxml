@@ -4,29 +4,33 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModifierReclamationFXML">
+<AnchorPane prefHeight="675.0" prefWidth="623.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModifierReclamationFXML">
    <children>
-      <Button layoutX="407.0" layoutY="284.0" mnemonicParsing="false" onAction="#modifierdy" text="modifier" />
-      <TextField fx:id="descriptionm" layoutX="220.0" layoutY="284.0" />
+      <Button layoutX="492.0" layoutY="330.0" mnemonicParsing="false" onAction="#modifierdy" text="modifier" />
+      <TextField fx:id="descriptionm" layoutX="220.0" layoutY="319.0" prefHeight="47.0" prefWidth="249.0" />
       <TextField fx:id="id_clientm" layoutX="219.0" layoutY="94.0" />
       <DatePicker fx:id="date_reclamationm" layoutX="219.0" layoutY="170.0" />
       <TextField fx:id="idreclamationm" layoutX="216.0" layoutY="55.0" />
       <Label layoutX="220.0" layoutY="23.0" text="modifier reclamation" />
       <Text layoutX="77.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id_client" />
       <Text layoutX="75.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="date_reclamation" />
-      <Text layoutX="80.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type_reclamation" />
-      <Text layoutX="80.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="description" />
+      <Text layoutX="80.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type_reclamation" />
+      <Text layoutX="80.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="description" />
       <Label layoutX="79.0" layoutY="54.0" text="id_reclamation" />
       <Button layoutX="494.0" layoutY="283.0" mnemonicParsing="false" onAction="#annuler" text="annuler" />
-      <Button fx:id="button_charger" layoutX="243.0" layoutY="325.0" mnemonicParsing="false" onAction="#retour" text="page de retour" />
-      <ComboBox fx:id="type_reclamationm" layoutX="218.0" layoutY="212.0" prefWidth="150.0" />
+      <Button fx:id="button_charger" layoutX="275.0" layoutY="373.0" mnemonicParsing="false" onAction="#retour" text="&lt;" />
+      <ComboBox fx:id="type_reclamationm" layoutX="218.0" layoutY="247.0" prefWidth="150.0" />
       <Text layoutX="80.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre reclamation" />
-      <Text layoutX="80.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statut reclamation" />
+      <Text layoutX="80.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statut reclamation" />
       <TextField fx:id="titrem2" layoutX="216.0" layoutY="134.0" />
-      <ComboBox fx:id="statm2" layoutX="219.0" layoutY="247.0" prefWidth="150.0" />
+      <ComboBox fx:id="statm2" layoutX="219.0" layoutY="282.0" prefWidth="150.0" />
+      <Text layoutX="77.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="heure" />
+      <Spinner fx:id="heurem" layoutX="216.0" layoutY="211.0" />
+      <Button layoutX="403.0" layoutY="283.0" mnemonicParsing="false" onAction="#raffraichir" text="raffraichir" />
    </children>
 </AnchorPane>
