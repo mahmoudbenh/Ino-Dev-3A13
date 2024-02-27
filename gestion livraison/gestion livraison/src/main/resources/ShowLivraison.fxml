@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ShowLivraison">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="564.0" prefWidth="821.0">
+         <children>
+            <AnchorPane layoutX="-4.0" prefHeight="96.0" prefWidth="980.0" style="-fx-background-color: #008000;" />
+            <FlowPane fx:id="LivContainer" hgap="20" layoutY="115.0" prefHeight="251.0" prefWidth="934.0" vgap="20" />
+            <Button layoutX="397.0" layoutY="503.0" mnemonicParsing="false" text="Reserver" />
+            <Button layoutX="478.0" layoutY="503.0" mnemonicParsing="false" onAction="#OnAjouter" text="Ajouter" />
+            <Button layoutX="564.0" layoutY="503.0" mnemonicParsing="false" onAction="#OnRefresh" prefHeight="25.0" prefWidth="62.0" text="Refresh" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

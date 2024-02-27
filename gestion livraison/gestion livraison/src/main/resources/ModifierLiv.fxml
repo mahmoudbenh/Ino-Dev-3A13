@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="745.0" prefWidth="1079.0" style="-fx-background-color: #dfe9f5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModifierLivcontroller">
+    <children>
+        <Rectangle arcHeight="70.0" arcWidth="70.0" height="552.0" layoutX="652.0" layoutY="85.0" opacity="0.23" strokeType="INSIDE" width="394.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="0.4422348484848485" startX="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6982138752937317" green="0.36899998784065247" blue="0.8999999761581421" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.8227173686027527" green="0.7576608061790466" blue="0.8631578683853149" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.6855815649032593" green="0.603118896484375" blue="0.7368420958518982" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <stroke>
+            <LinearGradient endX="1.0" endY="0.4422348484848485" startX="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6982138752937317" green="0.36899998784065247" blue="0.8999999761581421" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.13099999725818634" green="0.019999999552965164" blue="0.20000000298023224" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.6855815649032593" green="0.603118896484375" blue="0.7368420958518982" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke></Rectangle>
+        <Button layoutX="702.0" layoutY="657.0" mnemonicParsing="false" onAction="#modifierLivreur" prefHeight="43.0" prefWidth="127.0" style="-fx-background-color: #6dceff;" text="Modifier">
+            <font>
+                <Font name="System Bold Italic" size="20.0" />
+            </font>
+        </Button>
+        <Label fx:id="idModif1" layoutX="1038.0" layoutY="321.0" />
+        <Button layoutX="871.0" layoutY="657.0" mnemonicParsing="false" onAction="#Affichage_modif" prefHeight="41.0" prefWidth="127.0" style="-fx-background-color: #6dceff;" text="Afficher">
+            <font>
+                <Font name="System Bold Italic" size="20.0" />
+            </font>
+        </Button>
+        <Text fill="#2c0133" layoutX="785.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier " wrappingWidth="160.115234375">
+            <font>
+                <Font name="System Bold Italic" size="30.0" />
+            </font>
+        </Text>
+        <Rectangle arcHeight="200.0" arcWidth="200.0" height="152.0" layoutX="174.0" layoutY="263.0" opacity="0.24" stroke="BLACK" strokeType="INSIDE" width="448.0" />
+        <Label layoutX="239.0" layoutY="293.0" prefHeight="90.0" prefWidth="338.0" text="Modifier  un livreur" textFill="#2c0133">
+            <font>
+                <Font name="Comic Sans MS" size="36.0" />
+            </font>
+        </Label>
+        <TextField fx:id="tfid_livreur" layoutX="741.0" layoutY="248.0" prefHeight="51.0" prefWidth="262.0" promptText="id_livreur">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="tfNom_livreur" layoutX="744.0" layoutY="339.0" prefHeight="51.0" prefWidth="262.0" promptText="Nom_livreur">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="tftelL" layoutX="737.0" layoutY="493.0" prefHeight="51.0" prefWidth="270.0" promptText="Tel_livreur">
+         <font>
+            <Font size="17.0" />
+         </font></TextField>
+        <ComboBox fx:id="LStatutC2" layoutX="737.0" layoutY="409.0" prefHeight="51.0" prefWidth="262.0" promptText="Statut Livreur" visibleRowCount="3">
+            <effect>
+                <ColorAdjust brightness="-0.15" contrast="-0.06" hue="-0.7" saturation="0.32" />
+            </effect>
+        </ComboBox>
+        <Button layoutX="226.0" layoutY="667.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="43.0" prefWidth="198.0" style="-fx-background-color: #6dceff;" text="Revenir à l'ajout">
+            <font>
+                <Font name="System Bold Italic" size="20.0" />
+            </font>
+        </Button>
+      <AnchorPane layoutX="-6.0" prefHeight="745.0" prefWidth="154.0" style="-fx-background-color: #413852;">
+         <children>
+            <ImageView fitHeight="152.0" fitWidth="222.0" layoutX="-1.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logoP.png.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>
