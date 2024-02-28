@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="prod" prefHeight="224.0" prefWidth="476.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherProduitFxml">
+   <children>
+      <VBox layoutX="63.0" prefHeight="227.0" prefWidth="326.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="57.0" prefWidth="326.0">
+               <children>
+                  <Label fx:id="nomP" prefHeight="17.0" prefWidth="174.0" style="-fx-text-fill: #6087AC;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="prixPrd" prefHeight="17.0" prefWidth="49.0" style="-fx-text-fill: #000000;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="15.0" prefWidth="15.0" style="-fx-text-fill: #34b893;" text="Dt">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <AnchorPane prefHeight="142.0" prefWidth="293.0">
+               <children>
+                  <ImageView fx:id="ftImgProds" fitHeight="140.0" fitWidth="290.0" layoutX="-21.0" layoutY="2.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="181.0" AnchorPane.topAnchor="7.0" />
+                  <Label fx:id="descP" layoutX="308.0" layoutY="7.0" prefHeight="140.0" prefWidth="157.0" style="-fx-text-fill: #6087AC;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <HBox alignment="CENTER" prefHeight="79.0" prefWidth="469.0">
+               <children>
+                  <Spinner fx:id="ftQuantiteProds" >
+                     <HBox.margin>
+                        <Insets right="10.0"/>
+
+                     </HBox.margin>
+                  </Spinner>
+
+                  <Button fx:id="ftAjouterPanier" mnemonicParsing="false" onAction="#ajouterPanier" style="-fx-background-color: #6087AC;" text="Ajouter au panier" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="2.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

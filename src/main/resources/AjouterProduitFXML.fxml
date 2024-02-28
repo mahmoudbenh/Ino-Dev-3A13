@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterProduitFxml">
+   <children>
+       <ImageView fx:id="AdminImageView" fitHeight="536.0" fitWidth="944.0" pickOnBounds="true" preserveRatio="true">
+           <image>
+               <Image url="@../img/Back.jpg" />
+           </image>
+       </ImageView>
+       <Text fill="#dfd3d3" layoutX="549.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADMIN" wrappingWidth="130.13671875">
+           <font>
+               <Font size="36.0" />
+           </font>
+       </Text>
+       <Button fx:id="Gestion_User" layoutX="33.0" layoutY="101.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="155.0" style="-fx-background-color: #b4a3e3;" text="Gestion User">
+           <font>
+               <Font size="14.0" />
+           </font>
+       </Button>
+       <Button layoutX="33.0" layoutY="165.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="155.0" style="-fx-background-color: #b4a3e3;" text="Gestion Produits">
+           <font>
+               <Font size="14.0" />
+           </font>
+       </Button>
+       <Button layoutX="33.0" layoutY="241.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="155.0" style="-fx-background-color: #b4a3e3;" text="Gestion Reclamation">
+           <font>
+               <Font size="14.0" />
+           </font>
+       </Button>
+       <Button layoutX="33.0" layoutY="316.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="155.0" style="-fx-background-color: #b4a3e3;" text="Gestion Evenement">
+           <font>
+               <Font size="14.0" />
+           </font>
+       </Button>
+       <Button layoutX="33.0" layoutY="383.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="155.0" style="-fx-background-color: #b4a3e3;" text="Gestion Livraison">
+           <font>
+               <Font size="14.0" />
+           </font>
+       </Button>
+      <Button layoutX="383.0" layoutY="342.0" mnemonicParsing="false" onAction="#ajouterProduit" style="-fx-background-color: #b4a3e3;" text="Ajouter">
+          <font>
+              <Font size="14.0" />
+          </font>
+      </Button>
+      <TextField id="tfNomProd" fx:id="tfNomProd" layoutX="289.0" layoutY="135.0" />
+      <Text layoutX="214.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
+      <Text layoutX="213.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+      <TextArea id="tfDesProd" fx:id="tfDesProd" layoutX="289.0" layoutY="175.0" prefHeight="69.0" prefWidth="149.0" />
+      <Text layoutX="213.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categorie" />
+      <TextField id="tfPrixProd" fx:id="tfPrixProd" layoutX="290.0" layoutY="297.0" />
+      <Text layoutX="215.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix" />
+      <ComboBox id="tfCategProd" fx:id="tfCategProd" layoutX="289.0" layoutY="259.0" onAction="#select" prefWidth="150.0" />
+      <Button layoutX="305.0" layoutY="342.0" mnemonicParsing="false" onAction="#modifierProduit" style="-fx-background-color: #b4a3e3;" text="Modifier">
+          <font>
+              <Font size="14.0" />
+          </font>
+      </Button>
+      <Button layoutX="674.0" layoutY="382.0" mnemonicParsing="false" onAction="#annulerProduit" style="-fx-background-color: #b4a3e3;" text="Annuler">
+          <font>
+              <Font size="14.0" />
+          </font>
+      </Button>
+      <TableView id="tableProd" fx:id="tableProduit" layoutX="456.0" layoutY="103.0" onMouseClicked="#afficherProduit" prefHeight="263.0" prefWidth="269.0">
+        <columns>
+          <TableColumn fx:id="afNom" prefWidth="66.0" text="Nom" />
+          <TableColumn fx:id="afDesc" prefWidth="86.0" text="Description" />
+            <TableColumn fx:id="afCatg" prefWidth="79.0" text="Categorie" />
+            <TableColumn fx:id="afPrix" prefWidth="69.0" text="Prix" />
+        </columns>
+      </TableView>
+      <Button layoutX="215.0" layoutY="342.0" mnemonicParsing="false" onAction="#supprimerProduit" style="-fx-background-color: #b4a3e3;" text="Supprimer">
+          <font>
+              <Font size="14.0" />
+          </font>
+      </Button>
+      <TextField id="idProd" fx:id="tfIdProd" layoutX="289.0" layoutY="101.0" />
+      <Text layoutX="223.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id" />
+      <Button fx:id="ftAjtImg" layoutX="533.0" layoutY="383.0" mnemonicParsing="false" onAction="#AjoutImg" style="-fx-background-color: #b4a3e3;" text="Ajouter une image">
+          <font>
+              <Font size="14.0" />
+          </font>
+      </Button>
+   </children>
+</AnchorPane>
