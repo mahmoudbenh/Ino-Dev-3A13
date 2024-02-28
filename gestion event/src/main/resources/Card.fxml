@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="box" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="185.0" prefWidth="426.0" style="-fx-background-radius: 15;" styleClass="shadow" stylesheets="@test.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CardFXML">
+   <children>
+      <ImageView fx:id="imageC" fitHeight="124.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/event1.jpeg" />
+         </image>
+         <HBox.margin>
+            <Insets left="-5.0" />
+         </HBox.margin>
+      </ImageView>
+      <VBox alignment="CENTER_LEFT" prefHeight="185.0" prefWidth="193.0" spacing="15.0">
+         <children>
+            <Label fx:id="name" alignment="TOP_LEFT" prefHeight="42.0" prefWidth="182.0" styleClass="sha" text="TechXcelerate&#10;&#10;&#10;&#10;.">
+               <font>
+                  <Font name="Berlin Sans FB Bold" size="24.0" />
+               </font>
+               <padding>
+                  <Insets left="20.0" top="20.0" />
+               </padding>
+            </Label>
+            <Label fx:id="des" prefHeight="70.0" prefWidth="194.0" text="TechXcelerate: Where AI innovation&#10;meets industry leaders, driving &#10;forward the future of technology.&#10;&#10;&#10;&#10;&#10;">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="-20.0" />
+               </VBox.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="10.0" top="20.0" />
+               </padding>
+            </Label>
+            <ImageView fitHeight="45.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/stars.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="10.0" top="-20.0" />
+               </VBox.margin>
+            </ImageView>
+         </children>
+      </VBox>
+   </children>
+</HBox>

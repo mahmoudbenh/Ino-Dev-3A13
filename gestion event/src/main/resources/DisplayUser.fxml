@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllers.DisplayUser"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DisplayUser">
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="1200.0">
+         <left>
+            <ImageView fitHeight="759.0" fitWidth="194.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@assets/menu%20bar.png" />
+               </image>
+            </ImageView>
+         </left>
+         <top>
+            <HBox prefHeight="50.0" prefWidth="1147.0" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label prefHeight="67.0" prefWidth="162.0" text="TOP events ">
+                     <font>
+                        <Font name="Berlin Sans FB" size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <ScrollPane prefHeight="250.0" prefWidth="200.0" styleClass="tranparent" stylesheets="@test.css">
+                     <content>
+                        <HBox fx:id="cardLayout" prefHeight="257.0" prefWidth="994.0" styleClass="tranparent" stylesheets="@test.css" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
 </AnchorPane>

@@ -142,7 +142,7 @@
                                 <Font name="Eras Bold ITC" size="12.0" />
                             </font>
                         </Label>
-                  <Button layoutX="204.0" layoutY="513.0" mnemonicParsing="false" onAction="#retour" prefHeight="33.0" prefWidth="70.0" styleClass="button-style-white" stylesheets="@test.css" text="Retour" />
+                  <Button fx:id="fx_retour" layoutX="204.0" layoutY="513.0" mnemonicParsing="false" onAction="#retour" prefHeight="33.0" prefWidth="70.0" styleClass="button-style-white" stylesheets="@test.css" text="Retour" />
                     </children>
                 </AnchorPane>
             </items>

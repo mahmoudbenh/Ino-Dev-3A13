@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="255.0" prefWidth="579.0" style="-fx-background-radius: 10;" stylesheets="@../../../../GestionCommande/src/main/resources/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DetailCommandeBaseFXML">
+   <children>
+      <ImageView fitHeight="128.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/eventD.jpeg" />
+         </image>
+         <HBox.margin>
+            <Insets bottom="55.0" right="20.0" />
+         </HBox.margin>
+      </ImageView>
+      <Pane prefHeight="226.0" prefWidth="282.0">
+         <children>
+            <Label layoutX="-1.0" layoutY="3.0" text="Nom event : ">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="nom_event" layoutX="85.0" layoutY="4.0" text="Career Fair " />
+            <Label layoutY="29.0" text="ID event : ">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="id_event" layoutX="85.0" layoutY="29.0" text="1555" />
+            <Label layoutX="14.0" layoutY="60.0" />
+            <Label layoutY="58.0" text="Description : ">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="description" layoutX="87.0" layoutY="50.0" prefHeight="83.0" prefWidth="198.0" text="InnovateCon is the first gathering for &#10;forward-thinkers, industry leaders, and &#10;tech enthusiasts to explore groundbreaking&#10;innovations shaping the future.">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutY="162.0" text="Statut : ">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="1.0" layoutY="137.0" text="Date : ">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button alignment="CENTER" layoutX="197.0" layoutY="194.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#Modifier" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: #77B5FE;" styleClass="button-style-participer" stylesheets="@test.css" text="Participer" textFill="WHITE">
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label fx:id="lieu" layoutX="1.0" layoutY="192.0" text="Lieu : ">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="statut" layoutX="85.0" layoutY="163.0" text="Soon" />
+            <Label fx:id="date" layoutX="86.0" layoutY="138.0" text="date" />
+            <Label layoutX="84.0" layoutY="193.0" text="Ariana" />
+         </children>
+         <HBox.margin>
+            <Insets left="10.0" />
+         </HBox.margin>
+      </Pane>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <styleClass>
+      <String fx:value="white-background" />
+      <String fx:value="shadow" />
+   </styleClass>
+</HBox>
