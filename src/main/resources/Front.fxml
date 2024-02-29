@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FrontController">
+   <center>
+      <AnchorPane fx:id="rootPane2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #b4a3e3;" userData="${controller}" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="acceuilbtn" layoutX="61.0" layoutY="57.0" mnemonicParsing="false" onAction="#ActionAcceuilbtn" style="-fx-background-color: #6A0DAD;" text="HomePage" textFill="#f7f7f7">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="qrcode" layoutX="723.0" layoutY="244.0" mnemonicParsing="false" onAction="#qrAction" style="-fx-background-color: #6A0DAD;" text="Generate Qr" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="upd" layoutX="419.0" layoutY="516.0" mnemonicParsing="false" onAction="#upd" style="-fx-background-color: #6A0DAD;" text="Update" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="684.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true" />
+            <TextField fx:id="nom" layoutX="141.0" layoutY="321.0" />
+            <TextField fx:id="prenom" layoutX="141.0" layoutY="365.0" />
+            <Label layoutX="25.0" layoutY="320.0" text="FIRSTNAME">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label layoutX="28.0" layoutY="364.0" text="LASTNAME">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label layoutX="40.0" layoutY="419.0" prefHeight="27.0" prefWidth="70.0" text="MDP">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="mdp" layoutX="141.0" layoutY="420.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

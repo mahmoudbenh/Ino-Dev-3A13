@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModifierUserController">
+   <children>
+      <ImageView fx:id="UserImageView" fitHeight="118.0" fitWidth="128.0" layoutX="112.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/416384399_3683592111886021_5329792893211008472_n.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="59.0" layoutY="111.0" prefHeight="86.0" prefWidth="233.0" text="Modifier User" textFill="#701184">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Nom" layoutX="78.0" layoutY="190.0" promptText="Nom..." styleClass="textfield-design" stylesheets="@../Images/design.css">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="Prenom" layoutX="78.0" layoutY="233.0" promptText="Prenom..." styleClass="textfield-design" stylesheets="@../Images/design.css">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="Email" layoutX="78.0" layoutY="278.0" promptText="Email..." styleClass="textfield-design" stylesheets="@../Images/design.css">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="Mdp" layoutX="80.0" layoutY="323.0" promptText="Mdp..." styleClass="textfield-design" stylesheets="@../Images/design.css">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="idUser" layoutX="80.0" layoutY="370.0" promptText="UserID" styleClass="textfield-design" stylesheets="@../Images/design.css">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Button fx:id="modifier_btn" layoutX="111.0" layoutY="448.0" mnemonicParsing="false" onAction="#ModifierU" prefHeight="30.0" prefWidth="114.0" styleClass="button-design" stylesheets="@../Images/design.css" text="Modifier">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

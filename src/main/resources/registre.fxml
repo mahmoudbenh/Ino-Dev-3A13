@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="579.0" prefWidth="516.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegistreController">
+   <children>
+      <AnchorPane layoutY="1.0" prefHeight="81.0" prefWidth="517.0" style="-fx-background-color: #b4a3e3;">
+         <children>
+            <Label layoutX="119.0" layoutY="27.0" prefHeight="18.0" prefWidth="280.0" text="User Registration" textFill="#a48787">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="shieldImageView" fitHeight="41.0" fitWidth="56.0" layoutX="28.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/pngtree-vector-lock-icon-png-image_316863.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      
+      <Label layoutX="67.0" layoutY="101.0" prefHeight="18.0" prefWidth="62.0" text="Firstname" />
+      <TextField fx:id="firstnameTextField" layoutX="67.0" layoutY="119.0" promptText="Firstname" />
+      <Label layoutX="67.0" layoutY="162.0" prefHeight="18.0" prefWidth="62.0" text="Lastname" />
+      <TextField fx:id="lastnameTextField" layoutX="67.0" layoutY="180.0" promptText="Lastname" />
+      <Label layoutX="67.0" layoutY="217.0" prefHeight="18.0" prefWidth="69.0" text="Username" />
+      <TextField fx:id="usernameTextField" layoutX="67.0" layoutY="235.0" promptText="Username" />
+      <Label layoutX="67.0" layoutY="328.0" prefHeight="18.0" prefWidth="62.0" text="Password" />
+      <Label layoutX="67.0" layoutY="381.0" prefHeight="18.0" prefWidth="98.0" text="Confirm Password" />
+      <Button fx:id="registreButton" layoutX="57.0" layoutY="464.0" mnemonicParsing="false" onAction="#registreButtonOnAction" prefHeight="26.0" prefWidth="402.0" style="-fx-background-color: #b4a3e3;" text="Registre">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="cancelButton" layoutX="57.0" layoutY="510.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="26.0" prefWidth="402.0" style="-fx-background-color: #b4a3e3;" text="Close">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <PasswordField fx:id="setPasswordField" layoutX="66.0" layoutY="346.0" prefHeight="26.0" prefWidth="150.0" promptText="Password" />
+      <PasswordField fx:id="confirmPasswordField" layoutX="62.0" layoutY="399.0" prefHeight="26.0" prefWidth="158.0" promptText="Confirm Password" />
+      <Label layoutX="67.0" layoutY="270.0" prefHeight="18.0" prefWidth="69.0" text="Email" />
+      <TextField fx:id="emailTextField" layoutX="67.0" layoutY="290.0" promptText="Email" />
+      <ImageView fx:id="i1View" fitHeight="22.0" fitWidth="22.0" layoutX="37.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/id-card.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="i2View" fitHeight="22.0" fitWidth="22.0" layoutX="37.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/id-card.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="i3View" fitHeight="22.0" fitWidth="22.0" layoutX="34.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/id-card.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="i4View" fitHeight="22.0" fitWidth="22.0" layoutX="34.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/email.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="i5View" fitHeight="22.0" fitWidth="22.0" layoutX="34.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/key.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="i6View" fitHeight="22.0" fitWidth="22.0" layoutX="34.0" layoutY="401.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/key.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

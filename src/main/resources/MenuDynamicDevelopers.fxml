@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuDynamicDevelopersController">
+   <children>
+      <ImageView fx:id="UserImageView" fitHeight="536.0" fitWidth="944.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/Back.jpg" />
+         </image>
+      </ImageView>
+      <Text layoutX="549.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USER" wrappingWidth="130.13671875">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+      <Button fx:id="Gestion_User" layoutX="33.0" layoutY="101.0" mnemonicParsing="false" onAction="#Gestion_User" prefHeight="38.0" prefWidth="155.0" style="-fx-background-color: #b4a3e3;" text="Profile">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="33.0" layoutY="165.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="155.0" style="-fx-background-color: #b4a3e3;" text="Gestion Produits">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="33.0" layoutY="241.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="155.0" style="-fx-background-color: #b4a3e3;" text="Gestion Reclamation">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="33.0" layoutY="316.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="155.0" style="-fx-background-color: #b4a3e3;" text="Gestion Evenement">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="33.0" layoutY="383.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="155.0" style="-fx-background-color: #b4a3e3;" text="Gestion Livraison">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="Fermer" layoutX="732.0" layoutY="-1.0" mnemonicParsing="false" onAction="#exit" prefHeight="26.0" prefWidth="25.0" text="X" textFill="#d73c3c">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="UserImageView1" fitHeight="66.0" fitWidth="80.0" layoutX="70.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/User.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

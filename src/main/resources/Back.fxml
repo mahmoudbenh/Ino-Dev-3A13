@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BackController">
+   <children>
+      <ImageView fx:id="AdminImageView" fitHeight="536.0" fitWidth="846.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/Back.jpg" />
+         </image>
+      </ImageView>
+      <Text layoutX="549.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADMIN" wrappingWidth="130.13671875">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+      <Button fx:id="Gestion_User" layoutX="33.0" layoutY="101.0" mnemonicParsing="false" onAction="#Gestion_User" prefHeight="38.0" prefWidth="155.0" style="-fx-background-color: #b4a3e3;" text="Gestion User">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="33.0" layoutY="165.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="155.0" style="-fx-background-color: #b4a3e3;" text="Gestion Produits">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="33.0" layoutY="241.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="155.0" style="-fx-background-color: #b4a3e3;" text="Gestion Reclamation">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="33.0" layoutY="316.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="155.0" style="-fx-background-color: #b4a3e3;" text="Gestion Evenement">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="33.0" layoutY="383.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="155.0" style="-fx-background-color: #b4a3e3;" text="Gestion Livraison">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="Fermer" layoutX="731.0" layoutY="-1.0" mnemonicParsing="false" onAction="#exit" prefHeight="26.0" prefWidth="29.0" text="X" textFill="#f41313">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="AdminImageView1" fitHeight="74.0" fitWidth="78.0" layoutX="80.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/Admin.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
