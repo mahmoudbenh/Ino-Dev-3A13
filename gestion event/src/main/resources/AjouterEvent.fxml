@@ -112,7 +112,7 @@
                   </ImageView>
                   <ImageView fitHeight="48.0" fitWidth="60.0" layoutX="54.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@assets/livraison%20icon.png" />
+                        <Image url="@assets/livraison.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="48.0" fitWidth="63.0" layoutX="43.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true">

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="255.0" prefWidth="579.0" style="-fx-background-radius: 10;" stylesheets="@../../../../GestionCommande/src/main/resources/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DetailCommandeBaseFXML">
+<HBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="255.0" prefWidth="579.0" style="-fx-background-radius: 10;" stylesheets="@../../../../GestionCommande/src/main/resources/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CardDynamic">
    <children>
       <ImageView fitHeight="128.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -55,7 +55,7 @@
                   <Font name="Cambria Bold" size="14.0" />
                </font>
             </Label>
-            <Button alignment="CENTER" layoutX="197.0" layoutY="194.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#Modifier" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: #77B5FE;" styleClass="button-style-participer" stylesheets="@test.css" text="Participer" textFill="WHITE">
+            <Button fx:id="fx_participer" alignment="CENTER" layoutX="197.0" layoutY="194.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#Participer" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: #77B5FE;" styleClass="button-style-participer" stylesheets="@test.css" text="Participer" textFill="WHITE">
                <padding>
                   <Insets left="10.0" right="10.0" />
                </padding>

@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.Participant;
+import services.ServiceEvent;
 import services.ServiceParticipant;
 
 import java.io.IOException;
@@ -26,25 +27,19 @@ public class AfficherParticipant {
 
 
     public void initialize() throws SQLException {
-        // Create an instance of ServiceParticipant
         ServiceParticipant serviceParticipant = new ServiceParticipant();
-
-        // Fetch Participants from the database
         List<Participant> participants = serviceParticipant.selectAll();
-
-        // Populate the container with Participant boxes
         createParticipantBoxes(participants);
     }
 
     private void createParticipantBoxes(List<Participant> participants) {
         if (participants != null) {
-            int participantsPerRow = 5; // Maximum number of Participants per row
+            int participantsPerRow = 4; // Maximum number of Participants per row
             int count = 0; // Counter for Participants in the current row
             HBox currentRow = new HBox(); // Initialize a new row
             currentRow.setSpacing(10); // Set spacing between Participant boxes
 
             for (Participant participant : participants) {
-                // Create a new VBox for each Participant
                 VBox participantBox = new VBox();
                 participantBox.setSpacing(10);
 
@@ -75,14 +70,43 @@ public class AfficherParticipant {
                 emailLabel.getStyleClass().add("Participant-label");
                 telLabel.getStyleClass().add("Participant-label");
 
+                // Create buttons for the event
                 Button updateButton = new Button("Update");
+                updateButton.setOnAction(e -> {
+                    openUpdateWindow(participant); // Pass the eventContainer
+                });
+
+              /*  Button updateButton = new Button("Update");
                 updateButton.getStyleClass().add("button-style"); // Add style class to update button
                 updateButton.setOnAction(e -> {
                     openUpdateWindow(participant); // Pass the participant
+                });*/
+
+                Button postponeButton = new Button("Delete");
+                postponeButton.setOnAction(e -> {
+                    try {
+                        // Get the participant ID
+                        int participantId = participant.getUserID();
+
+                        // Create a Participant object with the participantId
+                        Participant participantToDelete = new Participant();
+                        participantToDelete.setUserID(participantId);
+
+                        // Delete the participant from the database
+                        ServiceParticipant serviceParticipant = new ServiceParticipant();
+                        serviceParticipant.deleteOne(participantToDelete);
+
+                        // Remove the participant box from the UI
+                        participantContainer.getChildren().remove(participantBox);
+                    } catch (SQLException ex) {
+                        System.out.println("Error deleting participant: " + ex.getMessage());
+                    }
                 });
 
+
+
                 // Create an HBox to hold the button
-                HBox buttonBox = new HBox(updateButton);
+                HBox buttonBox = new HBox(updateButton, postponeButton);
                 buttonBox.setSpacing(10);
 
                 // Add text information VBox and button HBox to the Participant VBox

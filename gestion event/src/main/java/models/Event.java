@@ -70,6 +70,26 @@ public class Event {
         this.lieu = lieu;
     }
 
+    public boolean validate() {
+        return validateName() && validateDescription() && validateDate() && validateStatut() && validateLieu();
+    }
+    private boolean validateName() {
+        return name != null && !name.isEmpty();
+    }
+    private boolean validateDescription() {
+        return description != null && !description.isEmpty();
+    }
+    private boolean validateDate() {
+        return date_event != null && date_event.isAfter(LocalDate.now()); // Date should be in the future
+    }
+    private boolean validateStatut() {
+        return statut != null && !statut.isEmpty();
+    }
+    private boolean validateLieu() {
+        return lieu != null && !lieu.isEmpty();
+    }
+
+
     @Override
     public String toString() {
         return "Event{" +

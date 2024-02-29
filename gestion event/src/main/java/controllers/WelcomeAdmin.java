@@ -23,19 +23,6 @@ public class WelcomeAdmin {
 
     @FXML
     void AjouterEvent(ActionEvent event) {
-       /* try {
-            URL fxmlUrl = getClass().getResource("/AjouterEvent.fxml");
-
-            if (fxmlUrl != null) {
-                FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
-                Parent root = fxmlLoader.load();
-                fx_name.getScene().setRoot(root);
-            } else {
-                System.err.println("FXML file not found.");
-            }
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        }*/
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterEvent.fxml"));
             Parent root = loader.load();
@@ -49,11 +36,6 @@ public class WelcomeAdmin {
 
 
     }
-
-
-
-
-
 
     @FXML
     void AjouterParticipant(ActionEvent event) {
@@ -75,7 +57,10 @@ public class WelcomeAdmin {
 
     @FXML
     void Exit(ActionEvent event) {
-
+        // Get the reference to the button's stage
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        // Close the stage
+        stage.close();
     }
 
     @FXML

@@ -18,6 +18,8 @@ package controllers;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import java.util.regex.Pattern;
+
 
 
 
@@ -45,7 +47,10 @@ public class AjouterEvent {
 
         @FXML
         private TextField fxname;
-
+    @FXML
+    private boolean isNumeric(String str) {
+        return Pattern.compile("\\d+").matcher(str).matches();
+    }
 
 
 
@@ -58,16 +63,39 @@ public class AjouterEvent {
                 throw new IllegalArgumentException("Statut is not selected");
             }
 
-            // No need to parse event ID as it's auto-incremented
-            String eventName = fxname.getText();
-            String eventDescription = fx_description.getText();
-            LocalDate eventDate = fx_date.getValue();
-            String eventLieu = fx_lieu.getText();
+            // Validate other fields if necessary
+            if (fxname.getText().isEmpty()) {
+                throw new IllegalArgumentException("Event name is required");
+            } else if (isNumeric(fxname.getText())) {
+                throw new IllegalArgumentException("Event name cannot be only numbers");
+            }
 
-            // Validate other fields if necessary (e.g., not empty)
+            if (fx_description.getText().isEmpty()) {
+                throw new IllegalArgumentException("Event description is required");
+            } else if (isNumeric(fx_description.getText())) {
+                throw new IllegalArgumentException("Event description cannot be only numbers");
+            }
+
+            if (fx_date.getValue() == null){
+                //||} fx_date.getValue().isBefore(LocalDate.now())) {
+                throw new IllegalArgumentException("Please select a date");
+            }
+            if (fx_lieu.getText().isEmpty()) {
+                throw new IllegalArgumentException("Event location is required");
+            } else if (isNumeric(fx_lieu.getText())) {
+                throw new IllegalArgumentException("Event location cannot be only numbers");
+            }
+
 
             // Create new Event object
-            Event nouvelEvent = new Event(0, eventName, eventDescription, eventDate, statut, eventLieu);
+            Event nouvelEvent = new Event(
+                    0,
+                    fxname.getText(),
+                    fx_description.getText(),
+                    fx_date.getValue(),
+                    statut,
+                    fx_lieu.getText()
+            );
 
             // Insert event into the database
             ServiceEvent serviceEvent = new ServiceEvent();
@@ -79,14 +107,23 @@ public class AjouterEvent {
             alert.setHeaderText(null);
             alert.setContentText("Événement ajouté avec succès !");
             alert.showAndWait();
+
+            fxname.clear();
+            fx_description.clear();
+            fx_date.setValue(null); //
+            fx_statut.getSelectionModel().clearSelection(); //
+            fx_lieu.clear();
+
+
         } catch (IllegalArgumentException e) {
-            // Handle null statut or any other validation errors
+            // Handle validation errors
             showErrorAlert(e.getMessage());
         } catch (SQLException e) {
             // Handle SQL exception
             showErrorAlert("Erreur lors de l'ajout de l'événement. Veuillez réessayer plus tard.");
         }
     }
+
 
     private void showErrorAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -103,7 +140,7 @@ public class AjouterEvent {
             if (fxmlUrl != null) {
                 FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
                 Parent root = fxmlLoader.load();
-                fx_description.getScene().setRoot(root);
+                fxname.getScene().setRoot(root);
             } else {
                 System.err.println("FXML file not found.");
             }

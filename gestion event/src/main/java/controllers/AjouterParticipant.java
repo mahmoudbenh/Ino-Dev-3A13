@@ -37,7 +37,10 @@ public class AjouterParticipant {
     @FXML
     private Button fx_retour;
     private Button retourButton;
-
+    @FXML
+    private boolean isNumeric(String str) {
+        return str.matches("-?\\d+");
+    }
     @FXML
     void AjouterParticipant(ActionEvent event) {
         try {
@@ -47,14 +50,56 @@ public class AjouterParticipant {
             String email = Fx_email.getText();
             int tel = Integer.parseInt(fx_tel.getText());
 
-            // Validate input fields if necessary
+
+            if (fx_UserID.getText().isEmpty() || fx_IDevent.getText().isEmpty() || fx_Nom.getText().isEmpty() || Fx_email.getText().isEmpty() || fx_tel.getText().isEmpty()) {
+                throw new IllegalArgumentException("Tous les champs sont requis");
+            }
+            if (fx_UserID.getText().isEmpty()) {
+                throw new IllegalArgumentException("Veuillez saisir l'ID du participant");}
+            else if (!isNumeric(fx_UserID.getText())) {
+                throw new IllegalArgumentException("UserID doit être numérique");
+            }
+            if (fx_IDevent.getText().isEmpty()) {
+                throw new IllegalArgumentException("Veuillez saisir l'ID de l'evenement");
+            } else if  (!isNumeric(fx_IDevent.getText())) {
+                throw new IllegalArgumentException("ID de l'événement doit être numérique");
+            }
+
+            if (fx_tel.getText().isEmpty()) {
+                throw new IllegalArgumentException("Veuillez saisir le numéro de téléphone du participant");
+            } else if (!fx_tel.getText().matches("\\d{8}")) {
+                throw new IllegalArgumentException("Le numéro de téléphone doit être composé uniquement de 8 chiffres");
+            }
 
             Participant nouveauParticipant = new Participant(userId, eventId, nom, email, tel);
 
             ServiceParticipant serviceParticipant = new ServiceParticipant();
             serviceParticipant.insertOne(nouveauParticipant);
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            // Confirmation message
+            showAlert(Alert.AlertType.INFORMATION, "Confirmation", null, "Participant ajouté avec succès !");
+            // Confirmation message
+           /* Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText(null);
+            alert.setContentText("Participant  ajouté avec succès !");
+            alert.showAndWait();*/
+
+            fx_UserID.clear();
+            fx_IDevent.clear();
+            fx_Nom.clear();
+            Fx_email.clear();
+            fx_tel.clear();
+
+        } catch (IllegalArgumentException e) {
+            // Handle validation errors
+            showErrorAlert(e.getMessage());
+        } catch (SQLException e) {
+            // Handle SQL exception
+            showErrorAlert("Erreur lors de l'ajout du participant. Veuillez réessayer plus tard.");
+        }
+
+          /*  Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Confirmation");
             alert.setHeaderText(null);
             alert.setContentText("Participant ajouté avec succès !");
@@ -65,8 +110,27 @@ public class AjouterParticipant {
             showErrorAlert(e.getMessage());
         } catch (SQLException e) {
             showErrorAlert("Erreur lors de l'ajout du participant. Veuillez réessayer plus tard.");
-        }
+        }*/
+
+
+
+
+      /*  } catch (IllegalArgumentException e) {
+            // Handle validation errors
+            showErrorAlert(e.getMessage());
+        } catch (SQLException e) {
+            // Handle SQL exception
+            showErrorAlert("Erreur lors de l'ajout du participant. Veuillez réessayer plus tard.");
+        }*/
     }
+    private void showAlert(Alert.AlertType type, String title, String header, String content) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
 
     private void showErrorAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -75,6 +139,9 @@ public class AjouterParticipant {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+
+
 
 
     @FXML
@@ -107,26 +174,6 @@ public class AjouterParticipant {
     }
 
 
-  /*  @FXML
-    void retour(ActionEvent event) {
-        try {
-            // Load the AjouterEvent view from FXML
-            URL fxmlUrl = getClass().getResource("/WelcomeAdmin.fxml");
-
-            if (fxmlUrl != null) {
-                FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
-                Parent root = fxmlLoader.load();
-
-                // Get the stage from the current scene and set the root to AjouterEvent view
-                Stage stage = (Stage) retourButton.getScene().getWindow();
-                stage.getScene().setRoot(root);
-            } else {
-                System.err.println("FXML file not found.");
-            }
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        }
-    }*/
   @FXML
 
   void retour(ActionEvent event) {

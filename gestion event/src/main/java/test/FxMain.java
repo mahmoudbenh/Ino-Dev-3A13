@@ -16,11 +16,12 @@ public class FxMain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
        // FXMLLoader loader = new FXMLLoader(getClass().getResource("/Card.fxml")); // Ensure this is the correct path
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUser.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/WelcomeAdmin.fxml"));
         Parent parent = loader.load();
         Scene scene = new Scene(parent);
-        scene.getStylesheets().add(getClass().getResource("/test.css").toExternalForm()); // Add this line
-
+        scene.getStylesheets().add(getClass().getResource("/test.css").toExternalForm());
+       // scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+       // scene.getStylesheets().add(getClass().getResource("/DisplayUser.css").toExternalForm());
         stage.setTitle("Gestion Event");
         stage.setScene(scene);
         stage.show();
