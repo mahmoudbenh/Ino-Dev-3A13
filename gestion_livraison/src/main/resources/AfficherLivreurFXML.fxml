@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="698.0" prefWidth="943.0" style="-fx-background-color: #dfe9f5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherLivreurFXML">
+    <children>
+        <Text fx:id="myText" fill="#2c0133fc" layoutX="207.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selectionner Un livreur" wrappingWidth="638.3695068359375">
+            <font>
+                <Font name="Comic Sans MS" size="55.0" />
+            </font>
+        </Text>
+        <ListView fx:id="listeView" layoutX="249.0" layoutY="148.0" prefHeight="378.0" prefWidth="620.0" style="-fx-font-family: Arial; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2874A6; -fx-border-color: #18405A; -fx-border-radius: 5px; -fx-border-width: 3px;" />
+        <Label fx:id="SelectedHotel" layoutX="152.0" layoutY="684.0" />
+        <Button layoutX="511.0" layoutY="585.0" mnemonicParsing="false" onAction="#bt_modifier" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #6dceff;" text="Modifier">
+            <font>
+                <Font name="System Bold Italic" size="20.0" />
+            </font></Button>
+        <Button layoutX="727.0" layoutY="585.0" mnemonicParsing="false" onAction="#boutonSupprimer" prefHeight="44.0" prefWidth="135.0" style="-fx-background-color: #6dceff;" text="Supprimer">
+            <font>
+                <Font name="System Bold Italic" size="20.0" />
+            </font>
+        </Button>
+        <Button layoutX="287.0" layoutY="585.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #6dceff;" text="Ajouter">
+            <font>
+                <Font name="System Bold Italic" size="20.0" />
+            </font>
+        </Button>
+      <AnchorPane prefHeight="702.0" prefWidth="152.0" style="-fx-background-color: #413852;">
+         <children>
+            <ImageView fitHeight="152.0" fitWidth="222.0" layoutX="-1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logoP.png.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>
