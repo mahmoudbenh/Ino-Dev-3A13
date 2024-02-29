@@ -56,10 +56,11 @@ public class ModifierRembourssementFXML implements Initializable {
     void modifierdy(ActionEvent event){
         try{
 
-            int id_rembp2=Integer.parseInt(id_rembp.getText());
-            int id_recp2=Integer.parseInt(id_recp.getText());
+            //int id_rembp2=Integer.parseInt(id_rembp.getText());
+            //int id_recp2=Integer.parseInt(id_recp.getText());
             float prix_pp2=Float.parseFloat(prix_pp.getText());
-
+            int id_rembp2=this.rembourssementToModify.getId_rembourssement();
+            int id_recp2 = this.rembourssementToModify.getId_reclamation();
             sr.updateOne(new rembourssement(id_rembp2,id_recp2,prix_pp2,date_p.getValue(),heure_p.getValue(),statp.getValue(),modep.getValue()));
 
             showSuccessNotification("Modif réussie");
@@ -79,8 +80,8 @@ public class ModifierRembourssementFXML implements Initializable {
         // Ensure that the recommendation is not null before initializing the fields
         if(rem!= null)
         {
-            id_recp.setText(String.valueOf(rem.getId_reclamation()));
-            id_rembp.setText(String.valueOf(rem.getId_rembourssement()));
+           // id_recp.setText(String.valueOf(rem.getId_reclamation()));
+            //id_rembp.setText(String.valueOf(rem.getId_rembourssement()));
             prix_pp.setText(String.valueOf(rem.getPrix()));
             date_p.setValue(LocalDate.parse(String.valueOf(rem.getDate_rembourssement())));
             heure_p.getValueFactory().setValue(rem.getHeure());

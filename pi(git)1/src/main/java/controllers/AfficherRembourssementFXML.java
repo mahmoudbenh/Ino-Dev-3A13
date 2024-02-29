@@ -9,11 +9,25 @@ package controllers;
         import javafx.scene.Scene;
         import javafx.scene.control.*;
         import javafx.scene.control.cell.PropertyValueFactory;
+        import javafx.scene.layout.HBox;
         import javafx.stage.Modality;
         import javafx.stage.Stage;
-
-
+        import javafx.scene.control.Alert;
+        import javafx.scene.control.Alert.AlertType;
+        import javafx.scene.control.ButtonType;
+        import javafx.util.Callback;
+        import javafx.scene.control.TableCell;
+        import javafx.scene.control.Button;
+        import javafx.scene.control.*;
+        import javafx.scene.control.cell.PropertyValueFactory;
+        import javafx.scene.layout.HBox;
+        import javafx.util.Callback;
+        import models.reclamation;
         import models.rembourssement;
+        import javafx.scene.control.TableColumn;
+        import javafx.scene.control.cell.TextFieldTableCell;
+        import javafx.util.Callback;
+
 
         import java.io.IOException;
         import java.net.URL;
@@ -23,6 +37,7 @@ package controllers;
         import javafx.event.ActionEvent;
         import javafx.fxml.FXML;
 
+        import services.ServiceReclamation;
         import services.ServiceRembourssement;
 
 public class AfficherRembourssementFXML implements Initializable {
@@ -62,23 +77,100 @@ public class AfficherRembourssementFXML implements Initializable {
     @FXML
     private TableView<rembourssement> table_rembourssement;
     private ServiceRembourssement rb;
+    @FXML
+    private TableColumn<rembourssement, String> edit;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+
             afficher();
+            addEditButtonToTable();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+////////////
+private void addEditButtonToTable() {
+    Callback<TableColumn<rembourssement, String>, TableCell<rembourssement, String>> cellFactory = (
+            TableColumn<rembourssement, String> param) -> {
+        final TableCell<rembourssement, String> cell = new TableCell<rembourssement, String>() {
+            final Button editButton = new Button("✎");
+            final Button deleteButton = new Button("🗑");
 
+
+            @Override
+            public void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                    setText(null);
+                } else {
+
+                    editButton.setOnAction(this::onEditButtonClicked);
+                    deleteButton.setOnAction(this::onDeleteButtonClicked);
+                    HBox buttonsContainer = new HBox(editButton, deleteButton);
+                    setGraphic(buttonsContainer);
+                    setText(null);
+                }
+            }
+
+            private void onEditButtonClicked(ActionEvent event) {
+                rembourssement selectedRembourssement = getTableView().getItems().get(getIndex());
+                modifierremb(event, selectedRembourssement);
+            }
+
+            private void onDeleteButtonClicked(ActionEvent event) {
+                rembourssement selectedRembourssement = getTableView().getItems().get(getIndex());
+                deleteRembourssement(selectedRembourssement);
+            }
+
+        };
+        return cell;
+    };
+
+    edit.setCellFactory(cellFactory);
+}
+
+/////////////
+private void deleteRembourssement(rembourssement rembourssement) {
+
+    this.rb = new ServiceRembourssement();
+    rembourssement selectedRembourssement = table_rembourssement.getSelectionModel().getSelectedItem();
+    if (selectedRembourssement != null) {
+
+        Alert confirmationAlert = new Alert(AlertType.CONFIRMATION);
+        confirmationAlert.setTitle("Confirmation de suppression");
+        confirmationAlert.setHeaderText("Voulez-vous vraiment supprimer cet rembourssement ?");
+        confirmationAlert.setContentText("Cette action ne peut pas être annulée.");
+
+        ButtonType result = confirmationAlert.showAndWait().orElse(ButtonType.CANCEL);
+
+        if (result == ButtonType.OK) {
+            try {
+                // Assuming s.supprimer() also updates the data model
+                rb.deleteOne(selectedRembourssement);
+
+                // Assuming addRecetteListData() correctly updates the TableView
+                afficher();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                showErrorNotification("Erreur lors de la suppression du rembourssement");
+            }
+        }
+    } else {
+        showErrorNotification("Veuillez sélectionner un rembourssement à supprimer");
+    }
+}
+    ///////////////
     @FXML
     void afficher() throws SQLException {
 
         // Appeler la méthode de service pour récupérer la liste des produits
-        ServiceRembourssement srr = new ServiceRembourssement();
+        ServiceRembourssement srb = new ServiceRembourssement();
         ArrayList<rembourssement> rembourssements = null;
 
-        rembourssements = (ArrayList<rembourssement>) srr.selectAll();
+        rembourssements = (ArrayList<rembourssement>) srb.selectAll();
 
 
         // Créer une liste observable de produits
@@ -87,8 +179,8 @@ public class AfficherRembourssementFXML implements Initializable {
         // Assigner la liste observable à la TableView
         table_rembourssement.setItems(rembourssementsObservable);
         heurecol.setCellValueFactory(new PropertyValueFactory<>("heure"));
-        id_recColumn.setCellValueFactory(new PropertyValueFactory<>("id_reclamation"));
-        id_rembColumn.setCellValueFactory(new PropertyValueFactory<>("id_rembourssement"));
+        //id_recColumn.setCellValueFactory(new PropertyValueFactory<>("id_reclamation"));
+        //id_rembColumn.setCellValueFactory(new PropertyValueFactory<>("id_rembourssement"));
         prix_prodColumn.setCellValueFactory(new PropertyValueFactory<>("prix"));
         dateremColumn.setCellValueFactory(new PropertyValueFactory<>("date_rembourssement"));
         statcol.setCellValueFactory(new PropertyValueFactory<>("statut_rembourssement"));
@@ -120,8 +212,8 @@ public class AfficherRembourssementFXML implements Initializable {
     }
     ////////////////
     @FXML
-    void modifierremb(ActionEvent event) {
-        rembourssement selectedRembourssement = table_rembourssement.getSelectionModel().getSelectedItem();
+    void modifierremb(ActionEvent event, rembourssement selectedRembourssement) {
+       // rembourssement selectedRembourssement = table_rembourssement.getSelectionModel().getSelectedItem();
         if (selectedRembourssement != null) {
             try {
                 // Charger le fichier FXML de la nouvelle scène de modification
@@ -203,6 +295,7 @@ void supprimer(ActionEvent event) {
         assert modecol != null : "fx:id=\"modecol\" was not injected: check your FXML file 'AfficherRembourssementFXML.fxml'.";
         assert prix_prodColumn != null : "fx:id=\"prix_prodColumn\" was not injected: check your FXML file 'AfficherRembourssementFXML.fxml'.";
         assert statcol != null : "fx:id=\"statcol\" was not injected: check your FXML file 'AfficherRembourssementFXML.fxml'.";
+        assert edit != null : "fx:id=\"edit\" was not injected: check your FXML file 'AfficherRembourssementFXML.fxml'.";
         assert table_rembourssement != null : "fx:id=\"table_rembourssement\" was not injected: check your FXML file 'AfficherRembourssementFXML.fxml'.";
     }
     }

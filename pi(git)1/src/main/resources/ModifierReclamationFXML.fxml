@@ -13,15 +13,11 @@
    <children>
       <Button layoutX="492.0" layoutY="330.0" mnemonicParsing="false" onAction="#modifierdy" text="modifier" />
       <TextField fx:id="descriptionm" layoutX="220.0" layoutY="319.0" prefHeight="47.0" prefWidth="249.0" />
-      <TextField fx:id="id_clientm" layoutX="219.0" layoutY="94.0" />
       <DatePicker fx:id="date_reclamationm" layoutX="219.0" layoutY="170.0" />
-      <TextField fx:id="idreclamationm" layoutX="216.0" layoutY="55.0" />
       <Label layoutX="220.0" layoutY="23.0" text="modifier reclamation" />
-      <Text layoutX="77.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id_client" />
       <Text layoutX="75.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="date_reclamation" />
       <Text layoutX="80.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type_reclamation" />
       <Text layoutX="80.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="description" />
-      <Label layoutX="79.0" layoutY="54.0" text="id_reclamation" />
       <Button layoutX="494.0" layoutY="283.0" mnemonicParsing="false" onAction="#annuler" text="annuler" />
       <Button fx:id="button_charger" layoutX="275.0" layoutY="373.0" mnemonicParsing="false" onAction="#retour" text="&lt;" />
       <ComboBox fx:id="type_reclamationm" layoutX="218.0" layoutY="247.0" prefWidth="150.0" />

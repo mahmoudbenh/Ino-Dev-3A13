@@ -17,8 +17,6 @@
      
       <TableView fx:id="table_reclamation" layoutX="12.0" layoutY="108.0" prefHeight="198.0" prefWidth="577.0">
         <columns>
-          <TableColumn fx:id="id_reclamationColumn" prefWidth="25.60003662109375" text="id_reclamation" />
-          <TableColumn fx:id="id_clientColumn" prefWidth="55.20001220703125" text="id_client" />
             <TableColumn fx:id="titre_reclamationColumn" prefWidth="58.39996337890625" text="Titre reclamation" />
             <TableColumn fx:id="date_reclamationColumn" prefWidth="86.4000244140625" text="Date reclamation" />
             <TableColumn fx:id="heure_reclamationColumn" prefWidth="88.0" text="Heure reclamation" />
@@ -34,5 +32,7 @@
          </font>
       </Label>
       <Button fx:id="button_charger" layoutX="287.0" layoutY="355.0" mnemonicParsing="false" onAction="#retour" text="&lt;" />
+     
+
    </children>
 </AnchorPane>

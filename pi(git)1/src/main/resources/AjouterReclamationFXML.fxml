@@ -9,7 +9,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
@@ -42,11 +41,7 @@
       <Button layoutX="549.0" layoutY="190.0" mnemonicParsing="false" onAction="#raffraichir" text="raffraichir" />
       <Button layoutY="313.0" mnemonicParsing="false" onAction="#rembourssement" prefHeight="362.0" prefWidth="100.0" text="Rembourssement" />
       <Button layoutX="503.0" layoutY="190.0" mnemonicParsing="false" onAction="#choisirPhoto" text="&gt;" />
-      <BorderPane layoutX="642.0" layoutY="135.0" prefHeight="200.0" prefWidth="182.0" styleClass="image" stylesheets="@styles.css">
-         <center>
-          <ImageView fx:id="imageview1" fitHeight="135.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true" styleClass="image" BorderPane.alignment="CENTER" />
-         </center>
-      </BorderPane>
+    <ImageView fx:id="imageview1" fitHeight="135.0" fitWidth="182.0" layoutX="282.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" styleClass="image" />
 
 </children>
 </AnchorPane>

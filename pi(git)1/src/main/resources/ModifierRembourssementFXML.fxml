@@ -12,21 +12,17 @@
 <AnchorPane prefHeight="675.0" prefWidth="623.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModifierRembourssementFXML">
    <children>
       <Button layoutX="247.0" layoutY="298.0" mnemonicParsing="false" onAction="#modifierdy" text="modifier" />
-      <TextField fx:id="id_recp" layoutX="214.0" layoutY="89.0" />
       <TextField fx:id="prix_pp" layoutX="212.0" layoutY="125.0" />
       <DatePicker fx:id="date_p" layoutX="212.0" layoutY="162.0" />
       <ComboBox fx:id="statp" layoutX="212.0" layoutY="227.0" prefWidth="150.0" visibleRowCount="3" />
       <ComboBox fx:id="modep" layoutX="212.0" layoutY="264.0" prefWidth="150.0" visibleRowCount="3" />
-      <TextField fx:id="id_rembp" layoutX="215.0" layoutY="56.0" />
       <Button fx:id="annuler" layoutX="504.0" layoutY="264.0" mnemonicParsing="false" onAction="#annuler" text="annuler" />
       <Button layoutX="265.0" layoutY="353.0" mnemonicParsing="false" onAction="#retour" text="&lt;" />
-      <Text layoutX="63.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id_reclamation" />
       <Text layoutX="64.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prix_produit" />
       <Text layoutX="64.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="date_rembourssement" />
       <Label layoutX="62.0" layoutY="26.0" text="modifier rembourssement" />
       <Text layoutX="64.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="statut_remboussement" />
       <Text layoutX="64.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="mode_paiement" />
-      <Text layoutX="63.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id_rembourssement" />
       <Spinner fx:id="heure_p" layoutX="212.0" layoutY="196.0" />
       <Text layoutX="64.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure rembourssement" />
       <Button layoutX="417.0" layoutY="266.0" mnemonicParsing="false" onAction="#raffraichir" text="raffraichir" />

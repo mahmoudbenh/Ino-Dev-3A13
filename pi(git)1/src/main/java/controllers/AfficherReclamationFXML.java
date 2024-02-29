@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,6 +35,9 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import services.ServiceRembourssement;
+import models.rembourssement;
+
 public class AfficherReclamationFXML implements Initializable {
 
     public Button button_charger;
@@ -74,6 +78,16 @@ public class AfficherReclamationFXML implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            // Initialiser le service
+            ServiceRembourssement srb = new ServiceRembourssement();
+
+            // Appeler la méthode getRemboursementsWithJoin lorsque nécessaire
+            List<rembourssement> remboursements = srb.getRemboursementsWithJoin();
+
+            // Utiliser la liste remboursements comme nécessaire...
+
+            // Reste de votre code d'initialisation...
+
             afficher();
             addEditButtonToTable();
         } catch (SQLException e) {
@@ -85,8 +99,14 @@ public class AfficherReclamationFXML implements Initializable {
         Callback<TableColumn<reclamation, String>, TableCell<reclamation, String>> cellFactory = (
                 TableColumn<reclamation, String> param) -> {
             final TableCell<reclamation, String> cell = new TableCell<reclamation, String>() {
-                final Button editButton = new Button("✎");
-                final Button deleteButton = new Button("🗑");
+                final Button editButton = new Button("❕");
+                final Button deleteButton = new Button("❗");
+                final Button rembourseButton = new Button("⌛");
+               // Button rembourseButton = new Button();
+
+
+
+
                 @Override
                 public void updateItem(String item, boolean empty) {
                     super.updateItem(item, empty);
@@ -94,15 +114,31 @@ public class AfficherReclamationFXML implements Initializable {
                         setGraphic(null);
                         setText(null);
                     } else {
-
-                        editButton.setOnAction(this::onEditButtonClicked);
+                       // Image image = new Image("target/assets/trash.png");
+                        //ImageView imageView = new ImageView(image);
+                        //imageView.setFitWidth(16);
+                        //imageView.setFitHeight(16);
+                        //rembourseButton.setGraphic(imageView);
+                        rembourseButton.setOnAction(this::onRembourserButtonClicked);
+                        //editButton.setOnAction(this::onEditButtonClicked);
                         deleteButton.setOnAction(this::onDeleteButtonClicked);
-                        HBox buttonsContainer = new HBox(editButton, deleteButton);
+                        HBox buttonsContainer = new HBox(editButton, deleteButton ,rembourseButton);
                         setGraphic(buttonsContainer);
                         setText(null);
                     }
                 }
+                private void onRembourserButtonClicked(ActionEvent event) {
 
+                    reclamation selectedReclamation = getTableView().getItems().get(getIndex());
+                    // Vérifiez si une réclamation est sélectionnée
+                    if (selectedReclamation != null) {
+                        // Appelez la méthode pour rembourser la réclamation
+                        rembourserReclamation(event, selectedReclamation);
+                    } else {
+                        // Affichez un message d'erreur si aucune réclamation n'est sélectionnée
+                        showErrorNotification("Veuillez sélectionner une réclamation pour effectuer un remboursement");
+                    }
+                }
                 private void onEditButtonClicked(ActionEvent event) {
                     reclamation selectedReclamation = getTableView().getItems().get(getIndex());
                     modifierrec(event, selectedReclamation);
@@ -118,8 +154,9 @@ public class AfficherReclamationFXML implements Initializable {
 
         edit.setCellFactory(cellFactory);
     }
+
     private void deleteReclamation(reclamation reclamation) {
-this.r = new ServiceReclamation();
+      this.r = new ServiceReclamation();
     reclamation selectedReclamation = table_reclamation.getSelectionModel().getSelectedItem();
     if (selectedReclamation != null) {
 
@@ -164,8 +201,8 @@ this.r = new ServiceReclamation();
         // Assigner la liste observable à la TableView
         table_reclamation.setItems(reclamationsObservable);
 
-        id_reclamationColumn.setCellValueFactory(new PropertyValueFactory<>("id_reclamation"));
-        id_clientColumn.setCellValueFactory(new PropertyValueFactory<>("UserID"));
+        //id_reclamationColumn.setCellValueFactory(new PropertyValueFactory<>("id_reclamation"));
+      //  id_clientColumn.setCellValueFactory(new PropertyValueFactory<>("UserID"));
         titre_reclamationColumn.setCellValueFactory(new PropertyValueFactory<>("titre_reclamation"));
         date_reclamationColumn.setCellValueFactory(new PropertyValueFactory<>("date_reclamation"));
         heure_reclamationColumn.setCellValueFactory(new PropertyValueFactory<>("heure"));
@@ -303,6 +340,37 @@ void supprimer(ActionEvent event) {
         alert.getDialogPane().getStyleClass().add("error-alert");
 
         alert.showAndWait();
+    }
+
+
+    ///////////////////////
+    @FXML
+    private void rembourserReclamation(ActionEvent event, reclamation selectedReclamation) {
+        try {
+            // Récupérez l'ID de la réclamation
+            int idReclamation = selectedReclamation.getId_reclamation();
+
+            // Instanciez un FXMLLoader pour charger la vue AjouterRembourssementFXML.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterRembourssementFXML.fxml"));
+            Parent root = loader.load();
+
+            // Obtenez le contrôleur associé à la vue AjouterRembourssementFXML
+            AjouterRembourssementFXML ajouterRembourssementController = loader.getController();
+
+            // Appelez la méthode d'ajout du remboursement avec l'ID de la réclamation
+            ajouterRembourssementController.setIdReclamation(idReclamation);
+
+            // Affichez la nouvelle fenêtre AjouterRembourssementFXML
+            Stage stage = new Stage();
+            stage.setTitle("Ajouter Rembourssement");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showErrorNotification("Erreur lors du remboursement de la réclamation");
+        }
     }
     ////////////////////////
     @FXML

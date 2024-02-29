@@ -1,6 +1,7 @@
 package services;
 
 import models.rembourssement;
+import models.reclamation;
 import utils.DBConnection;
 import java.sql.*;
 import java.sql.Connection;
@@ -15,16 +16,56 @@ public class ServiceRembourssement implements CRUD<rembourssement> {
     public ServiceRembourssement() {
         cnx = DBConnection.getInstance().getCnx();
     }
+    public List<rembourssement> getRemboursementsWithJoin() {
+        List<rembourssement> remboursements = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM rembourssement LEFT JOIN reclamation ON rembourssement.id_reclamation = reclamation.id_reclamation";
+            Statement statement = cnx.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
 
+            while (resultSet.next()) {
+                rembourssement rb = new rembourssement();
+
+                // Récupération des colonnes de rembourssement
+                rb.setId_rembourssement(resultSet.getInt("id_rembourssement"));
+                rb.setId_reclamation(resultSet.getInt("id_reclamation"));
+                rb.setPrix(resultSet.getFloat("prix"));
+                rb.setDate_rembourssement(resultSet.getDate("date_rembourssement").toLocalDate());
+                rb.setHeure(resultSet.getTime("heure").toLocalTime());
+                rb.setStatut_rembourssement(resultSet.getString("statut_rembourssement"));
+                rb.setMode_paiement(resultSet.getString("mode_paiement"));
+
+                // Récupération des colonnes de reclamation
+                // Ajoutez ici les setters pour les colonnes de la table reclamation que vous souhaitez récupérer
+
+                remboursements.add(rb);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Gérer les erreurs liées à la base de données
+        }
+
+
+        return remboursements;
+    }
     public void insertOne(rembourssement rembourssement) throws SQLException {
-
-        String req = "INSERT INTO `rembourssement`(`id_reclamation`, `prix`, `date_rembourssement`, `heure`, `statut_rembourssement`, `mode_paiement`) VALUES (" +
-                rembourssement.getId_reclamation() + ", " +
-                rembourssement.getPrix() + ", '" + rembourssement.getDate_rembourssement() + "','" +rembourssement.getHeure() + "', '"+ rembourssement.getStatut_rembourssement() + "','" + rembourssement.getMode_paiement() + "')";
+////////////////////////
 
 
-        Statement st = cnx.createStatement();
-        st.executeUpdate(req);
+
+        ////////////////////
+
+        String req = "INSERT INTO `rembourssement`(`id_rembourssement`,`id_reclamation`,`prix`, `date_rembourssement`, `heure`, `statut_rembourssement`, `mode_paiement`) VALUES (" +
+                rembourssement.getId_rembourssement() + ", "+ rembourssement.getId_reclamation() + ", "+rembourssement.getPrix() + ", '" + rembourssement.getDate_rembourssement() + "','" +rembourssement.getHeure() + "', '"+ rembourssement.getStatut_rembourssement() + "','" + rembourssement.getMode_paiement() + "')";
+
+        /*
+        String req = "INSERT INTO `rembourssement` (`id_rembourssement`, `id_reclamation`, `prix`, `date_rembourssement`, `heure`, `statut_rembourssement`, `mode_paiement`) VALUES (
+        "'" + 4 + "', '" + 22345 +"', '"+ 88.55 +"', '"+2024-02-15', ' 25:44:44 ', 'Non Rembourse', 'cache')";
+        */
+
+            Statement st = cnx.createStatement();
+            st.executeUpdate(req);
 
     }
 

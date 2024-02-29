@@ -47,9 +47,9 @@ public class ModifierReclamationFXML implements Initializable {
     void modifierdy(ActionEvent event){
         try{
 
-            int idreclamationm2=Integer.parseInt(idreclamationm.getText());
-            int id_clientm2=Integer.parseInt(id_clientm.getText());
-
+           // int idreclamationm2=Integer.parseInt(idreclamationm.getText());
+            int id_clientm2=this.reclamationToModify.getUserID();
+            int idreclamationm2 = this.reclamationToModify.getId_reclamation();
             sr.updateOne(new reclamation(idreclamationm2,id_clientm2,titrem2.getText(),date_reclamationm.getValue(),heurem.getValue(),type_reclamationm.getValue(),statm2.getValue(),descriptionm.getText()));
 
             showSuccessNotification("Modif réussie");
@@ -69,8 +69,8 @@ public class ModifierReclamationFXML implements Initializable {
         // Ensure that the recommendation is not null before initializing the fields
         if(rec!= null)
         {
-            idreclamationm.setText(String.valueOf(rec.getId_reclamation()));
-            id_clientm.setText(String.valueOf(rec.getUserID()));
+           // idreclamationm.setText(String.valueOf(rec.getId_reclamation()));
+          //  id_clientm.setText(String.valueOf(rec.getUserID()));
             titrem2.setText(String.valueOf(rec.getTitre_reclamation()));
             date_reclamationm.setValue(LocalDate.parse(String.valueOf(rec.getDate_reclamation())));
             //heurem.setValueFactory(LocalTime.parse(String.valueOf(rec.getHeure())));

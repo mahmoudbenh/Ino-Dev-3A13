@@ -19,7 +19,7 @@ package controllers;
         import javafx.stage.Stage;
         import services.ServiceRembourssement;
         import models.rembourssement;
-
+import controllers.AfficherReclamationFXML;
         import static javafx.collections.FXCollections.*;
 
 public class AjouterRembourssementFXML implements Initializable {
@@ -51,22 +51,27 @@ public class AjouterRembourssementFXML implements Initializable {
 
     @FXML
     private ComboBox<String> statr;
-
+    private int idReclamation;
+    public void setIdReclamation(int idReclamation) {
+        this.idReclamation = idReclamation;
+    }
     @FXML
 
-    void ajouterrembourssement(ActionEvent event) {
+    void ajouterrembourssement(int idReclamation) {
         try
         {
             String statut_rembourssement = statr.getValue();
             String mode_rembourssement = moder.getValue();
             rembourssement r = new rembourssement(Float.parseFloat(prix_produitr.getText()),date_remboursr.getValue(),heure_remboursr.getValue(),statut_rembourssement,mode_rembourssement);
+            r.setId_reclamation(idReclamation);
+           System.out.println(r);
             ServiceRembourssement sr = new ServiceRembourssement();
             sr.insertOne(r);
             showSuccessNotification("rembourssement en cours de traitement");
         }
         catch (SQLException e)
         {
-
+            System.out.println(e.getMessage());
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur de saisie");
             alert.setContentText("vous devez entrer tout les informations necessaires!");
@@ -77,6 +82,16 @@ public class AjouterRembourssementFXML implements Initializable {
             alert.setContentText("Vous avez une erreur dans la saisie de vos données!");
             alert.show();
         }
+
+    }
+    @FXML
+    void handleajouterrembourssement(ActionEvent event) {
+        // Obtenez l'ID de la réclamation depuis votre application
+        //int idReclamation = /* Obtenez l'ID de la réclamation depuis votre application */;
+        System.out.println("ID de la réclamation: " + idReclamation);
+
+        // Appelez la méthode ajouterrembourssement avec l'ID de la réclamation
+        ajouterrembourssement(idReclamation);
     }
     void showSuccessNotification(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
