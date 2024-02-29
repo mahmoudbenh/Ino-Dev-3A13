@@ -26,7 +26,6 @@ import models.Produit;
 import services.ServiceProduit;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-//import javax.swing.text.TableView;
 
 public class AjouterProduitFxml {
 
@@ -76,10 +75,12 @@ public class AjouterProduitFxml {
     @FXML
     void ajouterProduit(ActionEvent event) {
         try {
-            String categorie = (String) tfCategProd.getValue(); // Récupérer la valeur sélectionnée dans la ComboBox
+            String categorie = (String) tfCategProd.getValue();
             Produit p = new Produit(Integer.parseInt(tfIdProd.getText()),tfNomProd.getText(), tfDesProd.getText(), categorie , Float.parseFloat(tfPrixProd.getText()));
             ServiceProduit sp = new ServiceProduit();
             sp.insertOne_prod(p);
+            tableProduit.getItems().add(p);
+            tableProduit.refresh();
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur de saisie");
@@ -104,14 +105,11 @@ public class AjouterProduitFxml {
 
     @FXML
     void afficherProduit(MouseEvent event) {
-        // Vérifie si un clic de souris a été effectué
         if (event.getClickCount() > 0) {
-            // Récupérer la ligne sélectionnée dans le TableView
+
             Produit produitSelectionne = tableProduit.getSelectionModel().getSelectedItem();
 
-            // Vérifier si un événement a été sélectionné
             if (produitSelectionne != null) {
-                // Remplir les champs du formulaire avec les informations de l'événement sélectionné
                 tfIdProd.setText(String.valueOf(produitSelectionne.getId_produit()));
                 tfNomProd.setText(produitSelectionne.getNom_produit());
                 tfDesProd.setText(produitSelectionne.getDescription());
@@ -119,25 +117,18 @@ public class AjouterProduitFxml {
                 tfPrixProd.setText(String.valueOf(produitSelectionne.getPrix_produit()));
             }
         }
-
-
     }
 
     @FXML
     void afficher() {
         tableProduit.setOnMouseClicked(this::afficherProduit);
         try {
-            // Appeler la méthode de service pour récupérer la liste des produits
             ServiceProduit sp = new ServiceProduit();
             List<Produit> produits = sp.selectAll_prod();
-
-            // Créer une liste observable de produits
             ObservableList<Produit> produitsObservable = FXCollections.observableArrayList(produits);
-
-            // Assigner la liste observable à la TableView
             tableProduit.setItems(produitsObservable);
+
         } catch (SQLException e) {
-            // Gérer les exceptions SQL
             e.printStackTrace();
         }
     }
@@ -148,21 +139,17 @@ public class AjouterProduitFxml {
             Produit produitAModifier = tableProduit.getSelectionModel().getSelectedItem();
 
             if (produitAModifier != null) {
-                // Mettre à jour les données de l'événement dans la base de données
                 produitAModifier.setId_produit(Integer.parseInt(tfIdProd.getText()));
                 produitAModifier.setNom_produit(tfNomProd.getText());
                 produitAModifier.setDescription(tfDesProd.getText());
                 produitAModifier.setCategorie(tfCategProd.getValue());
                 produitAModifier.setPrix_produit(Float.parseFloat(tfPrixProd.getText()));
 
-                // Mettre à jour l'événement dans la base de données
                 ServiceProduit se = new ServiceProduit();
                 se.updateOne_prod(produitAModifier);
 
-                // Mettre à jour l'affichage dans le TableView
                 tableProduit.refresh();
 
-                // Afficher un message de réussite
                 afficherSucces("Modification réussie", "Le produit a été modifié avec succès !");
             } else {
                 afficherErreur("Aucun produit sélectionné", "Veuillez sélectionner un produit à modifier dans le TableView.");
@@ -179,7 +166,6 @@ public class AjouterProduitFxml {
         Produit produitASupprimer = tableProduit.getSelectionModel().getSelectedItem();
 
         if (produitASupprimer != null) {
-            // Afficher une boîte de dialogue de confirmation
             Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
             confirmation.setTitle("Confirmation de suppression");
             confirmation.setHeaderText("Êtes-vous sûr de vouloir supprimer ce produit ?");
@@ -187,17 +173,11 @@ public class AjouterProduitFxml {
 
             Optional<ButtonType> result = confirmation.showAndWait();
 
-            // Vérifier si l'utilisateur a cliqué sur le bouton OK
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 try {
-                    // Supprimer le produit de la base de données
                     ServiceProduit service = new ServiceProduit();
                     service.deleteOne_prod(produitASupprimer);
-
-                    // Supprimer le produit de la TableView
                     tableProduit.getItems().remove(produitASupprimer);
-
-                    // Afficher un message de réussite
                     afficherSucces("Suppression réussie", "Le produit a été supprimé avec succès !");
                 } catch (SQLException e) {
                     afficherErreur("Erreur de suppression", "Une erreur s'est produite lors de la suppression du produit.");
@@ -207,61 +187,6 @@ public class AjouterProduitFxml {
             afficherErreur("Aucun produit sélectionné", "Veuillez sélectionner un produit à supprimer dans le TableView.");
         }
     }
-
-        /*
-        // Récupérer l'index de la ligne sélectionnée dans la TableView
-    int selectedIndex = tableProduit.getSelectionModel().getSelectedIndex();
-
-    // Vérifier si une ligne est effectivement sélectionnée
-    if (selectedIndex >= 0) {
-        // Récupérer le produit sélectionné
-        Produit selectedProduit = tableProduit.getItems().get(selectedIndex);
-
-        // Récupérer les nouvelles valeurs des champs de texte
-        String newNomProd = tfNomProd.getText();
-        String newDesProd = tfDesProd.getText();
-        String newCategProd = tfCategProd.getValue();
-        float newPrixProd = Float.parseFloat(tfPrixProd.getText());
-
-        try {
-            // Mettre à jour le produit sélectionné avec les nouvelles valeurs
-            selectedProduit.setNomProd(newNomProd);
-            selectedProduit.setDescription(newDesProd);
-            selectedProduit.setCategorie(newCategProd);
-            selectedProduit.setPrixProd(newPrixProd);
-
-            // Appeler le service pour mettre à jour le produit dans la base de données
-            ServiceProduit sp = new ServiceProduit();
-            sp.updateOne_prod(selectedProduit);
-
-            // Afficher une confirmation à l'utilisateur
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Mise à jour du produit");
-            alert.setHeaderText(null);
-            alert.setContentText("Le produit a été mis à jour avec succès!");
-            alert.showAndWait();
-
-            // Rafraîchir la TableView pour refléter les changements
-            afficherProduit(event);
-        } catch (SQLException e) {
-            // Gérer les erreurs de mise à jour
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText(null);
-            alert.setContentText("Une erreur est survenue lors de la mise à jour du produit.");
-            alert.showAndWait();
-        }
-    } else {
-        // Aucune ligne sélectionnée, afficher un message d'erreur
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Aucune sélection");
-        alert.setHeaderText(null);
-        alert.setContentText("Veuillez sélectionner un produit à mettre à jour.");
-        alert.showAndWait();
-    }
-         */
-
 
     @FXML
     void select(ActionEvent event) {
@@ -283,11 +208,8 @@ public class AjouterProduitFxml {
         alert.setTitle(titre);
         alert.setHeaderText(null);
         alert.setContentText(contenu);
-
-        // Supprime le bouton de fermeture de l'alerte
         alert.getButtonTypes().clear();
         alert.getButtonTypes().add(ButtonType.OK);
-
         alert.showAndWait();
     }
 
@@ -297,17 +219,15 @@ public class AjouterProduitFxml {
         Scene tableViewScene = new Scene(tableViewParent);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(tableViewScene);
-
         window.show();
     }
 
     @FXML
     void initialize() {
         ObservableList<String> list = FXCollections.observableArrayList("Materiel","Logiciel");
-        tfCategProd.setItems(list); // Appliquer la liste observable à votre ComboBox
+        tfCategProd.setItems(list);
 
-        // Associer chaque colonne à la propriété correspondante de l'objet Produit
-        afNom.setCellValueFactory(new PropertyValueFactory<>("nom_produit")); // Assurez-vous que "nom" correspond à la propriété dans la classe Produit
+        afNom.setCellValueFactory(new PropertyValueFactory<>("nom_produit"));
         afDesc.setCellValueFactory(new PropertyValueFactory<>("description"));
         afCatg.setCellValueFactory(new PropertyValueFactory<>("categorie"));
         afPrix.setCellValueFactory(new PropertyValueFactory<>("prix_produit"));

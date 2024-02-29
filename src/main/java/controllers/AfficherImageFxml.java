@@ -50,9 +50,9 @@ public class AfficherImageFxml {
         this.productId = productId;
         try {
             retrieveProductImages(productId);
-            displayProductInformation(productId); // Appel pour afficher les informations du produit
+            displayProductInformation(productId);
         } catch (SQLException e) {
-            e.printStackTrace(); // Gérer l'exception de manière appropriée
+            e.printStackTrace();
         }
     }
 
@@ -108,7 +108,6 @@ public class AfficherImageFxml {
         assert nomPs != null : "fx:id=\"nomPs\" was not injected: check your FXML file 'AfficherImageFXML.fxml'.";
         assert catgPs != null : "fx:id=\"catgPs\" was not injected: check your FXML file 'AfficherImageFXML.fxml'.";
 
-        // Afficher les informations du produit
         displayProductInformation(productId);
     }
 
@@ -131,7 +130,6 @@ public class AfficherImageFxml {
                 descPs.setText(description);
                 catgPs.setText(categorie);
                 prxiPs.setText(String.valueOf(prixProduit));
-                //System.out.println(nomProduit);
             }
 
             resultSet.close();

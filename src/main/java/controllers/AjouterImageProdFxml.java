@@ -77,12 +77,18 @@ public class AjouterImageProdFxml {
     void ajouterImage(ActionEvent event) {
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev", "root", "")) {
             int idProduit = Integer.parseInt(ftId_prod.getValue());
+            String imageUrl = ftUrl.getText();
             String sql = "INSERT INTO image (id_produit, url) VALUES (?, ?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setInt(1, idProduit);
                 preparedStatement.setString(2, ftUrl.getText());
                 preparedStatement.executeUpdate();
                 System.out.println("Image ajoutée avec succès.");
+                Image image = new Image(imageUrl);
+                ImageView imageView = new ImageView(image);
+                imageView.setFitWidth(150);
+                imageView.setFitHeight(150);
+                ImageGrid.add(imageView, 0, ImageGrid.getRowCount());
             } catch (SQLException e) {
                 System.out.println("Une erreur s'est produite lors de l'ajout de l'image : " + e.getMessage());
             }
@@ -110,18 +116,16 @@ public class AjouterImageProdFxml {
 
     @FXML
     void modifierImage(ActionEvent event) {
-        String imageUrl = ftUrl.getText(); // Récupérer l'URL de l'image que vous voulez modifier
+        String imageUrl = ftUrl.getText();
         int newIdProd = Integer.parseInt(ftId_prod.getValue());
 
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev", "root", "")) {
-            // Sélectionner l'ID de l'image à partir de l'URL spécifiée
             String selectSql = "SELECT id_image FROM image WHERE url = ?";
             try (PreparedStatement selectStatement = connection.prepareStatement(selectSql)) {
                 selectStatement.setString(1, imageUrl);
                 try (ResultSet resultSet = selectStatement.executeQuery()) {
                     if (resultSet.next()) {
                         int idImage = resultSet.getInt("id_image");
-                        // Mettre à jour l'image avec le nouvel ID produit
                         String updateSql = "UPDATE image SET id_produit = ? WHERE id_image = ?";
                         try (PreparedStatement updateStatement = connection.prepareStatement(updateSql)) {
                             updateStatement.setInt(1, newIdProd);
@@ -129,8 +133,17 @@ public class AjouterImageProdFxml {
                             int rowsAffected = updateStatement.executeUpdate();
                             if (rowsAffected > 0) {
                                 System.out.println("L'image a été modifiée avec succès !");
+                                for (Node node : ImageGrid.getChildren()) {
+                                    if (node instanceof ImageView) {
+                                        ImageView imageView = (ImageView) node;
+                                        if (imageView.getImage().getUrl().equals(imageUrl)) {
+                                            imageView.setImage(new Image(new File(imageUrl).toURI().toString()));
+                                            break;
+                                        }
+                                    }
+                                }
                             } else {
-                                System.out.println("Aucune image correspondant à cet URL n'a été trouvée.");
+                                System.out.println("La mise à jour de l'image a échoué.");
                             }
                         }
                     } else {
@@ -144,12 +157,9 @@ public class AjouterImageProdFxml {
     }
 
 
-
-
-
     @FXML
     void supprimerImage(ActionEvent event) {
-        String imageUrl = ftUrl.getText(); // Récupérer l'URL de l'image que vous voulez supprimer
+        String imageUrl = ftUrl.getText();
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev", "root", "")) {
             String sql = "SELECT id_image FROM image WHERE url = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -157,12 +167,24 @@ public class AjouterImageProdFxml {
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     if (resultSet.next()) {
                         int idImage = resultSet.getInt("id_image");
-                        // Maintenant que vous avez l'ID de l'image, vous pouvez exécuter la suppression
+
                         String deleteSql = "DELETE FROM image WHERE id_image = ?";
                         try (PreparedStatement deleteStatement = connection.prepareStatement(deleteSql)) {
                             deleteStatement.setInt(1, idImage);
                             deleteStatement.executeUpdate();
                             System.out.println("L'image a été supprimée avec succès !");
+
+                            for (Node node : ImageGrid.getChildren()) {
+                                if (node instanceof ImageView) {
+                                    ImageView imageView = (ImageView) node;
+                                    if (imageView.getImage().getUrl().equals(imageUrl)) {
+                                        int rowIndex = GridPane.getRowIndex(node);
+                                        ImageGrid.getChildren().remove(node);
+                                        ImageGrid.getRowConstraints().remove(rowIndex);
+                                        break;
+                                    }
+                                }
+                            }
                         }
                     } else {
                         System.out.println("Aucune image correspondant à cette URL n'a été trouvée.");
@@ -179,16 +201,14 @@ public class AjouterImageProdFxml {
 
 
 
-    // Méthode pour ajouter une image à la grille
+
     private void ajouterImage(String url, int column, int row) {
         ImageView imageView = new ImageView(new Image(url));
         ImageGrid.add(imageView, column, row);
     }
 
-    // Liste des URLs des images
     private List<String> urls = new ArrayList<>();
 
-    // Méthode pour ajouter une URL d'image à la liste
     public void addImageUrl(String url) {
         urls.add(url);
 
@@ -198,7 +218,6 @@ public class AjouterImageProdFxml {
 
     private AjouterImageFxml ajouterImageController;
 
-    // Méthode pour charger et afficher les images
     private void loadAndDisplayImages() {
         int column = 0;
         int row = 0;
@@ -208,57 +227,14 @@ public class AjouterImageProdFxml {
                 System.out.println("URL de l'image : " + url);
                 ImageGrid.add(imageView, column, row);
                 column++;
-                // Réinitialisez la colonne et incrémentez la ligne après chaque 3 images pour créer une grille
                 if (column == 1) {
                     column = 0;
                     row++;
                 }
             } catch (Exception e) {
-                // Gérer les exceptions liées au chargement des images
                 System.err.println("Erreur lors du chargement de l'image depuis l'URL : " + url);
                 e.printStackTrace();
             }
-        }
-    }
-
-    private void afficherImagesProduits(ServiceProduit serviceProduit, GridPane gridPane) {
-        try {
-            // Récupérer tous les produits avec leurs images en utilisant l'instance de ServiceProduit
-            List<Produit> produits = serviceProduit.selectAll_prod_2();
-
-            int column = 0;
-            int row = 0;
-            // Parcourir tous les produits
-            for (Produit produit : produits) {
-                List<String> urlsImages = produit.getUrlsImages();
-                for (String url : urlsImages) {
-                    try {
-                        // Charger et afficher l'image dans l'interface utilisateur
-                        Image img = new Image(url);
-                        ImageView imageView = new ImageView(img);
-
-                        // Ajouter l'image au GridPane
-                        gridPane.add(imageView, column, row);
-
-                        // Ajouter l'URL à la liste d'URLs
-                        addImageUrl(url);
-
-                        // Incrémenter les valeurs de colonne et de ligne
-                        column++;
-                        // Réinitialiser la colonne et incrémenter la ligne si nécessaire
-                        if (column == 1) {
-                            column = 0;
-                            row++;
-                        }
-                    } catch (Exception e) {
-                        // Gérer les exceptions liées au chargement des images
-                        System.err.println("Erreur lors du chargement de l'image depuis l'URL : " + url);
-                        e.printStackTrace();
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 
@@ -275,7 +251,6 @@ public class AjouterImageProdFxml {
     @FXML
     void initialize() {
         try {
-            // Utilisation de DBConnection pour obtenir la connexion
             Connection connection = DBConnection.getInstance().getCnx();
             String query = "SELECT id_produit FROM produit";
             PreparedStatement statement = connection.prepareStatement(query);
@@ -287,7 +262,7 @@ public class AjouterImageProdFxml {
             }
             ftId_prod.setItems(list_id);
 
-            // Fermeture des ressources de la première connexion
+
             resultSet.close();
             statement.close();
         } catch (SQLException e) {
@@ -328,10 +303,9 @@ public class AjouterImageProdFxml {
 
                 try {
                     Image image = new Image(url);
-                    // Affichez un message pour indiquer que l'image a été chargée avec succès
+
                     System.out.println("Image chargée avec succès depuis l'URL : " + url);
                 } catch (Exception e) {
-                    // Affichez les détails de l'exception s'il y en a
                     System.err.println("Erreur lors du chargement de l'image depuis l'URL : " + url);
                     e.printStackTrace();
                 }
@@ -342,61 +316,37 @@ public class AjouterImageProdFxml {
             for (String url : imageUrls) {
                 Image image = new Image(url);
                 ImageView imageView = new ImageView(image);
-                imageView.setFitWidth(150); // ajustez la largeur selon vos besoins
+                imageView.setFitWidth(150);
                 imageView.setPreserveRatio(true);
                 ImageGrid.add(imageView, column, row);
 
-                // Ajouter un gestionnaire d'événements à chaque ImageView dans ImageGrid
+
                 imageView.setOnMouseClicked(event -> {
-                    // Extraire l'URL de l'image à partir de l'ImageView cliquée
                     String imageUrl = imageView.getImage().getUrl();
-                    // Mettre à jour les champs de texte avec les données de l'image sélectionnée
                     ftUrl.setText(imageUrl);
 
                     try {
-                        // Recherche de l'id_produit associé à l'image en fonction de l'URL
                         Connection cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev", "root", "");
                         PreparedStatement statement2 = cnx.prepareStatement("SELECT id_image , id_produit FROM image WHERE url = ?");
 
-                        //String query = "SELECT id_image , id_produit FROM image WHERE url = ?";
-                        //PreparedStatement statement2 = connection.prepareStatement(query);
                         statement2.setString(1, imageUrl);
                         ResultSet resultSet2 = statement2.executeQuery();
 
-                        // Si un résultat est trouvé, récupérez l'id_produit associé
                         if (resultSet2.next()) {
                             int id_prod = resultSet2.getInt("id_produit");
                             ftId_prod.setValue(String.valueOf(id_prod));
                             int id_img = resultSet2.getInt("id_image");
-                            //ftId_Img.setText(String.valueOf(id_img));
-                            // Vous pouvez également utiliser id_prod comme vous le souhaitez ici
                         } else {
                             System.out.println("Aucun id_produit trouvé pour l'image avec l'URL : " + imageUrl);
                         }
 
-                        // Fermer les ressources
-                        //resultSet2.close();
-                        //statement2.close();
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
-                    // Extraire les coordonnées de l'image
-    /*int id_img = ImageGrid.getColumnIndex(imageView);
-    int id_prod = ImageGrid.getRowIndex(imageView);
 
-
-    // Afficher les coordonnées dans les champs ftId_prod et ftId_Img
-    ftId_Img.setText(String.valueOf(id_img));
-    ftId_prod.setValue(String.valueOf(id_prod));*/
-                    // Vous pouvez également extraire et afficher l'ID de l'image si nécessaire
-                    // Par exemple, si l'URL suit un format spécifique où l'ID est inclus
-
-                    // Afficher l'image sélectionnée dans ftImg
                     ftImg.setImage(imageView.getImage());
                 });
 
-
-                // Gestion de la grille
                 column++;
                 if (column == 1) {
                     column = 0;
@@ -410,19 +360,6 @@ public class AjouterImageProdFxml {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        // Pour que les images occupent tout l'espace disponible
-       /* for (int i = 0; i < 3; i++) {
-            ColumnConstraints columnConstraints = new ColumnConstraints();
-            columnConstraints.setHgrow(Priority.ALWAYS);
-            ImageGrid.getColumnConstraints().add(columnConstraints);
-        }
-
-        for (int i = 0; i < 10; i++) {
-            RowConstraints rowConstraints = new RowConstraints();
-            rowConstraints.setVgrow(Priority.ALWAYS);
-            ImageGrid.getRowConstraints().add(rowConstraints);
-        }*/
     }
 
 }

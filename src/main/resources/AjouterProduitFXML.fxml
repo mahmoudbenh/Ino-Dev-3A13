@@ -19,7 +19,7 @@
                <Image url="@../img/Back.jpg" />
            </image>
        </ImageView>
-       <Text fill="#dfd3d3" layoutX="549.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADMIN" wrappingWidth="130.13671875">
+       <Text fill="#dfd3d3" layoutX="549.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produit" wrappingWidth="130.13671875">
            <font>
                <Font size="36.0" />
            </font>

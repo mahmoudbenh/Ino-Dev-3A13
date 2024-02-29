@@ -1,4 +1,3 @@
-// AjouterImageFxml.java
 package controllers;
 
 import javafx.fxml.FXMLLoader;
@@ -122,7 +121,6 @@ public class AjouterImageFxml {
                 AfficherProduitFxml controller = loader.getController();
                 controller.initializeData(produit);
 
-                // Ajouter un gestionnaire d'événements pour l'image
                 ImageView imageView = controller.getFtImgProds();
                 int produitId = produit.getId_produit();
                 imageView.setOnMouseClicked(event -> afficherDetailsProduit(produitId));
@@ -142,27 +140,25 @@ public class AjouterImageFxml {
         }
     }
 
-
-    // Méthode pour afficher les détails du produit dans l'interface AfficherImageFxml
-    // Méthode pour afficher les détails du produit dans l'interface AfficherImageFxml
     private void afficherDetailsProduit(int productId) {
-        // Charger l'interface AfficherImageFxml
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherImageFXML.fxml"));
         Parent root;
         try {
             root = loader.load();
             AfficherImageFxml controller = loader.getController();
-            // Appeler la méthode pour afficher les détails du produit
             try {
                 controller.retrieveProductImages(productId);
                 controller.displayProductInformation(productId);
             } catch (SQLException e) {
-                e.printStackTrace(); // Gérer l'exception de manière appropriée
+                e.printStackTrace();
             }
-            // Afficher la nouvelle interface
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
+            Scene currentScene = ftLogo.getScene();
+            Stage parentStage = (Stage) currentScene.getWindow();
+
+            currentScene.setRoot(root);
+
+            parentStage.sizeToScene();
+            parentStage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
         }

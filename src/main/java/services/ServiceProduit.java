@@ -13,15 +13,6 @@ public class ServiceProduit {
             cnx = DBConnection.getInstance().getCnx();
         }
 
-        //@Override
-       /* public void insertOne(Produit produit) throws SQLException {
-            String req = "INSERT INTO `produit`(`id`, `nom`, `description`, `image`, `prix`) VALUES " +
-                    "('"+produit.getNom()+"','"+produit.getDescription()+"','"+produit.getImage()+"',"+produit.getPrix()+")";
-            Statement st = cnx.createStatement();
-            st.executeUpdate(req);
-            System.out.println("Produit Added !");
-        }*/
-
     public void insertOne_prod(Produit produit) throws SQLException {
         String req = "INSERT INTO `produit`(`id_produit` , `nom_produit`, `description`, `categorie`, `prix_produit`) VALUES " +
                 "(?,?,?,?,?)";
@@ -40,15 +31,12 @@ public class ServiceProduit {
         try {
             String req = "UPDATE produit SET nom_produit=?, description=?, categorie=?, prix_produit=? WHERE id_produit=?";
             PreparedStatement ps = cnx.prepareStatement(req);
-
-            // Définition des valeurs des paramètres de substitution
             ps.setString(1, produit.getNom_produit());
             ps.setString(2, produit.getDescription());
             ps.setString(3, produit.getCategorie());
             ps.setFloat(4, produit.getPrix_produit());
-            ps.setInt(5, produit.getId_produit()); // Filtrer par identifiant
+            ps.setInt(5, produit.getId_produit());
 
-            // Exécution de la requête préparée
             ps.executeUpdate();
             System.out.println("Produit modifié avec succès...");
         } catch (SQLException ex) {
@@ -106,8 +94,6 @@ public class ServiceProduit {
             p.setDescription(rs.getString("description"));
             p.setCategorie(rs.getString("categorie"));
             p.setPrix_produit(rs.getFloat("prix_produit"));
-
-            // Récupérer les URLs des images pour ce produit
             List<String> urlsImages = selectImagesForProduit(p.getId_produit());
             p.setUrlsImages(urlsImages);
 
