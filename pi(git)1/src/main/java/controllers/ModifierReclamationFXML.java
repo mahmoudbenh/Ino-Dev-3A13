@@ -98,8 +98,8 @@ public class ModifierReclamationFXML implements Initializable {
     }
     @FXML
     void annuler(ActionEvent event) {
-        idreclamationm.setText(null);
-        id_clientm.setText(null);
+        //idreclamationm.setText(null);
+       // id_clientm.setText(null);
         titrem2.setText(null);
         date_reclamationm.setValue(null);
         heurem.getValueFactory().setValue(null);

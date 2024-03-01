@@ -99,9 +99,9 @@ public class AfficherReclamationFXML implements Initializable {
         Callback<TableColumn<reclamation, String>, TableCell<reclamation, String>> cellFactory = (
                 TableColumn<reclamation, String> param) -> {
             final TableCell<reclamation, String> cell = new TableCell<reclamation, String>() {
-                final Button editButton = new Button("❕");
-                final Button deleteButton = new Button("❗");
-                final Button rembourseButton = new Button("⌛");
+                final Button editButton = new Button("1");
+                final Button deleteButton = new Button("2");
+                final Button rembourseButton = new Button("3");
                // Button rembourseButton = new Button();
 
 
@@ -120,7 +120,7 @@ public class AfficherReclamationFXML implements Initializable {
                         //imageView.setFitHeight(16);
                         //rembourseButton.setGraphic(imageView);
                         rembourseButton.setOnAction(this::onRembourserButtonClicked);
-                        //editButton.setOnAction(this::onEditButtonClicked);
+                        editButton.setOnAction(this::onEditButtonClicked);
                         deleteButton.setOnAction(this::onDeleteButtonClicked);
                         HBox buttonsContainer = new HBox(editButton, deleteButton ,rembourseButton);
                         setGraphic(buttonsContainer);

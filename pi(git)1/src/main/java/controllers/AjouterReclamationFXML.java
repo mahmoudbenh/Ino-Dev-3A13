@@ -22,6 +22,7 @@ package controllers;
         import javafx.scene.control.*;
         import javafx.scene.control.TextField;
         import javafx.scene.control.cell.PropertyValueFactory;
+        import javafx.scene.layout.AnchorPane;
         import javafx.stage.Stage;
         import services.ServiceReclamation;
         import models.reclamation;
@@ -30,7 +31,7 @@ package controllers;
         import java.util.Random;
         import javafx.scene.image.Image;
         import javafx.scene.image.ImageView;
-
+        import static javafx.collections.FXCollections.*;
 public class AjouterReclamationFXML implements Initializable {
     @FXML
     private ImageView imageview1;
@@ -63,7 +64,24 @@ public class AjouterReclamationFXML implements Initializable {
     @FXML
     private TextField titre1;
 
+/*
+    public void start(Stage primaryStage) {
+        // Créez votre AnchorPane et votre Scene
+        AnchorPane anchorPane = new AnchorPane();
+        Scene scene = new Scene(anchorPane, 800, 600);
 
+        // Ajoutez le code pour construire votre interface utilisateur ici...
+
+        // Configurez la scène pour qu'elle occupe tout l'écran
+        primaryStage.setScene(scene);
+        primaryStage.setFullScreen(true);
+
+        // Définissez le titre de la fenêtre
+        primaryStage.setTitle("Votre Application");
+
+        // Affichez la fenêtre principale
+        primaryStage.show();
+    }*/
     // private reclamation reclamationtomodify;
 
     private boolean isPhoneNumberInDescription(String description) {

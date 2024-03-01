@@ -105,8 +105,8 @@ public class ModifierRembourssementFXML implements Initializable {
     }
     @FXML
     void annuler(ActionEvent event) {
-        id_rembp.setText(null);
-        id_recp.setText(null);
+        //id_rembp.setText(null);
+       // id_recp.setText(null);
         prix_pp.setText(null);
         date_p.setValue(null);
         statp.setValue(null);
@@ -117,7 +117,7 @@ public class ModifierRembourssementFXML implements Initializable {
     void retour(ActionEvent event) {
         try {
             // Charger le fichier FXML de la nouvelle scène
-            FXMLLoader loaderb = new FXMLLoader(getClass().getResource("/AfficherRembourssementFXML.fxml"));
+            FXMLLoader loaderb = new FXMLLoader(getClass().getResource("/AjouterRembourssementFXML.fxml"));
             Parent root = loaderb.load();
 
             // Créer une nouvelle scène

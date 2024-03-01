@@ -10,37 +10,8 @@ public class FxMain extends Application{
     }
     public void start(Stage stage) throws Exception {
 
-        /*FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/AfficherReclamationFXML.fxml"));
-        Parent parent2 = loader2.load();
-        Scene scene2 = new Scene(parent2);
-        stage.setTitle("afficher une reclamation ");
-        stage.setScene(scene2);
-        stage.show();*/
 
 
-
-
-        /*FXMLLoader loaderm = new FXMLLoader(getClass().getResource("/ModifierReclamationFXML.fxml"));
-        Parent parentm = loaderm.load();
-        Scene scenem = new Scene(parentm);
-        stage.setTitle("modifier une reclamation ");
-        stage.setScene(scenem);
-        stage.show();*/
-
-
-        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/AfficherReclamationFXML.fxml"));
-        Parent parent2 = loader2.load();
-        Scene scene2 = new Scene(parent2);
-        stage.setTitle("afficher une reclamation ");
-        stage.setScene(scene2);
-        stage.show();
-
-        FXMLLoader loaderm = new FXMLLoader(getClass().getResource("/ModifierReclamationFXML.fxml"));
-        Parent parentm = loaderm.load();
-        Scene scenem = new Scene(parentm);
-        stage.setTitle("modifier une reclamation ");
-        stage.setScene(scenem);
-        stage.show();
 
 
 
@@ -52,20 +23,9 @@ public class FxMain extends Application{
         stage.setScene(scene);
         stage.show();
 
-        FXMLLoader loader5 = new FXMLLoader(getClass().getResource("/AjouterRembourssementFXML.fxml"));
-        Parent parent5 = loader5.load();
-        Scene scene5 = new Scene(parent5);
-        stage.setTitle("ajouter un remboussement ");
-        stage.setScene(scene5);
-        stage.show();
 
 
 
-       /* FXMLLoader loaderu = new FXMLLoader(getClass().getResource("/affichageUserreclamationFXML.fxml"));
-        Parent parentu = loaderu.load();
-        Scene sceneu = new Scene(parentu);
-        stage.setTitle("afficher les reclamations ");
-        stage.setScene(sceneu);
-        stage.show();*/
+
     }
 }

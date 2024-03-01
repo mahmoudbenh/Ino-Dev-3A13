@@ -271,7 +271,8 @@ void supprimer(ActionEvent event) {
     } else {
         showErrorNotification("Veuillez sélectionner une reclamation à supprimer");
     }
-}
+}//////////////////////////////
+
     void showErrorNotification(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Erreur");
