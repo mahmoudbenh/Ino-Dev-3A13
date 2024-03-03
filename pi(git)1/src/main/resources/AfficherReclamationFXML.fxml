@@ -41,15 +41,16 @@
                   </VBox>
                   <Text layoutX="873.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Responsable RH" />
                  
-                  <TableView fx:id="table_reclamation" layoutX="303.0" layoutY="181.0" prefHeight="258.0" prefWidth="602.0">
+                  <TableView fx:id="table_reclamation" layoutX="202.0" layoutY="181.0" prefHeight="262.0" prefWidth="703.0">
                     <columns>
                         <TableColumn fx:id="titre_reclamationColumn" prefWidth="102.39994812011719" text="Titre reclamation" />
                         <TableColumn fx:id="date_reclamationColumn" prefWidth="107.20001220703125" text="Date reclamation" />
                         <TableColumn fx:id="heure_reclamationColumn" prefWidth="109.5999755859375" text="Heure reclamation" />
                         <TableColumn fx:id="type_reclamationColumn" minWidth="0.0" prefWidth="0.0" text="Type reclamation" />
-                        <TableColumn fx:id="statut_reclamationcolumn" minWidth="0.0" prefWidth="129.60003662109375" text="Statut reclamation" />
-                        <TableColumn fx:id="descriptionColumn" prefWidth="77.5999755859375" text="Description" />
-                        <TableColumn fx:id="edit" prefWidth="73.60001220703123" />
+                        <TableColumn fx:id="type_reclamationColumn" minWidth="0.0" prefWidth="129.60003662109375" text="Type reclamation" />
+                        <TableColumn fx:id="statut_reclamationcolumn" prefWidth="113.59991455078125" text="Statut reclamation" />
+                        <TableColumn fx:id="descriptionColumn" minWidth="0.0" prefWidth="73.599853515625" text="Description" />
+                        <TableColumn fx:id="edit" prefWidth="65.60009765625" text="action" />
                     </columns>
                   </TableView>
                   <HBox layoutY="-2.0" prefHeight="110.0" prefWidth="1008.0" style="-fx-background-color: #b4a3e3;">
@@ -80,8 +81,9 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </HBox>
-                  <Button fx:id="button_charger" layoutX="496.0" layoutY="500.0" mnemonicParsing="false" onAction="#retour" text="&lt;" />
+                  <Button fx:id="button_charger" layoutX="496.0" layoutY="500.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-color: #b4a3e3;" text="&lt;" />
                   <Text layoutX="851.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Responsable RH" />
+                  <Text fill="#00ffa1" layoutX="692.0" layoutY="467.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(1)modifier (2)supprimer (3) rembourser" />
                </children>
             </AnchorPane>
          </center>

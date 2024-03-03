@@ -68,7 +68,7 @@
                      </padding>
                   </HBox>
                   <Text layoutX="885.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Responsable RH" />
-                  <Button layoutX="257.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleajouterrembourssement" text="ajouter" />
+                  <Button layoutX="257.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleajouterrembourssement" style="-fx-background-color: #b4a3e3;" text="ajouter" />
                   <Text fill="WHITE" layoutX="188.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prix_rembourssement">
                      <font>
                         <Font size="15.0" />
@@ -82,8 +82,8 @@
                   <TextField fx:id="prix_produitr" layoutX="352.0" layoutY="201.0" prefHeight="26.0" prefWidth="173.0" promptText="55.2" />
                   <DatePicker fx:id="date_remboursr" layoutX="352.0" layoutY="237.0" />
                   <Label layoutX="296.0" layoutY="44.0" />
-                  <Button layoutX="446.0" layoutY="425.0" mnemonicParsing="false" onAction="#changeScreenButtonPushedr" text="afficher" />
-                  <Button layoutX="340.0" layoutY="425.0" mnemonicParsing="false" onAction="#annulerrembourssement" text="annuler" />
+                  <Button layoutX="446.0" layoutY="425.0" mnemonicParsing="false" onAction="#changeScreenButtonPushedr" style="-fx-background-color: #b4a3e3;" text="afficher" />
+                  <Button layoutX="340.0" layoutY="425.0" mnemonicParsing="false" onAction="#annulerrembourssement" style="-fx-background-color: #b4a3e3;" text="annuler" />
                   <ComboBox fx:id="statr" layoutX="352.0" layoutY="325.0" prefHeight="26.0" prefWidth="175.0" visibleRowCount="3" />
                   <Text fill="WHITE" layoutX="189.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="statut_remboussement">
                      <font>
@@ -102,7 +102,7 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <Button layoutX="191.0" layoutY="130.0" mnemonicParsing="false" onAction="#raffraichir" text="raffraichir" />
+                  <Button layoutX="191.0" layoutY="130.0" mnemonicParsing="false" onAction="#raffraichir" style="-fx-background-color: #b4a3e3;" text="raffraichir" />
                   <TableView fx:id="table_rembourssement" layoutX="530.0" layoutY="199.0" prefHeight="246.0" prefWidth="466.0">
                      <columns>
                         <TableColumn fx:id="prix_prodColumn" prefWidth="51.99993896484375" text="prix_produit" />
@@ -113,8 +113,7 @@
                         <TableColumn fx:id="edit" prefWidth="64.0" text="action" />
                      </columns>
                   </TableView>
-                  <Button layoutX="513.0" layoutY="468.0" mnemonicParsing="false" onAction="#retour2" text="&lt;" />
-                  <Text fill="#c74b4b" layoutX="645.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(1)modifier (2)supprimer (3) rembourser" />
+                  <Button layoutX="513.0" layoutY="468.0" mnemonicParsing="false" onAction="#retour2" style="-fx-background-color: #b4a3e3;" text="&lt;" />
                </children>
             </AnchorPane>
          </center>

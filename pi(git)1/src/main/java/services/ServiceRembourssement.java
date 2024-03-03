@@ -29,6 +29,7 @@ public class ServiceRembourssement implements CRUD<rembourssement> {
                 // Récupération des colonnes de rembourssement
                 rb.setId_rembourssement(resultSet.getInt("id_rembourssement"));
                 rb.setId_reclamation(resultSet.getInt("id_reclamation"));
+                rb.setEmail(resultSet.getString("email"));
                 rb.setPrix(resultSet.getFloat("prix"));
                 rb.setDate_rembourssement(resultSet.getDate("date_rembourssement").toLocalDate());
                 rb.setHeure(resultSet.getTime("heure").toLocalTime());
@@ -56,8 +57,8 @@ public class ServiceRembourssement implements CRUD<rembourssement> {
 
         ////////////////////
 
-        String req = "INSERT INTO `rembourssement`(`id_rembourssement`,`id_reclamation`,`prix`, `date_rembourssement`, `heure`, `statut_rembourssement`, `mode_paiement`) VALUES (" +
-                rembourssement.getId_rembourssement() + ", "+ rembourssement.getId_reclamation() + ", "+rembourssement.getPrix() + ", '" + rembourssement.getDate_rembourssement() + "','" +rembourssement.getHeure() + "', '"+ rembourssement.getStatut_rembourssement() + "','" + rembourssement.getMode_paiement() + "')";
+        String req = "INSERT INTO `rembourssement`(`id_rembourssement`,`id_reclamation`,`email`,`prix`, `date_rembourssement`, `heure`, `statut_rembourssement`, `mode_paiement`) VALUES (" +
+                rembourssement.getId_rembourssement() + ", "+ rembourssement.getId_reclamation() + ",'" + rembourssement.getEmail() + "', "+rembourssement.getPrix() + ", '" + rembourssement.getDate_rembourssement() + "','" +rembourssement.getHeure() + "', '"+ rembourssement.getStatut_rembourssement() + "','" + rembourssement.getMode_paiement() + "')";
 
         /*
         String req = "INSERT INTO `rembourssement` (`id_rembourssement`, `id_reclamation`, `prix`, `date_rembourssement`, `heure`, `statut_rembourssement`, `mode_paiement`) VALUES (
@@ -75,7 +76,7 @@ public class ServiceRembourssement implements CRUD<rembourssement> {
         Statement st = cnx.createStatement();
         st.executeUpdate(req);*/
         try {
-            String req = "UPDATE rembourssement SET id_reclamation=?,  prix=?, date_rembourssement=?,heure=?, statut_rembourssement=?, mode_paiement=?  WHERE id_rembourssement=?";
+            String req = "UPDATE rembourssement SET id_reclamation=?,email=?,  prix=?, date_rembourssement=?,heure=?, statut_rembourssement=?, mode_paiement=?  WHERE id_rembourssement=?";
 
             PreparedStatement pst = cnx.prepareStatement(req);
             LocalDate localDate = rembourssement.getDate_rembourssement();
@@ -83,12 +84,13 @@ public class ServiceRembourssement implements CRUD<rembourssement> {
             LocalTime localTime = rembourssement.getHeure();
             java.sql.Time sqlTime = java.sql.Time.valueOf(localTime);
             pst.setInt(1,rembourssement.getId_reclamation());
-            pst.setFloat(2, rembourssement.getPrix());
-            pst.setDate(3, sqlDate);
-            pst.setTime(4, sqlTime);
-            pst.setString(5, rembourssement.getStatut_rembourssement());
-            pst.setString(6, rembourssement.getMode_paiement());
-            pst.setInt(7, rembourssement.getId_rembourssement());
+            pst.setString(2,rembourssement.getEmail());
+            pst.setFloat(3, rembourssement.getPrix());
+            pst.setDate(4, sqlDate);
+            pst.setTime(5, sqlTime);
+            pst.setString(6, rembourssement.getStatut_rembourssement());
+            pst.setString(7, rembourssement.getMode_paiement());
+            pst.setInt(8, rembourssement.getId_rembourssement());
             pst.executeUpdate();
             System.out.println("remboussement modifiée avec succés");
         } catch (SQLException ex) {
@@ -126,6 +128,7 @@ public class ServiceRembourssement implements CRUD<rembourssement> {
             rembourssement rb = new rembourssement();
             rb.setId_rembourssement(rs.getInt("id_rembourssement"));
             rb.setId_reclamation(rs.getInt("id_reclamation"));
+            rb.setEmail(rs.getString("email"));
             rb.setHeure(rs.getTime("heure").toLocalTime());
             rb.setPrix(rs.getFloat("prix"));
             rb.setDate_rembourssement(rs.getDate("date_rembourssement").toLocalDate());

@@ -61,7 +61,8 @@ public class ModifierRembourssementFXML implements Initializable {
             float prix_pp2=Float.parseFloat(prix_pp.getText());
             int id_rembp2=this.rembourssementToModify.getId_rembourssement();
             int id_recp2 = this.rembourssementToModify.getId_reclamation();
-            sr.updateOne(new rembourssement(id_rembp2,id_recp2,prix_pp2,date_p.getValue(),heure_p.getValue(),statp.getValue(),modep.getValue()));
+            String email1= this.rembourssementToModify.getEmail();
+            sr.updateOne(new rembourssement(id_rembp2,id_recp2,email1,prix_pp2,date_p.getValue(),heure_p.getValue(),statp.getValue(),modep.getValue()));
 
             showSuccessNotification("Modif réussie");
 

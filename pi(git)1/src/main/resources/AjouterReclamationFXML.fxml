@@ -61,7 +61,7 @@
             <Text layoutX="327.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type reclamation" />
             <Text layoutX="328.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statut reclamation" />
             <TextField fx:id="titre1" layoutX="433.0" layoutY="240.0" prefHeight="26.0" prefWidth="179.0" promptText="Exp:Retard de livraison" />
-            <TextField fx:id="description1" layoutX="434.0" layoutY="443.0" prefHeight="26.0" prefWidth="192.0" promptText="J'ai passé ma commande le [date], mais je n'ai toujours pas reçu mes articles. Le délai de livraison estimé était de [X jours], mais cela fait maintenant [Y jours] et je m'inquiète du retard" />
+            <TextField fx:id="description1" layoutX="434.0" layoutY="443.0" prefHeight="26.0" prefWidth="192.0" />
             <ComboBox fx:id="stat" layoutX="433.0" layoutY="406.0" prefHeight="26.0" prefWidth="190.0" />
             <ComboBox fx:id="type" layoutX="434.0" layoutY="364.0" prefHeight="26.0" prefWidth="188.0" />
             <DatePicker fx:id="date_reclamation1" layoutX="433.0" layoutY="281.0" prefHeight="26.0" prefWidth="183.0" />
@@ -71,11 +71,11 @@
                <font>
                   <Font name="Forte" size="23.0" />
                </font></Text>
-            <Button layoutX="664.0" layoutY="443.0" mnemonicParsing="false" onAction="#ajouterreclamation" text="ajouter" />
-            <Button layoutX="750.0" layoutY="443.0" mnemonicParsing="false" onAction="#annuler" text="annuler" />
-            <Button layoutX="519.0" layoutY="103.0" mnemonicParsing="false" onAction="#choisirPhoto" text="?" />
-            <Button layoutX="643.0" layoutY="177.0" mnemonicParsing="false" onAction="#raffraichir" text="raffraichir" />
-            <Button layoutX="758.0" layoutY="280.0" mnemonicParsing="false" onAction="#changeScreenButtonPushed" text="Consulter les reclamations" />
+            <Button layoutX="664.0" layoutY="443.0" mnemonicParsing="false" onAction="#ajouterreclamation" style="-fx-background-color: #34B893;" text="ajouter" />
+            <Button layoutX="750.0" layoutY="443.0" mnemonicParsing="false" onAction="#annuler" style="-fx-background-color: #34B893;" text="annuler" />
+            <Button layoutX="519.0" layoutY="103.0" mnemonicParsing="false" onAction="#choisirPhoto" style="-fx-background-color: #b4a3e3;" text="?" />
+            <Button layoutX="643.0" layoutY="177.0" mnemonicParsing="false" onAction="#raffraichir" style="-fx-background-color: #34B893;" text="raffraichir" />
+            <Button layoutX="758.0" layoutY="280.0" mnemonicParsing="false" onAction="#changeScreenButtonPushed" style="-fx-background-color: #34B893;" text="Consulter les reclamations" />
             <ImageView fitHeight="110.0" fitWidth="79.0" layoutX="796.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/rh3.png" />

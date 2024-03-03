@@ -11,6 +11,7 @@ public class rembourssement {
     private LocalDate date_rembourssement;
     private String statut_rembourssement;
     private String mode_paiement;
+    private String email;
     public rembourssement(float prix,LocalDate date_rembourssement,LocalTime heure,String statut_rembourssement,String mode_paiement)
     {
 
@@ -21,8 +22,9 @@ public class rembourssement {
       this.mode_paiement=mode_paiement;
     }
     public rembourssement(){}
-    public rembourssement(int id_rembourssement,int id_reclamation,float prix,LocalDate date_rembourssement,LocalTime heure,String statut_rembourssement,String mode_paiement)
+    public rembourssement(int id_rembourssement,int id_reclamation,String email,float prix,LocalDate date_rembourssement,LocalTime heure,String statut_rembourssement,String mode_paiement)
     {
+        this.email=email;
         this.id_rembourssement=id_rembourssement;
         this.id_reclamation=id_reclamation;
         this.heure=heure;
@@ -33,6 +35,9 @@ public class rembourssement {
     }
 
 
+    public String getEmail() {
+        return email;
+    }
 
     public int getId_rembourssement() {
         return id_rembourssement;
@@ -71,7 +76,9 @@ public class rembourssement {
         this.id_reclamation = id_reclamation;
     }
 
-
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public void setPrix(float prix) {
         this.prix = prix;

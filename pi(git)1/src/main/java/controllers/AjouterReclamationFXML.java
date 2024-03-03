@@ -32,7 +32,10 @@ package controllers;
         import javafx.scene.image.Image;
         import javafx.scene.image.ImageView;
         import static javafx.collections.FXCollections.*;
+
+
 public class AjouterReclamationFXML implements Initializable {
+    private BadWords badWordsChecker;
     @FXML
     private ImageView imageview1;
     @FXML
@@ -92,6 +95,20 @@ public class AjouterReclamationFXML implements Initializable {
         return description.matches(phoneNumberRegex);
     }
 
+
+
+    private boolean isBadWord(String description) {
+        try {
+            badWordsChecker = new BadWords();  // Créez une instance de BadWords
+            return badWordsChecker.wordExistsInFile(description, "resources/mots.txt");
+        } catch (BadWords.BadWordsException e) {
+            // Gérez l'exception comme vous le souhaitez (affichez un message d'erreur, logguez, etc.)
+            System.out.println("Erreur : " + e.getMessage());
+            return true;
+        }
+    }
+
+
     @FXML
     void ajouterreclamation(ActionEvent event) {
         try
@@ -105,6 +122,30 @@ public class AjouterReclamationFXML implements Initializable {
             if (countWords(titre) > 3) {
                 throw new TitreException("Le titre ne doit pas contenir plus de trois mots !");
             }
+// Utiliser BadWords pour vérifier les mots interdits dans la description
+            try {
+                badWordsChecker = new BadWords();  // Créez une instance de BadWords
+                if (badWordsChecker.wordExistsInFile(description, "resources/mots.txt")) {
+                    throw new BadWords.BadWordsException("Mot interdit trouvé dans la description !");
+                }
+            } catch (BadWords.BadWordsException e) {
+                throw e; // Laissez l'exception BadWordsException être capturée plus bas
+            }
+            // Utiliser BadWords pour vérifier les mots interdits dans la description
+            try {
+                if (isBadWord(description)) {
+                    throw new BadWords.BadWordsException("Mot interdit trouvé dans la description !");
+                }
+            } catch (BadWords.BadWordsException e) {
+                // Gérez l'exception comme vous le souhaitez (affichez un message d'erreur, logguez, etc.)
+                System.out.println("Erreur : " + e.getMessage());
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur de saisie");
+                alert.setContentText("La description contient un mot interdit !");
+                alert.show();
+            }
+
+
             if (isPhoneNumberInDescription(description)) {
                 throw new PhoneNumberException("La description ne doit pas contenir de numéro de téléphone !");
             }
@@ -118,7 +159,17 @@ public class AjouterReclamationFXML implements Initializable {
             alert.setTitle("Erreur de saisie");
             alert.setContentText("Le titre ne doit pas contenir plus de trois mots !");
             alert.show();
-        } catch (PhoneNumberException e) {
+        }
+
+        catch (BadWords.BadWordsException e) {
+            System.out.println("Erreur : " + e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur de saisie");
+            alert.setContentText("La description contient un mot interdit !");
+            alert.show();
+        }
+
+        catch (PhoneNumberException e) {
             // Gérez l'exception comme vous le souhaitez (affichez un message d'erreur, logguez, etc.)
             System.out.println("Erreur : " + e.getMessage());
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -214,7 +265,7 @@ public class AjouterReclamationFXML implements Initializable {
                 setValue(getValue().plusMinutes(steps));
             }
         };
-
+        date_reclamation1.setValue(LocalDate.now());
         heure1.setValueFactory(timeValueFactory);
     }
     @FXML
@@ -250,6 +301,7 @@ public class AjouterReclamationFXML implements Initializable {
 
     @FXML
     void initialize() {
+
         assert date_reclamation1 != null : "fx:id=\"date_reclamation1\" was not injected: check your FXML file 'AjouterPersonneFXML.fxml'.";
         assert heure1 != null : "fx:id=\"heure1\" was not injected: check your FXML file 'AjouterReclamationFXML.fxml'.";
         assert description1 != null : "fx:id=\"description1\" was not injected: check your FXML file 'AjouterPersonneFXML.fxml'.";
@@ -262,7 +314,7 @@ public class AjouterReclamationFXML implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle){
         //  ObservableList<String>
-
+        badWordsChecker = new BadWords();
         int maxLength = 100;
         description1.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.length() > maxLength) {
