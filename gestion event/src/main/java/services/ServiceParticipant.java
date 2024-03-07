@@ -111,4 +111,46 @@ public class ServiceParticipant implements CRUD<Participant> {
         return ParticipantList;
     }
 
+    public List<Participant> getParticipantsByEventId(int eventId) throws SQLException {
+        List<Participant> participants = new ArrayList<>();
+        String query = "SELECT * FROM pivot WHERE event_id = ?";
+        PreparedStatement statement = cnx.prepareStatement(query);
+        statement.setInt(1, eventId);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            int userId = resultSet.getInt("user_id");
+            Participant participant = getParticipantByUserId(userId);
+            if (participant != null) {
+                participants.add(participant);
+            }
+        }
+        return participants;
+    }
+
+    public void setEventNameForParticipants(List<Participant> participants, String eventName) {
+        for (Participant participant : participants) {
+            participant.setEventName(eventName);
+        }
+    }
+
+    public Participant getParticipantByUserId(int userId) throws SQLException {
+        String req = "SELECT UserID, nom, email, tel FROM Participant WHERE UserID=?";
+        PreparedStatement preparedStatement = cnx.prepareStatement(req);
+        preparedStatement.setInt(1, userId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()) {
+            Participant participant = new Participant();
+            participant.setUserID(resultSet.getInt("UserID"));
+            participant.setNom(resultSet.getString("nom"));
+            participant.setEmail(resultSet.getString("email"));
+            participant.setTel(resultSet.getInt("tel"));
+            return participant;
+        } else {
+            // Handle the case when no participant with the given user ID is found
+            return null;
+        }
+    }
+
+
 }

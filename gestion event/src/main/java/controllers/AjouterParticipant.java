@@ -17,6 +17,7 @@ import java.sql.SQLException;
 
 
 
+
 public class AjouterParticipant {
 
     @FXML
@@ -72,9 +73,11 @@ public class AjouterParticipant {
             }
 
             Participant nouveauParticipant = new Participant(userId, eventId, nom, email, tel);
-
             ServiceParticipant serviceParticipant = new ServiceParticipant();
             serviceParticipant.insertOne(nouveauParticipant);
+            // Envoi de l'e-mail au participant ajouté avec succès
+         /*   GMailer mailer = new GMailer();
+            mailer.sendNewsletterMail(email, "Nom de l'événement");*/
 
             // Confirmation message
             showAlert(Alert.AlertType.INFORMATION, "Confirmation", null, "Participant ajouté avec succès !");
@@ -158,7 +161,7 @@ public class AjouterParticipant {
 
     @FXML
     void AfficherParticipant(ActionEvent event) {
-        try {
+       /* try {
             URL fxmlUrl = getClass().getResource("/AfficherParticipant.fxml");
 
             if (fxmlUrl != null) {
@@ -168,6 +171,12 @@ public class AjouterParticipant {
             } else {
                 System.err.println("FXML file not found.");
             }
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }*/
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherParticipant.fxml"));
+            fx_retour.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -189,11 +198,7 @@ public class AjouterParticipant {
 
     @FXML
     void initialize() {
-        assert Fx_email != null : "fx:id=\"fx_email\" was not injected: check your FXML file 'AjouterParticipant.fxml'.";
-        assert fx_IDevent != null : "fx:id=\"fx_IDevent\" was not injected: check your FXML file 'AjouterParticipant.fxml'.";
-        assert fx_Nom != null : "fx:id=\"fx_Nom\" was not injected: check your FXML file 'AjouterParticipant.fxml'.";
-        assert fx_UserID != null : "fx:id=\"fx_UserID\" was not injected: check your FXML file 'AjouterParticipant.fxml'.";
-        assert fx_tel != null : "fx:id=\"fx_tel\" was not injected: check your FXML file 'AjouterParticipant.fxml'.";
+
     }
 
 }

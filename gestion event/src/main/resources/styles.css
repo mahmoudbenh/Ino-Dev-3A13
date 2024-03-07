@@ -1,16 +1,15 @@
-/* styles.css */
-
+/*
 .event-box {
-    -fx-background-color: #f0f0f0; /* Background color */
-    -fx-border-color: #ccc; /* Border color */
-    -fx-border-width: 1px; /* Border width */
-    -fx-border-radius: 10px; /* Border radius */
-    -fx-padding: 20px; /* Padding */
-    -fx-spacing: 10px; /* Spacing between elements */
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-padding: 20px;
+    -fx-spacing: 10px;
 }
 
 .event-box:hover {
-    -fx-background-color: #e0e0e0; /* Background color on hover */
+    -fx-background-color: #e0e0e0;
 }
 .event-box {
     -fx-padding: 20px;
@@ -24,4 +23,81 @@
     -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-text-fill: #333333;
+}*/
+.badge-column {
+    -fx-background-color: #E68C3A; /* Couleur de fond pour les colonnes de badge */
+    -fx-text-fill: white; /* Couleur du texte dans les colonnes de badge */
+}
+.custom-button {
+    -fx-background-color: #213E60;
+    -fx-text-fill: #e7e5e5;
+}
+
+.custom-button:hover {
+    -fx-background-color: #E68C3A;
+}
+.button:hover {
+    -fx-background-color: derive(#E38C3A, 20%);
+}
+
+.button:pressed {
+    -fx-background-color: derive(#E38C3A, -20%);
+}
+.badge-column {
+    -fx-background-color: #E68C3A; /* Couleur de fond pour les colonnes de badge */
+    -fx-text-fill: white; /* Couleur du texte dans les colonnes de badge */
+}
+#tfListP {
+    -fx-background-color: #e68c3a;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.6), 5, 0, 0, 1);
+}
+
+#tfListP:hover:hover {
+    -fx-background-color: #af4c03;
+}
+
+#tfListP:pressed:pressed {
+    -fx-background-color: #f5a25f;
+    -fx-effect: dropshadow( three-pass-box, rgba(0,0,0,0.6), 2, 0, 0, 1);
+}
+.button-bar-button {
+    -fx-background-radius: 0; /* To remove button border-radius */
+    -fx-padding: 10 20; /* Adjust padding to make the buttons bigger */
+    -fx-font-size: 14; /* Adjust font size for text, if applicable */
+    -fx-background-color: #d8d1bd; /* Default background color */
+}
+
+.button-bar-button:hover {
+    -fx-background-color: #ae8251; /* Change background color on hover */
+    -fx-cursor: hand; /* Change cursor on hover */
+    -fx-effect: dropshadow(three-pass-box, #ae8251, 10, 0, 0, 0); /* Add drop shadow on hover */
+}
+#btn_importer {
+    -fx-background-radius: 0;
+    -fx-padding: 10 20;
+    -fx-font-size: 14;
+    -fx-background-color: #d8d1bd;
+}
+
+#btn_importer:hover {
+    -fx-background-color: #d8d1bd;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, #ae8251, 10, 0, 0, 0);
+}
+
+
+#searchButton {
+    -fx-background-radius: 0; /* To remove button border-radius */
+    -fx-padding: 10 20; /* Adjust padding to make the button bigger */
+    -fx-font-size: 14; /* Adjust font size for text, if applicable */
+    -fx-background-color: #d8d1bd; /* Default background color */
+}
+
+#searchButton:hover {
+    -fx-background-color: #d8d1bd; /* Change background color on hover */
+    -fx-cursor: hand; /* Change cursor on hover */
+    -fx-effect: dropshadow(three-pass-box, #ae8251, 10, 0, 0, 0); /* Add drop shadow on hover */
 }

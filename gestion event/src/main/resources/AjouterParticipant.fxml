@@ -79,17 +79,17 @@
                         </ImageView>
                         <ImageView fitHeight="70.0" fitWidth="92.0" layoutX="44.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@assets/profile%20icon.png" />
+                                <Image url="@assets/profile.png" />
                             </image>
                         </ImageView>
                         <ImageView fitHeight="33.0" fitWidth="40.0" layoutX="61.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@assets/commande%20icon.png" />
+                                <Image url="@assets/commande.png" />
                             </image>
                         </ImageView>
                         <ImageView fitHeight="48.0" fitWidth="60.0" layoutX="54.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@assets/livraison%20icon.png" />
+                                <Image url="@assets/livraison.png" />
                             </image>
                         </ImageView>
                         <ImageView fitHeight="48.0" fitWidth="63.0" layoutX="43.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true">
@@ -99,12 +99,12 @@
                         </ImageView>
                         <ImageView fitHeight="70.0" fitWidth="76.0" layoutX="42.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@assets/event%20icon.png" />
+                                <Image url="@assets/evente.png" />
                             </image>
                         </ImageView>
                         <ImageView fitHeight="40.0" fitWidth="46.0" layoutX="58.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@assets/product%20icon.png" />
+                                <Image url="@assets/product.png" />
                             </image>
                         </ImageView>
                         <Label layoutX="47.0" layoutY="182.0" text="Mon profil">

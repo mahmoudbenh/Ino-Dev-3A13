@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -97,18 +98,21 @@
                      <font>
                         <Font name="System Bold Italic" size="36.0" />
                      </font>
+                     <effect>
+                        <Glow />
+                     </effect>
                   </Label>
-                  <Button layoutX="197.0" layoutY="218.0" mnemonicParsing="false" onAction="#AjouterEvent" prefHeight="55.0" prefWidth="312.0" styleClass="button-style-blue" text="Ajouter evenement">
+                  <Button layoutX="252.0" layoutY="218.0" mnemonicParsing="false" onAction="#AjouterEvent" prefHeight="66.0" prefWidth="312.0" styleClass="button-style-blue" text="Ajouter evenement">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Button>
-                  <Button layoutX="270.0" layoutY="307.0" mnemonicParsing="false" onAction="#AjouterParticipant" prefHeight="55.0" prefWidth="312.0" styleClass="button-style-blue" text="Ajouter participant">
+                  <Button layoutX="252.0" layoutY="307.0" mnemonicParsing="false" onAction="#AjouterParticipant" prefHeight="55.0" prefWidth="312.0" styleClass="button-style-blue" text="Ajouter participant">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Button>
-                  <Button layoutX="490.0" layoutY="396.0" mnemonicParsing="false" onAction="#Exit" prefHeight="55.0" prefWidth="148.0" styleClass="button-style-blue" text="Exit">
+                  <Button layoutX="337.0" layoutY="396.0" mnemonicParsing="false" onAction="#Exit" prefHeight="55.0" prefWidth="148.0" styleClass="button-style-blue" text="Exit">
                      <font>
                         <Font size="30.0" />
                      </font>

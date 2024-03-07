@@ -6,6 +6,7 @@ public class Participant {
     private String nom;
     private String email;
 
+    private String eventName;
     private  int tel;
 
 
@@ -60,6 +61,14 @@ public class Participant {
 
     public void setTel(int tel) {
         this.tel = tel;
+    }
+
+    public String getEventName() {
+        return eventName;
+    }
+
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
     }
 
     @Override

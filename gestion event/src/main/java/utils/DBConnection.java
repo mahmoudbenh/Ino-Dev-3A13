@@ -9,7 +9,7 @@ public class DBConnection {
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
-    //Second Step: creer une instance statique de même type que la classe
+    //Second Step: creer const
     private static DBConnection instance;
 
     private Connection cnx;

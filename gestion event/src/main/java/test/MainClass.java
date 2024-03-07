@@ -23,9 +23,9 @@ public class MainClass {
         System.out.println(cn4.hashCode());*/
         DBConnection cn1 = DBConnection.getInstance();
         LocalDate date1 = LocalDate.of(2024, 2, 1);
-        Event c1= new Event("job fair ","ffhrthffhfjjf",date1,"en cours","nasser2");
+        Event c1= new Event("job fair ","ffhrthffhfjjf",date1,"en cours","nasser2","0");
         LocalDate date2 = LocalDate.of(2022, 2, 7);
-         Event c2= new Event(5555,"job fair ","ffhrthffhfjjf",date2,"en cours","nasser2");
+         Event c2= new Event(5555,"job fair ","ffhrthffhfjjf",date2,"en cours","nasser2","555");
         ServiceEvent sc= new ServiceEvent();
         //test ajout c1
          /*try{

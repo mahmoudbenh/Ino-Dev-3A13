@@ -83,7 +83,7 @@ public class DisplayUser implements Initializable {
         Label nomlabel = new Label("Nom : " + event.getName());
         Label ideventlabel = new Label("ID: " + event.getId_event());
         Label desclabel = new Label("Description: " + event.getDescription());
-        Label dateLabel = new Label("Date: " + event.getDescription());
+        Label dateLabel = new Label("Date: " + event.getDate_event());
         Label statutLabel = new Label("Statut: " + event.getStatut());
         Label lieulabel = new Label("Lieu: " + event.getLieu());
 
