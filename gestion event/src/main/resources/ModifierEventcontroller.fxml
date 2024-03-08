@@ -4,9 +4,12 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DisplacementMap?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.FloatMap?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1240.0" style="-fx-background-color: #5F89AB;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherEvent">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1240.0" style="-fx-background-color: #5F89AB;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModifierEventcontroller">
    <children>
       <Label layoutX="597.0" layoutY="46.0" styleClass="title" text="Gestion des evenements" textFill="WHITE">
          <font>
@@ -48,7 +51,7 @@
                   <URL value="@test.css" />
                </stylesheets>
             </Label>
-            <Button fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="254.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@styles.css" text="Utilisateurs" textFill="WHITE">
+            <Button fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="254.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/styles.css" text="Utilisateurs" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -87,7 +90,7 @@
                   <URL value="@styles.css" />
                </stylesheets>
             </Button>
-            <Button fx:id="idbtnform" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="254.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@styles.css" text="Produits" textFill="WHITE">
+            <Button fx:id="idbtnform" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="254.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/styles.css" text="Produits" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -102,7 +105,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="idbtncertif" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="254.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@styles.css" text="Commandes" textFill="WHITE">
+            <Button fx:id="idbtncertif" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="254.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/styles.css" text="Commandes" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -117,7 +120,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="254.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@styles.css" text="Panier" textFill="WHITE">
+            <Button fx:id="btnSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="254.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/styles.css" text="Panier" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -132,7 +135,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnSettings1" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="256.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@styles.css" text="Reclamation" textFill="WHITE">
+            <Button fx:id="btnSettings1" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="256.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/styles.css" text="Reclamation" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -147,7 +150,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnSettings111" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="256.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@styles.css" text="Livraison" textFill="WHITE">
+            <Button fx:id="btnSettings111" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="256.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/styles.css" text="Livraison" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -162,7 +165,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnSettings11" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="256.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@styles.css" text="Se déconnecter" textFill="WHITE">
+            <Button fx:id="btnSettings11" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="256.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/styles.css" text="Se déconnecter" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -179,46 +182,74 @@
             </Button>
          </children>
       </VBox>
-      <Pane layoutX="350.0" layoutY="127.0" prefHeight="456.0" prefWidth="670.0" styleClass="pane" stylesheets="@test.css">
+      <Pane layoutX="350.0" layoutY="127.0" prefHeight="510.0" prefWidth="826.0" styleClass="pane" stylesheets="@test.css">
          <children>
+            <Label layoutX="72.0" layoutY="92.0" prefHeight="41.0" prefWidth="64.0" text="Name : ">
+               <font>
+                  <Font name="Cambria Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="71.0" layoutY="137.0" prefHeight="41.0" prefWidth="95.0" text="Description : ">
+               <font>
+                  <Font name="Cambria Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="71.0" layoutY="181.0" prefHeight="41.0" prefWidth="137.0" text="Date event :">
+               <font>
+                  <Font name="Cambria Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="73.0" layoutY="225.0" prefHeight="41.0" prefWidth="64.0" text="Statut : ">
+               <font>
+                  <Font name="Cambria Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="72.0" layoutY="266.0" prefHeight="41.0" prefWidth="64.0" text="Lieu : ">
+               <font>
+                  <Font name="Cambria Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Mname" layoutX="192.0" layoutY="102.0" styleClass="labelstyle">
+               <stylesheets>
+                  <URL value="@test.css" />
+                  <URL value="@styles.css" />
+               </stylesheets>
+            </TextField>
+            <TextField fx:id="Mdescription" layoutX="193.0" layoutY="145.0" styleClass="labelstyle" />
+            <DatePicker fx:id="Mdate" layoutX="196.0" layoutY="189.0" prefHeight="25.0" prefWidth="159.0" />
+            <ComboBox fx:id="Mstatut" layoutX="193.0" layoutY="233.0" prefHeight="25.0" prefWidth="159.0" styleClass="labelstyle" />
+            <TextField fx:id="Mlieu" layoutX="192.0" layoutY="274.0" styleClass="labelstyle" />
             <ImageView fx:id="imageevenement" fitHeight="56.0" fitWidth="131.0" layoutX="206.0" layoutY="351.0" pickOnBounds="true" preserveRatio="true" />
-            <ListView fx:id="listeView" layoutX="8.0" layoutY="7.0" prefHeight="439.0" prefWidth="651.0" />
+            <Button layoutX="259.0" layoutY="422.0" mnemonicParsing="false" onAction="#modifierEvent" prefHeight="25.0" prefWidth="131.0" style="-fx-background-color: #5F89AB;" text="Modifier" textFill="WHITE">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button layoutX="99.0" layoutY="423.0" mnemonicParsing="false" onAction="#Annuler" prefHeight="25.0" prefWidth="131.0" style="-fx-background-color: #5F89AB;" text="Annuler" textFill="WHITE">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <ImageView fitHeight="519.0" fitWidth="358.0" layoutX="459.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/cubes.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
-      <Button layoutX="297.0" layoutY="701.0" mnemonicParsing="false" onAction="#retour" prefHeight="34.0" prefWidth="126.0" styleClass="button-style-white" stylesheets="@test.css" text="Retour">
+      <Button layoutX="297.0" layoutY="701.0" mnemonicParsing="false" onAction="#retour" prefHeight="34.0" prefWidth="126.0" styleClass="button-style-white" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/test.css" text="Retour">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="440.0" layoutY="701.0" mnemonicParsing="false" onAction="#Exit" prefHeight="34.0" prefWidth="126.0" styleClass="button-style-white" stylesheets="@test.css" text="Exit">
+      <Button layoutX="440.0" layoutY="701.0" mnemonicParsing="false" onAction="#Exit" prefHeight="34.0" prefWidth="126.0" styleClass="button-style-white" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/test.css" text="Exit">
          <font>
             <Font size="14.0" />
-         </font>
-      </Button>
-      <Label fx:id="mytext" layoutX="283.0" layoutY="110.0" />
-      <Button layoutX="924.0" layoutY="620.0" mnemonicParsing="false" onAction="#boutonSupprimer" prefHeight="30.0" prefWidth="126.0" style="-fx-background-color: #EE8D4A;" stylesheets="@test.css" text="Supprimer" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font>
-      </Button>
-      <Button layoutX="1059.0" layoutY="621.0" mnemonicParsing="false" onAction="#bt_modifier" prefHeight="30.0" prefWidth="126.0" style="-fx-background-color: #EE8D4A;" stylesheets="@test.css" text="Modifier" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font>
-      </Button>
-      <Button layoutX="786.0" layoutY="621.0" mnemonicParsing="false" onAction="#reloadEvents" prefHeight="30.0" prefWidth="126.0" style="-fx-background-color: #EE8D4A;" stylesheets="@test.css" text="Reload" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font>
-      </Button>
-      <Button layoutX="1059.0" layoutY="229.0" mnemonicParsing="false" onAction="#exportParticipantsToExcel" prefHeight="30.0" prefWidth="126.0" style="-fx-background-color: #1D6F42;" stylesheets="@test.css" text="Exporter EXCEL" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
          </font>
       </Button>
    </children>
    <stylesheets>
       <URL value="@test.css" />
-      <URL value="@styles.css" />
+      <URL value="@../../../../../aa/gestion%20event/src/main/resources/styles.css" />
    </stylesheets>
 </AnchorPane>

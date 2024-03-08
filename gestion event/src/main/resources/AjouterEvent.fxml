@@ -32,7 +32,7 @@
             </DisplacementMap>
          </effect>
       </Label>
-      <VBox alignment="TOP_CENTER" prefHeight="775.0" prefWidth="253.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="TOP_CENTER" prefHeight="775.0" prefWidth="253.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="144.0" fitWidth="569.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -47,11 +47,11 @@
                   <Font name="System Bold" size="18.0" />
                </font>
                <stylesheets>
-                  <URL value="@../../../../../aa/gestion%20event/src/main/resources/styles.css" />
-                  <URL value="@../../../../../aa/gestion%20event/src/main/resources/test.css" />
+                  <URL value="@styles.css" />
+                  <URL value="@test.css" />
                </stylesheets>
             </Label>
-            <Button fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="254.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/styles.css" text="Utilisateurs" textFill="WHITE">
+            <Button fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="254.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@styles.css" text="Utilisateurs" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -87,10 +87,10 @@
                </styleClass>
                <stylesheets>
                   <URL value="@test.css" />
-                  <URL value="@../../../../../aa/gestion%20event/src/main/resources/styles.css" />
+                  <URL value="@styles.css" />
                </stylesheets>
             </Button>
-            <Button fx:id="idbtnform" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="254.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/styles.css" text="Produits" textFill="WHITE">
+            <Button fx:id="idbtnform" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="254.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@styles.css" text="Produits" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -105,11 +105,11 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="idbtncertif" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="254.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/styles.css" text="Commandes" textFill="WHITE">
+            <Button fx:id="btnSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="254.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@styles.css" text="Panier" textFill="WHITE">
                <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="29.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@assets/document.png" />
+                        <Image url="@assets/panierr.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -120,22 +120,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="254.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/styles.css" text="Panier" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@assets/bouclier-verifier.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnSettings1" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="256.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/styles.css" text="Reclamation" textFill="WHITE">
+            <Button fx:id="btnSettings1" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="256.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@styles.css" text="Reclamation" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -150,7 +135,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnSettings111" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="256.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/styles.css" text="Livraison" textFill="WHITE">
+            <Button fx:id="btnSettings111" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="256.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@styles.css" text="Livraison" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -165,7 +150,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnSettings11" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="256.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/styles.css" text="Se déconnecter" textFill="WHITE">
+            <Button fx:id="btnSettings11" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="256.0" style="-fx-background-color: #213#372E4AE60;" stylesheets="@styles.css" text="Se déconnecter" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -217,7 +202,7 @@
             <TextField fx:id="fxname" layoutX="192.0" layoutY="102.0" styleClass="labelstyle">
                <stylesheets>
                   <URL value="@test.css" />
-                  <URL value="@../../../../../aa/gestion%20event/src/main/resources/styles.css" />
+                  <URL value="@styles.css" />
                </stylesheets></TextField>
             <TextField fx:id="fx_description" layoutX="193.0" layoutY="145.0" styleClass="labelstyle" />
             <DatePicker fx:id="fx_date" layoutX="196.0" layoutY="189.0" prefHeight="25.0" prefWidth="159.0" />
@@ -251,12 +236,12 @@
             </ImageView>
          </children>
       </Pane>
-      <Button layoutX="297.0" layoutY="701.0" mnemonicParsing="false" onAction="#retour" prefHeight="34.0" prefWidth="126.0" styleClass="button-style-white" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/test.css" text="Retour">
+      <Button layoutX="297.0" layoutY="701.0" mnemonicParsing="false" onAction="#retour" prefHeight="34.0" prefWidth="126.0" styleClass="button-style-white" stylesheets="@test.css" text="Retour">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="440.0" layoutY="701.0" mnemonicParsing="false" onAction="#Exit" prefHeight="34.0" prefWidth="126.0" styleClass="button-style-white" stylesheets="@../../../../../aa/gestion%20event/src/main/resources/test.css" text="Exit">
+      <Button layoutX="440.0" layoutY="701.0" mnemonicParsing="false" onAction="#Exit" prefHeight="34.0" prefWidth="126.0" styleClass="button-style-white" stylesheets="@test.css" text="Exit">
          <font>
             <Font size="14.0" />
          </font>
@@ -269,6 +254,6 @@
    </children>
    <stylesheets>
       <URL value="@test.css" />
-      <URL value="@../../../../../aa/gestion%20event/src/main/resources/styles.css" />
+      <URL value="@styles.css" />
    </stylesheets>
 </AnchorPane>

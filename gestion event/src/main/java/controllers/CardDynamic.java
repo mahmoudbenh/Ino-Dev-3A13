@@ -60,7 +60,7 @@ public class CardDynamic extends Node {
     private ImageView imageview;
 private final  ServiceParticipant serviceParticipant=new ServiceParticipant();
 
-     private int  getLoggedInUser () {return 20;}
+     private int  getLoggedInUser () {return 12;}
 
 
 

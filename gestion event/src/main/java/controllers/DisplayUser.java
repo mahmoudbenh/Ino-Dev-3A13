@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import models.Card;
 import models.Event;
@@ -38,6 +39,8 @@ public class DisplayUser implements Initializable {
     private List<Card> topEvents;
     private List<Event> listEvents;
     private ServiceEvent serviceEvent = new ServiceEvent();
+    @FXML
+    private TextField tfSearch;
 
 
 
@@ -113,8 +116,26 @@ public class DisplayUser implements Initializable {
     @FXML
     void initialize() {
         assert cardLayout != null : "fx:id=\"cardLayout\" was not injected: check your FXML file 'DisplayUser.fxml'.";
-
+       /* tfSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Filtrer les événements en fonction du texte de recherche
+            List<Event> filteredEvents = filterEvents(listEvents, newValue);
+            // Mettre à jour l'affichage des événements filtrés
+            displayEvent(filteredEvents);
+        });*/
     }
+
+    // Méthode pour filtrer les événements en fonction du texte de recherche
+  /*  private List<Event> filterEvents(List<Event> events, String searchText) {
+        List<Event> filteredEvents = new ArrayList<>();
+        for (Event event : events) {
+            // Vérifier si le nom ou la description de l'événement contient le texte de recherche (ignorer la casse)
+            if (event.getName().toLowerCase().contains(searchText.toLowerCase()) ||
+                    event.getDescription().toLowerCase().contains(searchText.toLowerCase())) {
+                filteredEvents.add(event);
+            }
+        }
+        return filteredEvents;
+    }*/
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

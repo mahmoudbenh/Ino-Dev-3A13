@@ -21,6 +21,8 @@ module workshop.JDBC {
     requires jdk.httpserver;
     requires unirest.java;
     requires okhttp3;
+    requires org.apache.poi.poi;
+    requires org.apache.poi.ooxml;
 
     opens controllers;
     opens models;

@@ -16,11 +16,11 @@ public class FxMain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
        // FXMLLoader loader = new FXMLLoader(getClass().getResource("/Card.fxml")); // Ensure this is the correct path
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUser.fxml"));
+      // FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUser.fxml"));
       //  FXMLLoader loader = new FXMLLoader(getClass().getResource("/WelcomeAdmin.fxml"));
-     // FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterParticipant.fxml"));
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEvent.fxml"));
        //  FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherParticipant.fxml"));
-     // FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterEvent.fxml"));
+     // FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUser.fxml"));
        // FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListeEvent.fxml"));
 
 

@@ -28,8 +28,6 @@ public class ListeEvent {
     @FXML
     private TableColumn<Participant,String> colEventName;
 
-    @FXML
-    private TableColumn<Participant,Integer> colUserId;
 
     @FXML
     private TableColumn<Participant,String> colUserName;
@@ -207,7 +205,7 @@ public class ListeEvent {
         }
     }
 }*/
-
+/*
 package controllers;
 
 import javafx.collections.FXCollections;
@@ -235,21 +233,19 @@ public class ListeEvent {
     @FXML
     private TableView<Participant> tbParticipants;
 
-    @FXML
-    private TableColumn<Participant, Integer> colUserId;
 
     @FXML
     private TableColumn<Participant, String> colUserName;
 
     @FXML
     private TableColumn<Participant, String> colEventName;
+    @FXML
+    private TextField tfSearch;
 
     private ServiceEvent serviceEvent = new ServiceEvent();
     private ServiceParticipant serviceParticipant = new ServiceParticipant();
-
     @FXML
     void initialize() {
-        colUserId.setCellValueFactory(new PropertyValueFactory<>("UserID"));
         colUserName.setCellValueFactory(new PropertyValueFactory<>("nom"));
         colEventName.setCellValueFactory(new PropertyValueFactory<>("eventName"));
 
@@ -275,10 +271,31 @@ public class ListeEvent {
             // Set the observable list of participants to the TableView
             tbParticipants.setItems(allParticipants);
 
+            // Add listener to search field
+            tfSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+                // Filter participants based on search input
+                tbParticipants.setItems(filterParticipants(allParticipants, newValue));
+            });
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+    // Method to filter participants based on search input
+    private ObservableList<Participant> filterParticipants(ObservableList<Participant> allParticipants, String searchText) {
+        ObservableList<Participant> filteredParticipants = FXCollections.observableArrayList();
+
+        for (Participant participant : allParticipants) {
+            // You can adjust the conditions for filtering as per your requirements
+            if (participant.getNom().toLowerCase().contains(searchText.toLowerCase())) {
+                filteredParticipants.add(participant);
+            }
+        }
+
+        return filteredParticipants;
+    }
+
 
     @FXML
     void consulterListeEvenements(ActionEvent event) {
@@ -286,7 +303,138 @@ public class ListeEvent {
     }
 
     // Implement event handling methods for buttons if needed
+}*/
+package controllers;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import models.Event;
+import models.Participant;
+import services.ServiceEvent;
+import services.ServiceParticipant;
+
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class ListeEvent implements Initializable {
+
+    @FXML
+    private TableView<Participant> tbParticipants;
+
+    @FXML
+    private TableColumn<Participant, String> colUserName;
+
+    @FXML
+    private TableColumn<Participant, String> colEventName;
+
+    @FXML
+    private TextField tfSearch;
+
+    private ServiceEvent serviceEvent = new ServiceEvent();
+    private ServiceParticipant serviceParticipant = new ServiceParticipant();
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        colUserName.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        colEventName.setCellValueFactory(new PropertyValueFactory<>("eventName"));
+
+        try {
+            // Retrieve all events
+            List<Event> events = serviceEvent.selectAll();
+
+            // Create an observable list to store all participants
+            ObservableList<Participant> allParticipants = FXCollections.observableArrayList();
+
+            // Iterate through each event
+            for (Event event : events) {
+                // Retrieve participants for the current event
+                List<Participant> participants = serviceParticipant.getParticipantsByEventId(event.getId_event());
+
+                // Set the event name for each participant
+                serviceParticipant.setEventNameForParticipants(participants, event.getName());
+
+                // Add participants to the observable list
+                allParticipants.addAll(participants);
+            }
+
+            // Set the observable list of participants to the TableView
+            tbParticipants.setItems(allParticipants);
+
+            // Add listener to search field
+            tfSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+                // Filter participants based on search input
+                tbParticipants.setItems(filterParticipants(allParticipants, newValue));
+            });
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Method to filter participants based on search input
+    private ObservableList<Participant> filterParticipants(ObservableList<Participant> allParticipants, String searchText) {
+        ObservableList<Participant> filteredParticipants = FXCollections.observableArrayList();
+
+        for (Participant participant : allParticipants) {
+            // You can adjust the conditions for filtering as per your requirements
+            if (participant.getNom().toLowerCase().contains(searchText.toLowerCase()) ||
+                    participant.getEventName().toLowerCase().contains(searchText.toLowerCase())) {
+                filteredParticipants.add(participant);
+            }
+        }
+
+        return filteredParticipants;
+    }
+
+
+
+
+  /*  @FXML
+    private void exportToExcel(ActionEvent event) {
+        try {
+            // Créez un nouveau classeur Excel
+            Workbook workbook = new XSSFWorkbook();
+            Sheet sheet = workbook.createSheet("Participants");
+
+            // Ajoutez les en-têtes de colonne
+            Row headerRow = sheet.createRow(0);
+            headerRow.createCell(0).setCellValue("Nom de l'événement");
+            headerRow.createCell(1).setCellValue("Nom de l'utilisateur");
+
+            // Récupérez les données de la TableView
+            ObservableList<Participant> participants = tbParticipants.getItems();
+
+            // Remplissez les données dans le classeur Excel
+            int rowNum = 1;
+            for (Participant participant : participants) {
+                Row row = sheet.createRow(rowNum++);
+                row.createCell(0).setCellValue(participant.getEventName());
+                row.createCell(1).setCellValue(participant.getNom());
+            }
+
+            // Enregistrez le classeur Excel
+            FileOutputStream fileOut = new FileOutputStream("participants.xlsx");
+            workbook.write(fileOut);
+            fileOut.close();
+
+            // Fermez le classeur Excel
+            workbook.close();
+
+            System.out.println("Exportation vers Excel réussie.");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }*/
 }
+
 
 
 

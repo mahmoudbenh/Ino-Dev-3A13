@@ -9,9 +9,8 @@
 
 <AnchorPane prefHeight="780.0" prefWidth="1240.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListeEvent">
    <children>
-      <TableView fx:id="tbParticipants" layoutX="82.0" layoutY="179.0" prefHeight="508.0" prefWidth="731.0">
+      <TableView fx:id="tbParticipants" layoutX="244.0" layoutY="164.0" prefHeight="508.0" prefWidth="522.0">
         <columns>
-          <TableColumn fx:id="colUserId" prefWidth="211.199951171875" text="User ID" />
             <TableColumn fx:id="colUserName" prefWidth="253.60003662109375" text="Nom du participant " />
             <TableColumn fx:id="colEventName" prefWidth="267.20001220703125" text="Nom evenement" />
         </columns>
@@ -19,7 +18,7 @@
       <Button layoutX="83.0" layoutY="716.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" text="Retour" />
       <Button layoutX="201.0" layoutY="716.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" text="Exit" />
       <TextField fx:id="tfSearch" layoutX="880.0" layoutY="247.0" prefHeight="26.0" prefWidth="183.0" promptText="Entre ID user ou Nom User" />
-      <Button layoutX="1074.0" layoutY="247.0" mnemonicParsing="false" text="Rechercher" />
       <Label layoutX="426.0" layoutY="72.0" prefHeight="62.0" prefWidth="124.0" text="Liste des evenements" />
+      <Button layoutX="828.0" layoutY="418.0" mnemonicParsing="false" text="Excel " />
    </children>
 </AnchorPane>
