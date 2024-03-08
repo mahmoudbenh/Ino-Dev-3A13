@@ -2,6 +2,7 @@
 
 package controllers;
 
+<<<<<<< HEAD
 import java.io.File;
 import java.io.IOException;
 
@@ -12,11 +13,23 @@ import java.sql.*;
 import java.util.ResourceBundle;
 
 
+=======
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.*;
+import java.util.Objects;
+import java.util.ResourceBundle;
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+<<<<<<< HEAD
 import javafx.scene.Node;
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -29,11 +42,18 @@ import javafx.scene.image.ImageView;
 import javafx.stage.StageStyle;
 import models.Role;
 import models.User;
+<<<<<<< HEAD
 //import javax.mail.Message;
 //import javax.mail.Session;
 import utils.DBConnection;
 
 //import static org.bouncycastle.cms.RecipientId.password;
+=======
+import services.ServiceUser;
+import utils.DBConnection;
+
+import javax.imageio.IIOParam;
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 
 
 public class LoginController implements Initializable {
@@ -51,21 +71,27 @@ public class LoginController implements Initializable {
     private Button cancelButton;
 
     @FXML
+<<<<<<< HEAD
     private Button sendPaswword_btn;
 
     @FXML
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
     private PasswordField enterPasswordField;
 
     @FXML
     private Button loginButton;
 
     @FXML
+<<<<<<< HEAD
     private Button mdp_oub;
 
     @FXML
     private Button registreButton;
 
     @FXML
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
     private ImageView brandingImageView;
     @FXML
     private ImageView lockImageView;
@@ -95,6 +121,7 @@ public class LoginController implements Initializable {
         }
     }
 
+<<<<<<< HEAD
     public String Hash(String password) throws Exception {
 
         String mdp_user = "";
@@ -136,6 +163,16 @@ public class LoginController implements Initializable {
 
         // Check if the user is an admin
         if (email.equals("ahmadou.ndiayewalymalick@esprit.tn") && hashedPassword.equals("8b03a11588f36a24ec410250af4f9a6289748fb36c0429a290f2177629300c8d")) {
+=======
+
+    @FXML
+    public void loginButtonOnAction(ActionEvent event) {
+        String email = EmailTextField.getText();
+        String password = enterPasswordField.getText();
+
+        // Check if the user is an admin
+        if (email.equals("ahmadou.ndiayewalymalick@esprit.tn") && password.equals("ahmadou123")) {
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
             // Show admin welcome message
             showSuccessMessage("Bienvenue Admin");
 
@@ -143,11 +180,18 @@ public class LoginController implements Initializable {
             redirectToAdminInterface();
         } else {
             // Authenticate regular user
+<<<<<<< HEAD
             validateLogin(email, hashedPassword);
         }
     }
 
 
+=======
+            validateLogin();
+        }
+    }
+
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
     private void redirectToUserInterface(User currentUser) {
         try {
             // Load the user interface FXML file
@@ -214,9 +258,18 @@ public class LoginController implements Initializable {
         stage.close();
     }
 
+<<<<<<< HEAD
     public void validateLogin(String email, String hashedPassword) {
         // Check if either email or password is empty
         if (email.isEmpty() || hashedPassword.isEmpty()) {
+=======
+    /*public void validateLogin() {
+        String email = EmailTextField.getText();
+        String password = enterPasswordField.getText();
+
+        // Check if either email or password is empty
+        if (email.isEmpty() || password.isEmpty()) {
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
             showAlert(Alert.AlertType.ERROR, "Error", "Please enter both email and password");
             return;
         }
@@ -225,6 +278,7 @@ public class LoginController implements Initializable {
         DBConnection connectNow = new DBConnection();
         Connection connectDB = connectNow.getCnx();
 
+<<<<<<< HEAD
         String verifyLogin = "SELECT * FROM user WHERE email = ? AND mdp = ?";
         try {
             PreparedStatement statement = connectDB.prepareStatement(verifyLogin);
@@ -232,6 +286,60 @@ public class LoginController implements Initializable {
             statement.setString(2, hashedPassword);
 
             ResultSet queryResult = statement.executeQuery();
+=======
+        String verifyLogin = "SELECT * FROM user WHERE email = '" + email + "' AND mdp = '" + password + "'";
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet queryResult = statement.executeQuery(verifyLogin);
+
+            // After successful login, retrieve user data and pass it to the initializeUser method
+            if (queryResult.next()) {
+                // Retrieve user information from the query result
+                int userID = queryResult.getInt("userID");
+                String nom = queryResult.getString("nom");
+                String prenom = queryResult.getString("prenom");
+                String mdp = queryResult.getString("mdp");
+                String userEmail = queryResult.getString("email");
+                // Assuming you have a method to retrieve the user's role
+                Role userRole = getUserRole(userID); // i Implement this method accordingly
+
+                // Create a User object with the retrieved information
+                User currentUser = new User(userID, nom, prenom, mdp, userEmail, userRole);
+
+                // Open the user interface with the logged-in user information
+                redirectToUserInterface(currentUser);
+
+                // Initialize the current user in the FrontController
+                 FrontController frontController = loader.getController();
+                frontController.initializeUser(currentUser);
+            } else {
+                loginMessageLabel.setText("Invalid login. Please try again");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }*/
+
+    public void validateLogin() {
+        String email = EmailTextField.getText();
+        String password = enterPasswordField.getText();
+
+        // Check if either email or password is empty
+        if (email.isEmpty() || password.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Please enter both email and password");
+            return;
+        }
+
+        // Perform database query only if both fields are not empty
+        DBConnection connectNow = new DBConnection();
+        Connection connectDB = connectNow.getCnx();
+
+        String verifyLogin = "SELECT * FROM user WHERE email = '" + email + "' AND mdp = '" + password + "'";
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet queryResult = statement.executeQuery(verifyLogin);
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 
             // After successful login, retrieve user data and pass it to the initializeUser method
             if (queryResult.next()) {
@@ -272,18 +380,26 @@ public class LoginController implements Initializable {
                 loginMessageLabel.setText("Invalid login. Please try again");
             }
 
+<<<<<<< HEAD
         } catch (SQLException e) {
             e.printStackTrace();
             showAlert(Alert.AlertType.ERROR, "Error", "An error occurred while logging in.");
         } catch (IOException e) {
             e.printStackTrace();
             showAlert(Alert.AlertType.ERROR, "Error", "An error occurred while loading the user interface.");
+=======
+        } catch (Exception e) {
+            e.printStackTrace();
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
         }
     }
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
     public Role getUserRole(int userID) {
         // Define the SQL query to retrieve the user's role based on the user ID
         String query = "SELECT role FROM user WHERE userID = ?";
@@ -328,6 +444,7 @@ public class LoginController implements Initializable {
 
     }
 
+<<<<<<< HEAD
     @FXML
     private void action_forgot_pass(ActionEvent event) {
         Stage Stage1 ;
@@ -350,10 +467,13 @@ public class LoginController implements Initializable {
 
     }
 
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 
     @FXML
     void initialize() {
         assert EmailTextField != null : "fx:id=\"EmailTextField\" was not injected: check your FXML file 'login.fxml'.";
+<<<<<<< HEAD
         assert brandingImageView != null : "fx:id=\"brandingImageView\" was not injected: check your FXML file 'login.fxml'.";
         assert cancelButton != null : "fx:id=\"cancelButton\" was not injected: check your FXML file 'login.fxml'.";
         assert enterPasswordField != null : "fx:id=\"enterPasswordField\" was not injected: check your FXML file 'login.fxml'.";
@@ -365,4 +485,12 @@ public class LoginController implements Initializable {
     }
 
 
+=======
+        assert cancelButton != null : "fx:id=\"cancelButton\" was not injected: check your FXML file 'login.fxml'.";
+        assert enterPasswordField != null : "fx:id=\"enterPasswordField\" was not injected: check your FXML file 'login.fxml'.";
+        assert loginButton != null : "fx:id=\"loginButton\" was not injected: check your FXML file 'login.fxml'.";
+
+    }
+
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 }

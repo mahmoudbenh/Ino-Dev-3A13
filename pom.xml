@@ -11,7 +11,10 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+<<<<<<< HEAD
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
     </properties>
 
 
@@ -23,12 +26,15 @@
         </dependency>
 
         <dependency>
+<<<<<<< HEAD
             <groupId>org.webjars.npm</groupId>
             <artifactId>recaptcha</artifactId>
             <version>1.2.1</version>
         </dependency>
 
         <dependency>
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>17.0.6</version>
@@ -40,6 +46,7 @@
             <version>17.0.6</version>
         </dependency>
 
+<<<<<<< HEAD
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>kernel</artifactId>
@@ -91,6 +98,8 @@
         </dependency>
 
 
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
     </dependencies>
 
     <build>

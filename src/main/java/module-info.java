@@ -5,6 +5,7 @@ module JavaPidev {
     requires java.sql;
     requires mysql.connector.j;
     requires java.desktop;
+<<<<<<< HEAD
     requires kernel;
     requires layout;
     requires io;
@@ -20,6 +21,8 @@ module JavaPidev {
     requires jdk.httpserver;
     //requires mail;
     //requires java.mail;
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 
     opens controllers;
     opens models;

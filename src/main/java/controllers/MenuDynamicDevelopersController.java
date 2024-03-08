@@ -66,6 +66,7 @@ public class MenuDynamicDevelopersController implements Initializable {
         }
     }
 
+<<<<<<< HEAD
     /*@FXML
     public void exit(){
         System.exit(0);
@@ -84,6 +85,11 @@ public class MenuDynamicDevelopersController implements Initializable {
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }
+=======
+    @FXML
+    public void exit(){
+        System.exit(0);
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
     }
 
     public void initializeUser(User user) {

@@ -22,7 +22,11 @@ public class MainClass {
 
         ServiceUser sp = new ServiceUser();
 
+<<<<<<< HEAD
         sp.insertOne1(p2);
+=======
+        //sp.insertOne1(p2);
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
         System.out.println(sp.selectAll());
 
         //modify

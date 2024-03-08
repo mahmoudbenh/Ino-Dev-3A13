@@ -5,8 +5,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+<<<<<<< HEAD
 import javafx.scene.Node;
 import javafx.scene.Parent;
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -48,6 +51,7 @@ public class FrontController {
     private Button qrcode;
 
     @FXML
+<<<<<<< HEAD
     private Button BackHome;
 
     @FXML
@@ -56,6 +60,10 @@ public class FrontController {
     @FXML
     private Button logOut;
 
+=======
+    private Button upd;
+
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
     private User currentUser; // Not static anymore
 
     // Method to set the current user
@@ -75,14 +83,22 @@ public class FrontController {
         if (user != null) {
             nom.setText(user.getNom()); // Set the first name
             prenom.setText(user.getPrenom()); // Set the last name
+<<<<<<< HEAD
             //mdp.setText(user.getMdp()); // Set the email
+=======
+            mdp.setText(user.getMdp()); // Set the email
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
             // i can set other fields as needed
         } else {
             // Handle the case where the user is null
             // For example, clear the text fields
             nom.clear();
             prenom.clear();
+<<<<<<< HEAD
             //mdp.clear();
+=======
+            mdp.clear();
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
         }
     }
 
@@ -111,12 +127,20 @@ public class FrontController {
             // Retrieve the modified values from the text fields
             String newNom = nom.getText();
             String newPrenom = prenom.getText();
+<<<<<<< HEAD
             //String newMdp = mdp.getText();
+=======
+            String newMdp = mdp.getText();
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 
             // Update the user object with the new values
             currentUser.setNom(newNom);
             currentUser.setPrenom(newPrenom);
+<<<<<<< HEAD
             //currentUser.setMdp(newMdp);
+=======
+            currentUser.setMdp(newMdp);
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 
             // Call the modifier method in ServiceUser to update the user in the database
             ServiceUser serviceUser = new ServiceUser();
@@ -142,6 +166,7 @@ public class FrontController {
 
     }
 
+<<<<<<< HEAD
     @FXML
     void BackHome(ActionEvent event) {
         try {
@@ -166,6 +191,8 @@ public class FrontController {
     }
 
 
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 
 
     private void showAlert(Alert.AlertType alertType, String title, String message) {
@@ -181,12 +208,18 @@ public class FrontController {
     void initialize() {
 
         assert acceuilbtn != null : "fx:id=\"acceuilbtn\" was not injected: check your FXML file 'Front.fxml'.";
+<<<<<<< HEAD
         assert logOut != null : "fx:id=\"logOut\" was not injected: check your FXML file 'Front.fxml'.";
         assert mdp != null : "fx:id=\"mdp\" was not injected: check your FXML file 'Front.fxml'.";
         assert nom != null : "fx:id=\"nom\" was not injected: check your FXML file 'Front.fxml'.";
         assert prenom != null : "fx:id=\"prenom\" was not injected: check your FXML file 'Front.fxml'.";
         assert qrcode != null : "fx:id=\"qrcode\" was not injected: check your FXML file 'Front.fxml'.";
         assert rootPane2 != null : "fx:id=\"rootPane2\" was not injected: check your FXML file 'Front.fxml'.";
+=======
+        assert nom != null : "fx:id=\"nom\" was not injected: check your FXML file 'Front.fxml'.";
+        assert prenom != null : "fx:id=\"prenom\" was not injected: check your FXML file 'Front.fxml'.";
+        assert qrcode != null : "fx:id=\"qrcode\" was not injected: check your FXML file 'Front.fxml'.";
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
         assert upd != null : "fx:id=\"upd\" was not injected: check your FXML file 'Front.fxml'.";
 
         // Retrieve the current user using the static method
@@ -197,6 +230,9 @@ public class FrontController {
 
     }
 
+<<<<<<< HEAD
     public void verifCode(ActionEvent event) {
     }
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 }

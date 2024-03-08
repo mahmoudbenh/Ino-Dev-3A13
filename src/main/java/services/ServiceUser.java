@@ -1,6 +1,7 @@
 package services;
 
 //import com.google.protobuf.DescriptorMessageInfoFactory;
+<<<<<<< HEAD
 
 import com.itextpdf.io.IOException;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -27,6 +28,15 @@ import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+=======
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import models.Role;
+import models.User;
+import utils.DBConnection;
+
+import java.sql.*;
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 
 public class ServiceUser implements CRUD<User> {
 
@@ -66,6 +76,7 @@ public class ServiceUser implements CRUD<User> {
         return user;
     }
 
+<<<<<<< HEAD
     private String hashPassword(String password) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] encodedHash = digest.digest(password.getBytes());
@@ -86,11 +97,23 @@ public class ServiceUser implements CRUD<User> {
         try {
             // Hash the password before storing it in the database
             String hashedPassword = hashPassword(user.getMdp());
+=======
+    public void insertOne1(User user) {
+
+        System.out.println("Inserting user: " + user);
+        String req = "INSERT INTO user (nom, prenom, mdp, email, role) VALUES (?, ?, ?, ?, ?)";
+        try {
+            //String hashedPassword = Hash(user.getMdp()); // Assuming Hash() hashes the password
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, user.getNom());
             ps.setString(2, user.getPrenom());
+<<<<<<< HEAD
             ps.setString(3, hashedPassword); // Store hashed password
+=======
+            ps.setString(3, user.getMdp()); // Set the hashed password
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
             ps.setString(4, user.getEmail());
             ps.setString(5, user.getRole().toString());
             ps.executeUpdate();
@@ -100,6 +123,26 @@ public class ServiceUser implements CRUD<User> {
         }
     }
 
+<<<<<<< HEAD
+=======
+
+    /*@Override
+    public boolean modifier(User u) {
+        String req = "update user set nom = ? , prenom = ?  where UserID = ? ";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1, u.getNom());
+            ps.setString(2, u.getPrenom());
+            ps.setInt(3, u.getUserID());
+            ps.executeUpdate();
+            System.out.println("user Modified !");
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return false;
+    }*/
+
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
     @Override
     public boolean modifier(User u) {
         String req = "UPDATE user SET nom = ?, prenom = ?, mdp = ?, email = ? WHERE UserID = ?";
@@ -156,7 +199,11 @@ public class ServiceUser implements CRUD<User> {
                 u.setMdp(rs.getString("mdp"));
                 u.setEmail(rs.getString("email"));
                 //Utilisateur
+<<<<<<< HEAD
                 String roleS = rs.getString("role");
+=======
+                String roleS=rs.getString("role");
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
                 Role role = Role.valueOf(roleS);
                 u.setRole(role);
                 list.add(u);
@@ -203,6 +250,7 @@ public class ServiceUser implements CRUD<User> {
         return userList;
     }
 
+<<<<<<< HEAD
     /*public void generatePDF(File file) throws IOException, java.io.IOException {
         ServiceUser serviceUser = new ServiceUser(); // Instantiate the service class
 
@@ -451,3 +499,7 @@ public class ServiceUser implements CRUD<User> {
 
 
 }
+=======
+
+}
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214

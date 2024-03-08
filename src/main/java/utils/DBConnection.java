@@ -7,7 +7,11 @@ import java.sql.SQLException;
 
 public class DBConnection {
 
+<<<<<<< HEAD
     private static final String URL = "jdbc:mysql://localhost:3307/pidev";
+=======
+    private static final String URL = "jdbc:mysql://localhost:3307/pi_projet";
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
     private static final String USER = "root";
     private static final String PASSWORD = "";
 

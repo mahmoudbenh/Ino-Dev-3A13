@@ -11,7 +11,11 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.util.Objects;
 
+<<<<<<< HEAD
 /*public class FXMain extends Application {
+=======
+public class FXMain extends Application {
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 
     public static void main(String[] args) {
         launch(args);
@@ -22,14 +26,21 @@ import java.util.Objects;
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/login.fxml")));
 
+<<<<<<< HEAD
             primaryStage.initStyle(StageStyle.UNDECORATED);
+=======
+            //primaryStage.initStyle(StageStyle.UNDECORATED);
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
             showErrorDialog("Erreur de chargement", "Impossible de charger l'interface utilisateur.");
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
     }
 
     private void showErrorDialog(String title, String message) {
@@ -40,6 +51,7 @@ import java.util.Objects;
         alert.showAndWait();
     }
 
+<<<<<<< HEAD
 }*/
 
 
@@ -61,3 +73,6 @@ public class FXMain extends Application{
 
 
 
+=======
+}
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214

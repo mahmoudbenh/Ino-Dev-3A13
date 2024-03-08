@@ -1,6 +1,9 @@
 package controllers;
 
+<<<<<<< HEAD
 import java.io.File;
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -10,7 +13,10 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.mysql.cj.jdbc.DatabaseMetaData;
+<<<<<<< HEAD
 //import com.sun.javafx.tk.quantum.PaintRenderJob;
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -25,17 +31,25 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+<<<<<<< HEAD
 import javafx.stage.FileChooser;
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import models.User;
 import services.ServiceUser;
+<<<<<<< HEAD
 import test.FXMain;
 
 import javax.swing.*;
 
 import static java.time.zone.ZoneRulesProvider.refresh;
 //import static jdk.vm.ci.aarch64.AArch64.sp;
+=======
+
+import static java.time.zone.ZoneRulesProvider.refresh;
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 
 public class AdminController implements Initializable {
 
@@ -44,8 +58,11 @@ public class AdminController implements Initializable {
 
     @FXML
     private URL location;
+<<<<<<< HEAD
     @FXML
     private Button generatePdf;
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 
     @FXML
     private TableColumn<?, ?> Email;
@@ -74,10 +91,13 @@ public class AdminController implements Initializable {
     @FXML
     private Button SupprimerUser;
 
+<<<<<<< HEAD
 
     @FXML
     private Button generatePDF;
 
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
     @FXML
     private Button ModifierUser;
 
@@ -208,6 +228,7 @@ public class AdminController implements Initializable {
 
 
 
+<<<<<<< HEAD
     /*@FXML
     void initialize() {
         assert Email != null : "fx:id=\"Email\" was not injected: check your FXML file 'Admin.fxml'.";
@@ -222,6 +243,8 @@ public class AdminController implements Initializable {
 
     }*/
 
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
     @FXML
     void initialize() {
         assert Email != null : "fx:id=\"Email\" was not injected: check your FXML file 'Admin.fxml'.";
@@ -230,7 +253,10 @@ public class AdminController implements Initializable {
         assert Prenom != null : "fx:id=\"Prenom\" was not injected: check your FXML file 'Admin.fxml'.";
         assert Recherche_User != null : "fx:id=\"Recherche_User\" was not injected: check your FXML file 'Admin.fxml'.";
         assert Role != null : "fx:id=\"Role\" was not injected: check your FXML file 'Admin.fxml'.";
+<<<<<<< HEAD
         assert generatePdf != null : "fx:id=\"generatePdf\" was not injected: check your FXML file 'Admin.fxml'.";
+=======
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
         assert idUser != null : "fx:id=\"idUser\" was not injected: check your FXML file 'Admin.fxml'.";
         assert rootPane != null : "fx:id=\"rootPane\" was not injected: check your FXML file 'Admin.fxml'.";
         assert tableviewUser != null : "fx:id=\"tableviewUser\" was not injected: check your FXML file 'Admin.fxml'.";
@@ -239,6 +265,7 @@ public class AdminController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+<<<<<<< HEAD
         // Charger le fichier CSS
         //rootPane.getStylesheets().add(getClass().getResource("src/main/Images/design.css").toExternalForm());
         showRec();
@@ -299,4 +326,9 @@ public class AdminController implements Initializable {
         }
     }
 
+=======
+        showRec();
+        searchRec();
+    }
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
 }

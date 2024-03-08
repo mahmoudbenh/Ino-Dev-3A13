@@ -50,7 +50,11 @@
                </font>
             </Label>
             <Button fx:id="registreButton" layoutX="27.0" layoutY="268.0" mnemonicParsing="false" onAction="#openSignUp" prefHeight="26.0" prefWidth="227.0" style="-fx-background-color: #b4a3e3;" text="Registre" />
+<<<<<<< HEAD
             <Button fx:id="mdp_oub" layoutX="82.0" layoutY="160.0" mnemonicParsing="false" onAction="#action_forgot_pass" style="-fx-background-color: #b4a3e3;" text="forget password">
+=======
+            <Button layoutX="82.0" layoutY="160.0" mnemonicParsing="false" style="-fx-background-color: #b4a3e3;" text="forget password">
+>>>>>>> 6ebb2b8f6a53c0ad29802743fb1ecbb3f8bfc214
                <font>
                   <Font size="14.0" />
                </font>
