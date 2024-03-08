@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FrontController">
+   <center>
+      <AnchorPane fx:id="rootPane2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #b4a3e3;" userData="${controller}" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="acceuilbtn" layoutX="61.0" layoutY="57.0" mnemonicParsing="false" onAction="#ActionAcceuilbtn" style="-fx-background-color: #6A0DAD;" text="LogOut" textFill="#f7f7f7">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="qrcode" layoutX="723.0" layoutY="244.0" mnemonicParsing="false" onAction="#qrAction" style="-fx-background-color: #6A0DAD;" text="Generate Qr" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="upd" layoutX="377.0" layoutY="446.0" mnemonicParsing="false" onAction="#upd" style="-fx-background-color: #6A0DAD;" text="Update" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="684.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true" />
+            <TextField fx:id="nom" layoutX="334.0" layoutY="308.0" />
+            <TextField fx:id="prenom" layoutX="334.0" layoutY="378.0" />
+            <Label layoutX="175.0" layoutY="307.0" text="FIRSTNAME">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label layoutX="177.0" layoutY="377.0" text="LASTNAME">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Button fx:id="acceuilbtn1" layoutX="811.0" layoutY="50.0" mnemonicParsing="false" onAction="#BackHome" style="-fx-background-color: #6A0DAD;" text="BackHome" textFill="#f7f7f7">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

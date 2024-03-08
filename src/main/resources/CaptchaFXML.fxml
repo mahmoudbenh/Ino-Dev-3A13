@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CaptchaFXML">
+    <children>
+        <Label layoutX="39.0" layoutY="36.0" text="CAPTCHA :" />
+        <Label fx:id="captchaLabel" layoutX="127.0" layoutY="36.0" />
+        <TextField fx:id="captchaCode" layoutX="39.0" layoutY="77.0" promptText="Entrez le CAPTCHA ici" />
+        <Button fx:id="refreshCaptcha" layoutX="241.0" layoutY="73.0" mnemonicParsing="false" onAction="#onRefreshCaptcha" text="Rafraîchir" />
+        <Button fx:id="submit" layoutX="159.0" layoutY="134.0" mnemonicParsing="false" onAction="#onSubmit" text="Soumettre" />
+        <Label fx:id="msg" layoutX="39.0" layoutY="110.0" />
+
+    </children>
+</AnchorPane>

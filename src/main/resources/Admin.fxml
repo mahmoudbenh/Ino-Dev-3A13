@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #8A2BE2;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController">
+    <children>
+        <TableView fx:id="tableviewUser" layoutX="16.0" layoutY="25.0" onMouseClicked="#handleMouseAction" prefHeight="345.0" prefWidth="554.0">
+            <columns>
+                <TableColumn fx:id="idUser" prefWidth="75.0" text="id" />
+                <TableColumn fx:id="Nom" prefWidth="75.0" text="nom" />
+                <TableColumn fx:id="Prenom" prefWidth="75.0" text="prenom" />
+                <TableColumn fx:id="Email" prefWidth="75.0" text="email" />
+                <TableColumn fx:id="Mdp" prefWidth="75.0" text="mdp" />
+                <TableColumn fx:id="Role" prefWidth="75.0" text="role" />
+            </columns>
+        </TableView>
+        <Button layoutX="518.0" layoutY="1.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: #8A2BE2;" text="LogOut" textFill="WHITE" />
+        <Button layoutX="14.0" layoutY="2.0" mnemonicParsing="false" onAction="#showRec" prefHeight="19.0" prefWidth="68.0" style="-fx-background-color: #8A2BE2;" text="Actualiser" textFill="#ececec" />
+        <TextField fx:id="Recherche_User" layoutX="16.0" layoutY="371.0" promptText="Recherche..." style="-fx-background-color: #8A2BE2;" stylesheets="@design.css" />
+        <Button fx:id="generatePdf" layoutX="346.0" layoutY="371.0" mnemonicParsing="false" onAction="#generatePDF" style="-fx-background-color: #8A2BE2;" text="pdf" textFill="WHITE" />
+        <Button layoutX="429.0" layoutY="371.0" mnemonicParsing="false" onAction="#ModifierUser" style="-fx-background-color: #8A2BE2;" text="modifier" textFill="WHITE" />
+        <Button layoutX="509.0" layoutY="371.0" mnemonicParsing="false" onAction="#SupprimerUser" style="-fx-background-color: #8A2BE2;" text="supprimer" textFill="WHITE" />
+    </children>
+</AnchorPane>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModifierReclamationFXML">
+    <children>
+        <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="500.0" prefWidth="1000.0">
+            <children>
+                <BorderPane layoutX="-8.0" layoutY="-7.0" maxHeight="-Infinity" prefHeight="500.0" prefWidth="1000.0">
+                    <center>
+                        <AnchorPane prefHeight="500.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <ImageView fitHeight="673.0" fitWidth="1128.0" layoutX="4.0" layoutY="-118.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@img/backkk.jpg" />
+                                    </image>
+                                </ImageView>
+                                <VBox layoutY="100.0" prefHeight="400.0" prefWidth="155.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="155.0" style="-fx-background-color: #b4a3e3;" text="Gestion User" />
+                                        <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="158.0" style="-fx-background-color: #b4a3e3;" text="Gestion Produits" />
+                                        <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="158.0" style="-fx-background-color: #b4a3e3;" text="Gestion Reclamation" />
+                                        <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="164.0" style="-fx-background-color: #b4a3e3;" text="Gestion Evenement" />
+                                        <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="155.0" style="-fx-background-color: #b4a3e3;" text="Gestion Livraison" />
+                                    </children>
+                                </VBox>
+                                <HBox layoutY="-2.0" prefHeight="110.0" prefWidth="1008.0" style="-fx-background-color: #b4a3e3;">
+                                    <children>
+                                        <ImageView fitHeight="101.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@img/logo.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Text fill="#217f99" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Reclamation" textAlignment="CENTER">
+                                            <font>
+                                                <Font name="Edwardian Script ITC" size="35.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="250.0" top="30.0" />
+                                            </HBox.margin>
+                                        </Text>
+                                        <ImageView fitHeight="110.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@img/rh3.png" />
+                                            </image>
+                                            <HBox.margin>
+                                                <Insets left="280.0" top="5.0" />
+                                            </HBox.margin>
+                                        </ImageView>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="10.0" top="10.0" />
+                                    </padding>
+                                </HBox>
+                                <Text layoutX="851.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Responsable RH" />
+                                <Button layoutX="397.0" layoutY="162.0" mnemonicParsing="false" onAction="#raffraichir" style="-fx-background-color: #b4a3e3;" text="raffraichir" />
+                                <Button fx:id="button_charger" layoutX="491.0" layoutY="477.0" mnemonicParsing="false" onAction="#retour" style="-fx-background-color: #b4a3e3;" text="&lt;" />
+                            </children>
+                        </AnchorPane>
+                    </center>
+                </BorderPane>
+                <Label layoutX="370.0" layoutY="57.0" textFill="#6162a1">
+                    <font>
+                        <Font name="Edwardian Script ITC" size="35.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <Text fill="#eae6e6" layoutX="394.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type_reclamation">
+            <font>
+                <Font size="19.0" />
+            </font></Text>
+        <Text fill="#efeeee" layoutX="398.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="description">
+            <font>
+                <Font size="19.0" />
+            </font></Text>
+        <Text fill="#f2ecec" layoutX="388.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre reclamation">
+            <font>
+                <Font size="19.0" />
+            </font></Text>
+        <Text fill="#f7f1f1" layoutX="396.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statut reclamation">
+            <font>
+                <Font size="19.0" />
+            </font></Text>
+        <Text fill="#fcfafa" layoutX="395.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="heure">
+            <font>
+                <Font size="19.0" />
+            </font></Text>
+        <Label layoutX="407.0" layoutY="105.0" />
+        <Text fill="#eceaea" layoutX="391.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="date_reclamation">
+            <font>
+                <Font size="19.0" />
+            </font></Text>
+        <Button layoutX="886.0" layoutY="410.0" mnemonicParsing="false" onAction="#annuler" style="-fx-background-color: #b4a3e3;" text="annuler" />
+        <Button layoutX="813.0" layoutY="412.0" mnemonicParsing="false" onAction="#modifierdy" style="-fx-background-color: #b4a3e3;" text="modifier" />
+        <DatePicker fx:id="date_reclamationm" layoutX="543.0" layoutY="252.0" prefHeight="26.0" prefWidth="250.0" />
+        <ComboBox fx:id="type_reclamationm" layoutX="545.0" layoutY="329.0" prefHeight="26.0" prefWidth="250.0" />
+        <TextField fx:id="titrem2" layoutX="542.0" layoutY="216.0" prefHeight="26.0" prefWidth="250.0" />
+        <ComboBox fx:id="statm2" layoutX="544.0" layoutY="364.0" prefHeight="26.0" prefWidth="250.0" />
+        <Spinner fx:id="heurem" layoutX="544.0" layoutY="293.0" prefHeight="26.0" prefWidth="250.0" />
+        <TextField fx:id="descriptionm" layoutX="544.0" layoutY="401.0" prefHeight="47.0" prefWidth="249.0" />
+    </children>
+</AnchorPane>

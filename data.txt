@@ -1,0 +1,6 @@
+admin:
+email:ahmadou.ndiayewalymalick@esprit.tn
+mdp:ahmadou123
+regular user:
+email:salif@gmail.com
+mdp:123456
